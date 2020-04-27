@@ -1,0 +1,24 @@
+.navbar{
+    justify-content: space-between;
+}
+
+span {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    /*flex: 1 1 auto;*/
+    padding-right: 1rem;
+
+  }
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+mat-sidenav, mat-sidenav-content {
+    padding: 16px;
+}
+
+mat-sidenav{
+    background-color: rgba(145, 128, 240, 0.74);
+    width:300px;
+}

@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="navbar">
+    <div>NIMHANS</div>
+  
+    
+    <div>
+  
+    <mat-menu #appMenu="matMenu" >
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+   
+    <span><button mat-flat-button>HOME</button></span>
+    <span><button mat-flat-button [matMenuTriggerFor]="appMenu">PROFILE</button></span>
+  
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
+  
+      <mat-nav-list>
+        <a mat-list-item routerLink='/rack-enter'>Rack information</a>
+        <a mat-list-item routerLink='/pending-request'>Pending Request</a>
+
+  
+      </mat-nav-list>
+  
+    </mat-sidenav>
+    <mat-sidenav-content>
+     
+         <button mat-button color="primary" class="menu" (click)="opened=!opened"><i class="material-icons">menu</i></button>
+         <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

@@ -1,0 +1,46 @@
+.button3, .button2,.button1{
+    position: relative;
+    margin-left:200px;
+    background-color: rgb(61, 24, 109);
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    
+}
+
+.form1{
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+.text1{
+    margin-top: 10px;
+    margin-left: 200px;
+}
+.label1{  
+    margin-left: 400px;
+}
+
+.label2{  
+    margin-left: 800px;
+}
+
+.label3
+{
+    margin-left: 1000px;
+}
+
+.text2{
+ margin-top: 10px;
+margin-left: 10px;
+}
+
+.button4{
+    margin-left: 1100px;
+}
+.button5{
+    margin-left: 700px;
+}
