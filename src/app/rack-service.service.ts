@@ -45,8 +45,8 @@ export class RackServiceService {
       console.log(data);
      // let jsondata = {'sampleNo' : data};
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getrack";
-    return this.http.post<RackSample[]>(url,data,{headers});
+    let url="https://localhost:8443/deleterack";
+    return this.http.put<RackSample[]>(url,data,{headers});
 
   }
 }
