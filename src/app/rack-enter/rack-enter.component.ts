@@ -13,10 +13,8 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: RackSample[] = [
-  {canid:"Venus",rackid:"Rack A",boxid:"Box 1",cellid:1},
-  {canid:"Venus",rackid:"Rack A",boxid:"Box 1",cellid:2},
-
-
+  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:1}},
+  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:2}}
 ];
 let  list_select=[];
 @Component({
@@ -78,9 +76,9 @@ export class RackEnterComponent implements OnInit {
   onSearch()
   {
     console.log(this.sample);
+    this.show_t=true;
     this.service.searchRack(this.sample).subscribe(response => this.fetchData(response));
     alert('OK!!');
-    this.show_t!=this.show_t;
   }
 
   onRemove()
@@ -93,7 +91,7 @@ export class RackEnterComponent implements OnInit {
   fetchData(response:RackSample[])
   {
      console.log(response);
-  //   this.dataSource = new MatTableDataSource<RackSample>(response);
+     this.dataSource = new MatTableDataSource<RackSample>(response);
      alert(response);
   }
 
