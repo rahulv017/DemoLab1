@@ -5,6 +5,8 @@ import { CellData } from './CellData';
 import { Observable } from 'rxjs';
 import { RackSample } from './rack-sample';
 import { jwt } from './jwt';
+import { Mycoplasma } from './mycoplasma';
+import { LabLinking } from './lab-linking';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +50,23 @@ export class RackServiceService {
     let url="https://localhost:8443/deleterack";
     return this.http.put<RackSample[]>(url,data,{headers});
 
+  }
+
+  updateMycoplasma(data:Mycoplasma)
+  {
+    console.log(data);
+    // let jsondata = {'sampleNo' : data};
+   const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+   let url="https://localhost:8443/deleterack";
+   return this.http.put(url,data,{headers});
+  }
+
+  getSampleList():Observable<LabLinking[]>
+  {
+    //console.log(data);
+    // let jsondata = {'sampleNo' : data};
+   const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+   let url="https://localhost:8443/deleterack";
+   return this.http.get<LabLinking[]>(url,{headers});
   }
 }
