@@ -1,0 +1,60 @@
+<p>enter-lab-data works!</p>
+
+<label id="example-radio-group-label">Select the Lab</label>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [(ngModel)]="selectLab">
+  <mat-radio-button class="example-radio-button" *ngFor="let lab of labs" [value]="lab">
+    {{lab}}
+  </mat-radio-button>
+</mat-radio-group>
+<div>Your Selected Lab is: {{selectLab}}</div>
+
+
+
+<mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selectSample">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let num of list_sample" value={{num}} >{{num}}</mat-option>
+     
+    </mat-select>
+  </mat-form-field>
+  
+  <p>You selected: {{selectSample}}</p>
+  
+
+  <div *ngIf="selectLab==labs[0]&&selectSample!=null">
+    <form>
+      SampleNo: <input type="text"  value={{selectSample}} name="selectSample" [(ngModel)]="selectSample" disabled> <br>
+      Name of technician: <input type="text" value="Enter your name" name="name" [(ngModel)]="myco.name" ><br>
+      Date: <input type="text" value="todayDate" name="todayDate" [(ngModel)]="todayDate" disabled> <br>
+      <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="selectResult" >
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let num of result" value={{num}}  >{{num}}</mat-option>
+       
+      </mat-select>
+
+    </mat-form-field>
+     <br>
+
+      <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="selectStatus" >
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let num of status" value={{num}}  >{{num}}</mat-option>
+       
+      </mat-select>
+    </mat-form-field>
+
+    <input type="button" (click)="onSaveMyco()" value="Submit ">
+    </form>
+      
+
+    
+      
+
+  </div>

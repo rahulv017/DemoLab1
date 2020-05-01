@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CellData } from './CellData';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RackSample } from './rack-sample';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { RackServiceService } from './rack-service.service';
 import { MatButtonModule } from '@angular/material/button'; 
 import {MatToolbarModule} from '@angular/material/toolbar'; 
@@ -28,6 +29,8 @@ import { BackgroundComponent } from './background/background.component';
 import {RouterModule, Routes} from "@angular/router";
 import { PendingRequestComponent } from './pending-request/pending-request.component';
 import { MatSortModule } from '@angular/material/sort';
+import { EnterLabDataComponent } from './enter-lab-data/enter-lab-data.component';
+import { Mycoplasma } from './mycoplasma';
 
 const appRoutes: Routes = [
   { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
     RackEnterComponent,
     BackgroundComponent,
     PendingRequestComponent,
+    EnterLabDataComponent,
   
   ],
   imports: [
@@ -64,6 +68,7 @@ const appRoutes: Routes = [
    MatCardModule,
    MatTableModule,
    MatSortModule,
+   MatDatepickerModule,
    RouterModule.forRoot(
     appRoutes,
     { useHash: true }
@@ -72,7 +77,7 @@ const appRoutes: Routes = [
 
     
   ],
-  providers: [LabUser,CellData,RackSample],
+  providers: [LabUser,CellData,RackSample,Mycoplasma],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
