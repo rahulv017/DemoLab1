@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./background.component.css']
 })
 export class BackgroundComponent implements OnInit {
+  opened:boolean;
 
-  constructor() { }
+  constructor() {
+    this.opened=false;
+   }
 
   ngOnInit(): void {
   }

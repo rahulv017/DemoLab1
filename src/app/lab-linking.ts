@@ -1,3 +1,4 @@
+
 import { id } from './id';
 
 export class LabLinking {
@@ -8,4 +9,5 @@ export class LabLinking {
     lCLStatus:number;
     mycoplasmaStatus:number;
     pbmncStatus:number;
+
 }
