@@ -57,7 +57,9 @@ export class RackServiceService {
     console.log(data);
     // let jsondata = {'sampleNo' : data};
    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-   let url="https://localhost:8443/deleterack";
+
+   let url="https://localhost:8443/updatemycoplasma";
+
    return this.http.put(url,data,{headers});
   }
 
@@ -66,7 +68,9 @@ export class RackServiceService {
     //console.log(data);
     // let jsondata = {'sampleNo' : data};
    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-   let url="https://localhost:8443/deleterack";
+
+   let url="https://localhost:8443/getstatus";
+
    return this.http.get<LabLinking[]>(url,{headers});
   }
 }

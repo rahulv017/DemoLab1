@@ -4,7 +4,9 @@ import { RackServiceService } from '../rack-service.service';
 import { LabLinking } from '../lab-linking';
 const ELEMENT_DATA:Mycoplasma[]=
 [
-   {dno:"D123",sampleno:123,result:"Positive",status:true,date: new Date(),name: "Rahul"}
+
+   {sampleNo:123,result:"Positive",status:true,date: new Date(),name: "Rahul"}
+
 ]
 let sample_list=[];
 @Component({
@@ -38,17 +40,20 @@ export class EnterLabDataComponent implements OnInit {
 
    fetchData(response:LabLinking[])
    {
+
+     console.log(response);
      let i=0;
       for(i=0;i<response.length;i++)
       {
-        sample_list.push(response[i].sample_no);
-      }
+        sample_list.push(response[i].id.sampleNo);
+
       console.log(`Sample list is : ${this.list_sample}`);
       this.list_sample=sample_list;
    }
   onSaveMyco()
   {
-    this.myco.sampleno=this.selectSample;
+
+    this.myco.sampleNo=this.selectSample;
     this.myco.date=this.todayDate;
     this.myco.result=this.selectResult;
     if(this.selectStatus==this.status[0])

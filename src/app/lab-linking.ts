@@ -1,10 +1,13 @@
+
+import { id } from './id';
+
 export class LabLinking {
-    d_no:string;
-    sample_no:number;
-    dna_status:number;
-    geneprint_status:number;
-    kyrotyping_status:number;
-    lclstatus:number;
-    mycoplasam_status:number;
-    pbmnc_status:number;
+    id:id;
+    dnaStatus:number;
+    geneprintStatus:number;
+    kyrotypingStatus:number;
+    lCLStatus:number;
+    mycoplasmaStatus:number;
+    pbmncStatus:number;
+
 }
