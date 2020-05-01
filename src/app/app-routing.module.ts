@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RackEnterComponent } from './rack-enter/rack-enter.component';
 import { EnterLabDataComponent } from './enter-lab-data/enter-lab-data.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
 
   {path:'rackDetails',component:RackEnterComponent},
-  {path:'enterLab',component:EnterLabDataComponent}
+  {path:'enterLab',component:EnterLabDataComponent},
+  {path:'Dashboard',component:DashboardComponent}
 ];
 
 @NgModule({

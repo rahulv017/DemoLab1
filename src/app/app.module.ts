@@ -31,6 +31,7 @@ import { PendingRequestComponent } from './pending-request/pending-request.compo
 import { MatSortModule } from '@angular/material/sort';
 import { EnterLabDataComponent } from './enter-lab-data/enter-lab-data.component';
 import { Mycoplasma } from './mycoplasma';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     BackgroundComponent,
     PendingRequestComponent,
     EnterLabDataComponent,
+    DashboardComponent,
   
   ],
   imports: [

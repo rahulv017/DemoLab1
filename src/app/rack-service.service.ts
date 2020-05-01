@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { RackSample } from './rack-sample';
 import { jwt } from './jwt';
 import { Mycoplasma } from './mycoplasma';
+import{DashModel} from '../app/dash-model'
 import { LabLinking } from './lab-linking';
 
 @Injectable({
@@ -72,5 +73,14 @@ export class RackServiceService {
    let url="https://localhost:8443/getstatus";
 
    return this.http.get<LabLinking[]>(url,{headers});
+  }
+
+  getDashboardList():Observable<DashModel[]>
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+
+    let url="https://localhost:8443/getstatus";
+ 
+    return this.http.get<DashModel[]>(url,{headers});
   }
 }
