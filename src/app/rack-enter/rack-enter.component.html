@@ -14,6 +14,11 @@
     <input  class="button5" type="button" value="Enter" (click)="onSearch()" >
 
     <div *ngIf="show_t">
+      <mat-form-field class="label2">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+      </mat-form-field>
+      
       <table mat-table [dataSource]="dataSource" class="label2">
     
         <!-- Checkbox Column -->
@@ -42,6 +47,11 @@
           <th mat-header-cell *matHeaderCellDef> Cell </th>
           <td mat-cell *matCellDef="let element"> {{element.id.cellId}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="Lab">
+          <th mat-header-cell *matHeaderCellDef> Lab Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.id.labName} </td>
+        </ng-container>
     
        
       
@@ -61,6 +71,10 @@
   <input  class="button4" type="button" value="Enter" (click)="onRemove()" >
 
    <div *ngIf="show_table">
+    <mat-form-field class="label3">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+    </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="label3">
 
     <!-- Checkbox Column -->
@@ -105,6 +119,10 @@
       <td mat-cell *matCellDef="let element"> {{element.id.cellId}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="Lab">
+      <th mat-header-cell *matHeaderCellDef> Lab Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.id.labName} </td>
+    </ng-container>
    
   
   
@@ -169,6 +187,15 @@
 <div *ngIf="select_cell!=null" >
   
         <input  class="text1" type="text" value="sample No" name="sample" [(ngModel)]="sample" >
+        <mat-form-field class="form1">
+          <mat-label>Select the Lab for the vials</mat-label>
+          <mat-select [(value)]="select_lab"  >
+          <mat-option value="PBMC">PBMC</mat-option>
+          <mat-option value="LCL">LCL</mat-option>
+          <mat-option value="DNA">DNA</mat-option>
+          </mat-select>
+      
+      </mat-form-field>
         <input  class="button3" type="button" value="Save" (click)="onSubmit()" >
     
 </div>

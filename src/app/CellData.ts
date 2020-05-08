@@ -4,4 +4,5 @@ export class CellData{
     boxId:string;
     cellId:number[];
     sampleNo:number;
+    labName:string;
 }

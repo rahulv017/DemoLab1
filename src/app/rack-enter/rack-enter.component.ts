@@ -4,7 +4,7 @@ import { RackServiceService } from '../rack-service.service';
 import { RackSample } from '../rack-sample';
 import {SelectionModel, DataSource} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
-import { CellData1 } from './CellDataR';
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -13,8 +13,8 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: RackSample[] = [
-  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:1}},
-  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:2}}
+  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:1,labName:"PBMC"}},
+  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:2,labName:"PBMC"}}
 ];
 let  list_select=[];
 @Component({
@@ -26,7 +26,7 @@ export class RackEnterComponent implements OnInit {
 
 
   displayedColumns: string[] = ['select','Canister', 'Rack', 'Box', 'Cell']; //for removing 
-  displayedColumns1: string[] = ['Canister', 'Rack', 'Box', 'Cell']; //for searching
+  displayedColumns1: string[] = ['Canister', 'Rack', 'Box', 'Cell','Lab']; //for searching
   dataSource;
  // dataSource = new MatTableDataSource<RackSample>(ELEMENT_DATA);
   selection = new SelectionModel<RackSample>(true, []);
@@ -47,6 +47,7 @@ export class RackEnterComponent implements OnInit {
   select_can;
   select_rack;
   select_box;
+  select_lab;
    select_cell=new Array();
   vails:boolean;
   search:boolean;
@@ -64,6 +65,7 @@ export class RackEnterComponent implements OnInit {
     this.cell.boxId=this.select_box;
     this.cell.cellId=this.select_cell;
     this.cell.sampleNo=this.sample;
+    this.cell.labName=this.select_lab;
     this.service.sendRackData(this.cell).subscribe();
     alert("You have entered "+"Canister "+this.select_can+" Cells "+ this.select_cell +" Sample No "+this.sample);
     this.select_box=null;
@@ -163,6 +165,11 @@ export class RackEnterComponent implements OnInit {
           }
           console.log(list_select);
         }
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   /** The label for the checkbox on the passed row */

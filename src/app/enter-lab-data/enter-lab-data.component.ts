@@ -50,6 +50,7 @@ export class EnterLabDataComponent implements OnInit {
       console.log(`Sample list is : ${this.list_sample}`);
       this.list_sample=sample_list;
    }
+  }
   onSaveMyco()
   {
 
@@ -67,3 +68,4 @@ export class EnterLabDataComponent implements OnInit {
   }
 
 }
+
