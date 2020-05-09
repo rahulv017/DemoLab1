@@ -32,7 +32,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { EnterLabDataComponent } from './enter-lab-data/enter-lab-data.component';
 import { Mycoplasma } from './mycoplasma';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { RackInformationComponent } from './rack-information/rack-information.component';
+import{MatPaginatorModule} from '@angular/material/paginator'
 const appRoutes: Routes = [
   { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
   { path: 'rack-enter', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     PendingRequestComponent,
     EnterLabDataComponent,
     DashboardComponent,
+    RackInformationComponent,
   
   ],
   imports: [
@@ -71,6 +73,7 @@ const appRoutes: Routes = [
    MatTableModule,
    MatSortModule,
    MatDatepickerModule,
+   MatPaginatorModule,
    RouterModule.forRoot(
     appRoutes,
     { useHash: true }

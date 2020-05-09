@@ -4,6 +4,8 @@
     rackId:string;
     boxId:string;
     cellId:number;
-    labName:string;
+   
     }
+    labName:string;
+    sampleNo:number;
 }

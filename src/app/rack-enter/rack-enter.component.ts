@@ -13,8 +13,8 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: RackSample[] = [
-  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:1,labName:"PBMC"}},
-  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:2,labName:"PBMC"}}
+  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:1},labName:"PBMC",sampleNo:1},
+  {id:{canId:"Venus",rackId:"Rack A",boxId:"Box 1",cellId:2},labName:"PBMC",sampleNo:2}
 ];
 let  list_select=[];
 @Component({
@@ -25,7 +25,7 @@ let  list_select=[];
 export class RackEnterComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['select','Canister', 'Rack', 'Box', 'Cell']; //for removing 
+  displayedColumns: string[] = ['select','Canister', 'Rack', 'Box', 'Cell','Lab']; //for removing 
   displayedColumns1: string[] = ['Canister', 'Rack', 'Box', 'Cell','Lab']; //for searching
   dataSource;
  // dataSource = new MatTableDataSource<RackSample>(ELEMENT_DATA);

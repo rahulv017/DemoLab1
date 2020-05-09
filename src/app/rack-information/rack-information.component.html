@@ -1,0 +1,49 @@
+<p>rack-information works!</p>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Canister">
+      <th mat-header-cell *matHeaderCellDef> Canister ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id.canId}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Rack">
+      <th mat-header-cell *matHeaderCellDef> Rack No </th>
+      <td mat-cell *matCellDef="let element"> {{element.id.rackId}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Box">
+      <th mat-header-cell *matHeaderCellDef> Box No </th>
+      <td mat-cell *matCellDef="let element"> {{element.id.boxId}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Cell">
+      <th mat-header-cell *matHeaderCellDef> Cell No </th>
+      <td mat-cell *matCellDef="let element"> {{element.id.cellId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Sample">
+        <th mat-header-cell *matHeaderCellDef> Sample No</th>
+        <td mat-cell *matCellDef="let element"> {{element.sampleNo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Lab">
+        <th mat-header-cell *matHeaderCellDef> LabName</th>
+        <td mat-cell *matCellDef="let element"> {{element.labName}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="Remove">
+        <th mat-header-cell *matHeaderCellDef> Remove Button </th>
+        <td mat-cell *matCellDef="let element"><button mat-button (click)="onEdit(element)">ClickMe!!</button></td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

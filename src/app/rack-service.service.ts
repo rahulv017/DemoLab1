@@ -83,4 +83,12 @@ export class RackServiceService {
  
     return this.http.get<DashModel[]>(url,{headers});
   }
+
+  getAllRackData()
+  {
+   // let jsondata = {'sampleNo' : data};
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getrack";
+    return this.http.get<RackSample[]>(url,{headers});
+  }
 }
