@@ -28,6 +28,11 @@ export class RackEnterComponent implements OnInit {
   displayedColumns: string[] = ['select','Canister', 'Rack', 'Box', 'Cell','Lab']; //for removing 
   displayedColumns1: string[] = ['Canister', 'Rack', 'Box', 'Cell','Lab']; //for searching
   dataSource;
+  select_box_freeze=[];
+  select_cell_freeze=[];
+  select_freeze;
+  select_box_f;
+  select_cell_f=[];
  // dataSource = new MatTableDataSource<RackSample>(ELEMENT_DATA);
   selection = new SelectionModel<RackSample>(true, []);
   constructor(private cell:CellData,private service:RackServiceService,private cellD:CellData) {
@@ -35,12 +40,30 @@ export class RackEnterComponent implements OnInit {
     this.select_can=null;
     this.select_cell=null;
     this.select_rack=null;
+    this.select_cell_f=null;
+    this.select_freeze=null;
     this.vails=false;
     this.search=false;
     this.remove=false;
     this.show_t=false;
     this.show_table=false;
+    this.select_box_f=null;
     this.service.authenticate().subscribe(response=>service.JWT=response);
+    let i=0;
+    let size=30;
+    for(i=0;i<size;i++)
+    {
+      this.select_box_freeze.push('B'+i);
+    }
+    let size_cell=100;
+    for(i=0;i<size_cell;i++)
+    {
+      this.select_cell_freeze.push(i);
+    }
+
+
+
+
     //this.list_select=[];
    }
  
@@ -66,7 +89,7 @@ export class RackEnterComponent implements OnInit {
     this.cell.cellId=this.select_cell;
     this.cell.sampleNo=this.sample;
     this.cell.labName=this.select_lab;
-    this.service.sendRackData(this.cell).subscribe();
+   // this.service.sendRackData(this.cell).subscribe();
     alert("You have entered "+"Canister "+this.select_can+" Cells "+ this.select_cell +" Sample No "+this.sample);
     this.select_box=null;
     this.select_can=null;

@@ -26,7 +26,7 @@ export class RackServiceService {
 
     //= 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODQyMDk1ODksImlhdCI6MTU4NDE3MzU4OX0.mNtaoHSSKwB2LzG-_Fdj8cAXb01G8P-61SNZCzH6V5w';
 
-  sendRackData(data:CellData)
+  sendRackData(data:RackSample)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/saverackinfo";

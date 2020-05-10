@@ -3,6 +3,14 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { RackServiceService } from '../rack-service.service';
 import { RackSample } from '../rack-sample';
+import { Router } from '@angular/router';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
+export interface Lab{
+  lab:string;
+  sample:number;
+}
 @Component({
   selector: 'app-rack-information',
   templateUrl: './rack-information.component.html',
@@ -10,12 +18,13 @@ import { RackSample } from '../rack-sample';
 })
 export class RackInformationComponent implements OnInit {
 
-  displayedColumns: string[] = ['Canister', 'Rack', 'Box', 'Cell','Sample','Lab','Remove'];
+  displayedColumns: string[] = ['Canister', 'Rack', 'Box', 'Cell','Sample','Lab','Remove','Add'];
   dataSource;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  enter_sample:number;
+  enter_lab:string;
 
-
-  constructor(public service:RackServiceService) { }
+  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
   ngOnInit() {
     this.service.getAllRackData().subscribe(response => this.fetchData(response));
     this.dataSource.paginator = this.paginator;
@@ -33,6 +42,40 @@ export class RackInformationComponent implements OnInit {
      this.dataSource.paginator = this.paginator;
 
   }
+
+  onAdd(element:RackSample)
+  {
+    const dialogRef = this.dialog.open(EnterSampleComponent, {
+      width: '250px',
+      data: {data:element}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result===false)
+      {
+           console.log("Enterd false");
+      }
+      else
+      {
+
+      
+      element.labName = result.lab;
+      element.sampleNo=result.sample;
+      console.log(element);
+      this.service.sendRackData(element);
+      }
+    });
+  }
+
+   // this.service.sendRackData(data);
+     // this.router.navigate(['/enterSample']);
+  
+    
+  onSave()
+  {
+
+  }
 }
 export interface PeriodicElement {
   name: string;
@@ -40,7 +83,12 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
+const ELE: RackSample[]=[
+  {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123},
+  {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123},
+  {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123},
+  {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123}
+]
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
