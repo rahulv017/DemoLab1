@@ -37,6 +37,8 @@ import { RackInformationComponent } from './rack-information/rack-information.co
 import{MatPaginatorModule} from '@angular/material/paginator';
 import { EnterSampleComponent } from './enter-sample/enter-sample.component'
 import { DashModel } from './dash-model';
+import { FreezeTwentyComponent } from './freeze-twenty/freeze-twenty.component';
+import { FreezeEightyComponent } from './freeze-eighty/freeze-eighty.component';
 const appRoutes: Routes = [
   { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
   { path: 'rack-enter', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
@@ -53,6 +55,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     RackInformationComponent,
     EnterSampleComponent,
+    FreezeTwentyComponent,
+    FreezeEightyComponent,
   
   ],
   imports: [

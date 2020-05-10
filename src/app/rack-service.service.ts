@@ -8,6 +8,7 @@ import { jwt } from './jwt';
 import { Mycoplasma } from './mycoplasma';
 import{DashModel} from '../app/dash-model'
 import { LabLinking } from './lab-linking';
+import { FreezerData } from './freezer-data';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,22 @@ export class RackServiceService {
     //= 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODQyMDk1ODksImlhdCI6MTU4NDE3MzU4OX0.mNtaoHSSKwB2LzG-_Fdj8cAXb01G8P-61SNZCzH6V5w';
 
   sendRackData(data:RackSample)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/saverackinfo";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendFrezerTwentyData(data:FreezerData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/saverackinfo";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendFrezerEightyData(data)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/saverackinfo";
@@ -90,5 +107,19 @@ export class RackServiceService {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/getrack";
     return this.http.get<RackSample[]>(url,{headers});
+  }
+
+  getAllFrezeerTwentyData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getrack";
+    return this.http.get<FreezerData[]>(url,{headers});
+  }
+
+  getAllFrezeerEightyData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getrack";
+    return this.http.get<FreezerData[]>(url,{headers});
   }
 }
