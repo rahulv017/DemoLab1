@@ -27,13 +27,14 @@ export class RackInformationComponent implements OnInit {
   constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
   ngOnInit() {
     this.service.getAllRackData().subscribe(response => this.fetchData(response));
-    this.dataSource.paginator = this.paginator;
+    
   }
 
   fetchData(response)
   {
+    
     this.dataSource = new MatTableDataSource<RackSample>(response);
-
+    this.dataSource.paginator = this.paginator;
   }
   onEdit(data:RackSample)
   {
@@ -63,7 +64,7 @@ export class RackInformationComponent implements OnInit {
       element.labName = result.lab;
       element.sampleNo=result.sample;
       console.log(element);
-      this.service.sendRackData(element);
+      this.service.sendRackData(element).subscribe();
       }
     });
   }

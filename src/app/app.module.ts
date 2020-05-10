@@ -36,6 +36,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RackInformationComponent } from './rack-information/rack-information.component';
 import{MatPaginatorModule} from '@angular/material/paginator';
 import { EnterSampleComponent } from './enter-sample/enter-sample.component'
+import { DashModel } from './dash-model';
 const appRoutes: Routes = [
   { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
   { path: 'rack-enter', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
@@ -86,7 +87,7 @@ const appRoutes: Routes = [
 
     
   ],
-  providers: [LabUser,CellData,RackSample,Mycoplasma],
+  providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
