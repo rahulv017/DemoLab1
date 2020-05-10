@@ -30,7 +30,7 @@ export class RackServiceService {
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/saverackinfo";
-    console.log(jwt);
+    console.log(data);
     return this.http.put(url,data,{headers});
   }
 
@@ -79,7 +79,7 @@ export class RackServiceService {
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
 
-    let url="https://localhost:8443/getstatus";
+    let url="https://localhost:8443/rackdashboard";
  
     return this.http.get<DashModel[]>(url,{headers});
   }
