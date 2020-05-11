@@ -9,6 +9,7 @@ import { Mycoplasma } from './mycoplasma';
 import{DashModel} from '../app/dash-model'
 import { LabLinking } from './lab-linking';
 import { FreezerData } from './freezer-data';
+import { DNAData } from './dnadata';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,14 @@ export class RackServiceService {
   }
 
   sendFrezerEightyData(data)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/saverackinfo";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendDNALCLData(data:DNAData)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/saverackinfo";
@@ -122,4 +131,13 @@ export class RackServiceService {
     let url="https://localhost:8443/getrack";
     return this.http.get<FreezerData[]>(url,{headers});
   }
+
+  getALLDNALCLData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getrack";
+    return this.http.get<DNAData[]>(url,{headers});
+  }
+
+  
 }

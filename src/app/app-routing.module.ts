@@ -7,6 +7,7 @@ import { RackInformationComponent } from './rack-information/rack-information.co
 import { EnterSampleComponent } from './enter-sample/enter-sample.component';
 import { FreezeTwentyComponent } from './freeze-twenty/freeze-twenty.component';
 import { FreezeEightyComponent } from './freeze-eighty/freeze-eighty.component';
+import { DNALABComponent } from './dnalab/dnalab.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'RackDashboard',component:RackInformationComponent},
   {path:'enterSample',component:EnterSampleComponent},
   {path:'Fridge(-20)',component:FreezeTwentyComponent},
-  {path:'Fridge(-80)',component:FreezeEightyComponent}
+  {path:'Fridge(-80)',component:FreezeEightyComponent},
+  {path:'DNA',component:DNALABComponent}
 ];
 
 @NgModule({

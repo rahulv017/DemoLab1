@@ -1,0 +1,79 @@
+<p>dnalab works!</p>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+     
+      <ng-container matColumnDef="DNO">
+        <th mat-header-cell *matHeaderCellDef> DNO </th>
+        <td mat-cell *matCellDef="let element"> {{element.dno}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Sample">
+        <th mat-header-cell *matHeaderCellDef> SampleNo </th>
+        <td mat-cell *matCellDef="let element"> {{element.sampleNo}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Date">
+          <th mat-header-cell *matHeaderCellDef> Date</th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="Location">
+          <th mat-header-cell *matHeaderCellDef> Location</th>
+          <td mat-cell *matCellDef="let element"><button  (click)="onSearchSample(element)">ClickMe!!</button></td>
+        </ng-container>
+  
+      <ng-container matColumnDef="DoneBy">
+          <th mat-header-cell *matHeaderCellDef> Done By </th>
+          <td mat-cell *matCellDef="let element"> {{element.doneby}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="Conc">
+          <th mat-header-cell *matHeaderCellDef> Conc </th>
+          <td mat-cell *matCellDef="let element"> {{element.conc}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Total">
+            <th mat-header-cell *matHeaderCellDef> Total </th>
+            <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="A260">
+            <th mat-header-cell *matHeaderCellDef> A260 </th>
+            <td mat-cell *matCellDef="let element"> {{element.a260}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="A280">
+            <th mat-header-cell *matHeaderCellDef> A280 </th>
+            <td mat-cell *matCellDef="let element"> {{element.a280}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="260/280">
+            <th mat-header-cell *matHeaderCellDef> 260/280 </th>
+            <td mat-cell *matCellDef="let element"> {{element.a260By280}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="260/230">
+            <th mat-header-cell *matHeaderCellDef> 260/230 </th>
+            <td mat-cell *matCellDef="let element"> {{element.a260By230}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Catalogue">
+            <th mat-header-cell *matHeaderCellDef> Catalouge </th>
+            <td mat-cell *matCellDef="let element"> {{element.catalogue}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef> Add/Edit Button </th>
+            <td mat-cell *matCellDef="let element"><button  (click)="onAdd(element)">ClickMe!!</button></td>
+          </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
