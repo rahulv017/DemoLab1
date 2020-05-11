@@ -1,5 +1,5 @@
 
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild, Output } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { RackServiceService } from '../rack-service.service';
@@ -11,6 +11,9 @@ import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
 import { FreezerData } from '../freezer-data';
 import { DNAData } from '../dnadata';
 import { EnterDNAComponent } from '../enter-dna/enter-dna.component';
+import { EventEmitter } from 'protractor';
+import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
+import { PlasmaSerum } from '../plasma-serum';
 @Component({
   selector: 'app-dnalab',
   templateUrl: './dnalab.component.html',
@@ -21,14 +24,36 @@ export class DNALABComponent implements OnInit {
   displayedColumns: string[] = [ 'DNO', 'Sample','Date','Location','DoneBy','Conc','Total','A260',
                                     'A280','260/280','260/230','Catalogue','Edit'];
   dataSource;
+  displayedColumnsPlasma: string[]= ['DNO','Sample','Plasma','Serum'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   enter_sample:number;
   enter_lab:string;
+  labs=['gDNA(LCL)','gDNA(Blood)','Plasma Serum'];
+  fav_lab=this.labs[0];
 
   constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
   ngOnInit() {
+    
     this.service.getALLDNALCLData().subscribe(response => this.fetchData(response));
     
+    
+  }
+
+  onChange($event:MatRadioChange)
+  {
+    console.log(`You changed selection to ${ $event.value}`);
+    if($event.value==this.labs[0])
+    {
+      this.service.getALLDNALCLData().subscribe(response => this.fetchData(response));
+    }
+    else if($event.value==this.labs[1])
+    {
+      this.service.getALLDNABloodData().subscribe(response => this.fetchData(response));
+    }
+    else if($event.value==this.labs[2])
+    {
+      this.service.getALLDNAPlasmaData().subscribe(response => this.fetchDataP(response));
+    }
     
   }
 
@@ -36,6 +61,14 @@ export class DNALABComponent implements OnInit {
   {
     
     this.dataSource = new MatTableDataSource<DNAData>(response);
+    this.dataSource.paginator = this.paginator;
+    
+  }
+
+  fetchDataP(response)
+  {
+    
+    this.dataSource = new MatTableDataSource<PlasmaSerum>(response);
     this.dataSource.paginator = this.paginator;
     
   }
@@ -47,7 +80,7 @@ export class DNALABComponent implements OnInit {
 
   }
 
-  onAdd(element:DNAData)
+  onAddLCL(element:DNAData)
   {
     const dialogRef = this.dialog.open(EnterDNAComponent, {
       height:'600px',
@@ -79,13 +112,61 @@ export class DNALABComponent implements OnInit {
     });
   }
 
+
+  onAddBlood(element:DNAData)
+  {
+    const dialogRef = this.dialog.open(EnterDNAComponent, {
+      height:'600px',
+      width: '600px',
+      data:element
+    });
+
+    dialogRef.afterClosed().subscribe(data => {
+      console.log('The dialog was closed');
+      if(data===false)
+      {
+           console.log("Enterd false");
+      }
+      else
+      {
+        element.date=data.date;
+        element.doneBy=data.doneBy;
+        element.conc=data.conc;
+        element.totalVol=data.totalVol;
+        element.a260=data.a260;
+        element.a280=data.a280;
+        element.a260By330=data.a260By330;
+        element.a260By280=data.a260By280;
+        element.catalogue=data.catalogue;
+      console.log(data.totalVol);
+      console.log(element);
+     this.service.sendDNABloodData(element).subscribe();
+      }
+    });
+  }
+
    // this.service.sendRackData(data);
      // this.router.navigate(['/enterSample']);
   
     
-  onSearchSample(data:DNAData)
+  onSearchSampleLCL(data:DNAData)
   {
         
+  }
+
+  onSearchSampleBlood(data:DNAData)
+  {
+        
+  }
+
+  onPlasma(data)
+  {
+
+  }
+
+  onSerum(data)
+  {
+
   }
 
 }

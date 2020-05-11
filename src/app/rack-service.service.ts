@@ -10,6 +10,7 @@ import{DashModel} from '../app/dash-model'
 import { LabLinking } from './lab-linking';
 import { FreezerData } from './freezer-data';
 import { DNAData } from './dnadata';
+import { PlasmaSerum } from './plasma-serum';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,14 @@ export class RackServiceService {
   }
 
   sendDNALCLData(data:DNAData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/savednalcl";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendDNABloodData(data:DNAData)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/savednalcl";
@@ -138,6 +147,22 @@ export class RackServiceService {
     let url="https://localhost:8443/getdnalcl";
     return this.http.get<DNAData[]>(url,{headers});
   }
+
+  getALLDNABloodData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.get<DNAData[]>(url,{headers});
+  }
+
+  getALLDNAPlasmaData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.get<PlasmaSerum[]>(url,{headers});
+  }
+
+  
 
   
 }
