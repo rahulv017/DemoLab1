@@ -1,15 +1,16 @@
+import { id } from './id';
+
 export class DNAData {
 
-    dno:string;
-    sampleNo:number;
+    id:id;
     date:Date;
-    doneby:string;
+    doneBy:string;
     conc:string;
-    total:string;
+    totalVol:string;
     a260:string;
     a280:string;
     a260By280:string;
-    a260By230:string;
+    a260By330:string;
     catalogue:string;
 
 }

@@ -6,13 +6,13 @@
      
       <ng-container matColumnDef="DNO">
         <th mat-header-cell *matHeaderCellDef> DNO </th>
-        <td mat-cell *matCellDef="let element"> {{element.dno}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.id.dNo}} </td>
       </ng-container>
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="Sample">
         <th mat-header-cell *matHeaderCellDef> SampleNo </th>
-        <td mat-cell *matCellDef="let element"> {{element.sampleNo}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.id.sampleNo}} </td>
       </ng-container>
   
       <ng-container matColumnDef="Date">
@@ -27,7 +27,7 @@
   
       <ng-container matColumnDef="DoneBy">
           <th mat-header-cell *matHeaderCellDef> Done By </th>
-          <td mat-cell *matCellDef="let element"> {{element.doneby}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.doneBy}} </td>
         </ng-container>
   
         <ng-container matColumnDef="Conc">
@@ -36,8 +36,8 @@
         </ng-container>
 
         <ng-container matColumnDef="Total">
-            <th mat-header-cell *matHeaderCellDef> Total </th>
-            <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+            <th mat-header-cell *matHeaderCellDef> Total Volume </th>
+            <td mat-cell *matCellDef="let element"> {{element.totalVol}} </td>
           </ng-container>
 
           <ng-container matColumnDef="A260">
@@ -56,8 +56,8 @@
           </ng-container>
 
           <ng-container matColumnDef="260/230">
-            <th mat-header-cell *matHeaderCellDef> 260/230 </th>
-            <td mat-cell *matCellDef="let element"> {{element.a260By230}} </td>
+            <th mat-header-cell *matHeaderCellDef> 260/330 </th>
+            <td mat-cell *matCellDef="let element"> {{element.a260By330}} </td>
           </ng-container>
 
           <ng-container matColumnDef="Catalogue">

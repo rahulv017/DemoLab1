@@ -55,7 +55,7 @@ export class RackServiceService {
   sendDNALCLData(data:DNAData)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/saverackinfo";
+    let url="https://localhost:8443/savednalcl";
     console.log(data);
     return this.http.put(url,data,{headers});
   }
@@ -135,7 +135,7 @@ export class RackServiceService {
   getALLDNALCLData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getrack";
+    let url="https://localhost:8443/getdnalcl";
     return this.http.get<DNAData[]>(url,{headers});
   }
 
