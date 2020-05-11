@@ -6,14 +6,14 @@
     <div class="form-control">
     Enter Date of Isolation: <input type="date" value="date" name="date" [(ngModel)]="labii.date"> <br />
     Conc: <input type="text" value="conc" name="conc" [(ngModel)]="labii.conc"> <br />
-    Total Vol: <input type="text" value="Total" name="total" [(ngModel)]="labii.total"> <br />
+    Total Vol: <input type="text" value="Total" name="total" [(ngModel)]="labii.totalVol"> <br />
     A260: <input type="text" value="A260" name="A260" [(ngModel)]="labii.a260"> <br />
     A280: <input type="text" value="A280" name="A280" [(ngModel)]="labii.a280"> <br />
     260/280: <input type="text" value="260/280" name="A2628" [(ngModel)]="labii.a260By280"> <br />
-    260/230: <input type="text" value="260/230" name="A2623" [(ngModel)]="labii.a260By230"> <br />
+    260/230: <input type="text" value="260/230" name="A2623" [(ngModel)]="labii.a260By330"> <br />
     Enter Done By:
 <mat-form-field>
-    <mat-select [(value)]="labii.doneby">
+    <mat-select [(value)]="labii.doneBy">
         <mat-option value="SN">SN</mat-option>
         <mat-option value="Geetanjali">Geetanjali</mat-option>
         
