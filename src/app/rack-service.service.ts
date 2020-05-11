@@ -39,15 +39,15 @@ export class RackServiceService {
   sendFrezerTwentyData(data:FreezerData)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/saverackinfo";
+    let url="https://localhost:8443/save20freeze";
     console.log(data);
     return this.http.put(url,data,{headers});
   }
 
-  sendFrezerEightyData(data)
+  sendFrezerEightyData(data:FreezerData)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/saverackinfo";
+    let url="https://localhost:8443/save80freeze";
     console.log(data);
     return this.http.put(url,data,{headers});
   }
@@ -121,14 +121,14 @@ export class RackServiceService {
   getAllFrezeerTwentyData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getrack";
+    let url="https://localhost:8443/get20freeze";
     return this.http.get<FreezerData[]>(url,{headers});
   }
 
   getAllFrezeerEightyData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getrack";
+    let url="https://localhost:8443/get80freeze";
     return this.http.get<FreezerData[]>(url,{headers});
   }
 
