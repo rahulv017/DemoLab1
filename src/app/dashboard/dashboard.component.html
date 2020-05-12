@@ -1,0 +1,28 @@
+<p>dashboard works!</p>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+  
+      
+    <ng-container matColumnDef="can_id">
+      <th mat-header-cell *matHeaderCellDef > Cannister ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.cannister}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="rack_id">
+      <th mat-header-cell *matHeaderCellDef > Rack Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.rack}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="empty_cells">
+      <th mat-header-cell *matHeaderCellDef > Number of empty cells </th>
+      <td mat-cell *matCellDef="let element"> {{element.emptyCells}} </td>
+    </ng-container>
+  
+   
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

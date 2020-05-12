@@ -31,7 +31,18 @@ import { PendingRequestComponent } from './pending-request/pending-request.compo
 import { MatSortModule } from '@angular/material/sort';
 import { EnterLabDataComponent } from './enter-lab-data/enter-lab-data.component';
 import { Mycoplasma } from './mycoplasma';
-
+import {MatDialogModule} from '@angular/material/dialog'; 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RackInformationComponent } from './rack-information/rack-information.component';
+import{MatPaginatorModule} from '@angular/material/paginator';
+import { EnterSampleComponent } from './enter-sample/enter-sample.component'
+import { DashModel } from './dash-model';
+import { FreezeTwentyComponent } from './freeze-twenty/freeze-twenty.component';
+import { FreezeEightyComponent } from './freeze-eighty/freeze-eighty.component';
+import { DNALABComponent } from './dnalab/dnalab.component';
+import { EnterDNAComponent } from './enter-dna/enter-dna.component';
+import { MycoplasmaLabComponent } from './mycoplasma-lab/mycoplasma-lab.component';
+import { EnterMycoplasmaComponent } from './enter-mycoplasma/enter-mycoplasma.component';
 const appRoutes: Routes = [
   { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
   { path: 'rack-enter', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
@@ -45,6 +56,15 @@ const appRoutes: Routes = [
     BackgroundComponent,
     PendingRequestComponent,
     EnterLabDataComponent,
+    DashboardComponent,
+    RackInformationComponent,
+    EnterSampleComponent,
+    FreezeTwentyComponent,
+    FreezeEightyComponent,
+    DNALABComponent,
+    EnterDNAComponent,
+    MycoplasmaLabComponent,
+    EnterMycoplasmaComponent,
   
   ],
   imports: [
@@ -69,6 +89,8 @@ const appRoutes: Routes = [
    MatTableModule,
    MatSortModule,
    MatDatepickerModule,
+   MatPaginatorModule,
+   MatDialogModule,
    RouterModule.forRoot(
     appRoutes,
     { useHash: true }
@@ -77,7 +99,8 @@ const appRoutes: Routes = [
 
     
   ],
-  providers: [LabUser,CellData,RackSample,Mycoplasma],
+  entryComponents:[EnterDNAComponent],
+  providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

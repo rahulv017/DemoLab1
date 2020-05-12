@@ -1,0 +1,24 @@
+<p>enter-mycoplasma works!</p>
+<h2 mat-dialog-title>Please Enter the Details</h2>
+<mat-dialog-content>
+    <div class="form-control">
+    Enter Passage No: <input type="text" value="Passage" name="Passage" [(ngModel)]="labii.passage"> <br />
+    A: <input type="text" value="A" name="a" [(ngModel)]="labii.a"> <br />
+    B: <input type="text" value="B" name="b" [(ngModel)]="labii.b"> <br />
+    B/A: <input type="text" value="B/A" name="b/a" [(ngModel)]="labii.bBya"> <br />
+    Mycoplasma Report: <input type="text" value="Report" name="report" [(ngModel)]="labii.result"> <br />
+    Date: <input type="date" value="date" name="date" [(ngModel)]="labii.date"> <br />
+    User: <input type="text" value="user" name="user" [(ngModel)]="labii.user"> <br />
+    Machine: <input type="text" value="Machine" name="machine" [(ngModel)]="labii.machine"> <br />
+   
+
+
+
+<br />
+</div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="labii">Save </button>
+  <button mat-button [mat-dialog-close]="false">Close</button>
+</mat-dialog-actions>

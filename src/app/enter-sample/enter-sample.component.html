@@ -1,0 +1,23 @@
+<p>enter-sample works!</p>
+
+<h2 mat-dialog-title>Please Enter the Details</h2>
+<mat-dialog-content>
+    Enter Sample No: <input type="text" value="sample" name="sample" [(ngModel)]="labii.sample">
+    Enter the vial Associated:
+<mat-form-field>
+    <mat-select [(value)]="labii.lab">
+        <mat-option value="PBMC">PBMC</mat-option>
+        <mat-option value="LCL">LCL</mat-option>
+        <mat-option value="gDNA(blood)">gDNA(blood)</mat-option>
+        <mat-option value="gDNA(LCL)">gDNA(LCL)</mat-option>
+        
+    </mat-select>
+</mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="labii">Save </button>
+  <button mat-button [mat-dialog-close]="false">Close</button>
+</mat-dialog-actions>
+
+

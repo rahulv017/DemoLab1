@@ -6,7 +6,11 @@ import { Observable } from 'rxjs';
 import { RackSample } from './rack-sample';
 import { jwt } from './jwt';
 import { Mycoplasma } from './mycoplasma';
+import{DashModel} from '../app/dash-model'
 import { LabLinking } from './lab-linking';
+import { FreezerData } from './freezer-data';
+import { DNAData } from './dnadata';
+import { PlasmaSerum } from './plasma-serum';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +29,43 @@ export class RackServiceService {
 
     //= 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODQyMDk1ODksImlhdCI6MTU4NDE3MzU4OX0.mNtaoHSSKwB2LzG-_Fdj8cAXb01G8P-61SNZCzH6V5w';
 
-  sendRackData(data:CellData)
+  sendRackData(data:RackSample)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/saverackinfo";
-    console.log(jwt);
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendFrezerTwentyData(data:FreezerData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/save20freeze";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendFrezerEightyData(data:FreezerData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/save80freeze";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendDNALCLData(data:DNAData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/savednalcl";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendDNABloodData(data:DNAData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/savednablood";
+    console.log(data);
     return this.http.put(url,data,{headers});
   }
 
@@ -73,4 +109,68 @@ export class RackServiceService {
 
    return this.http.get<LabLinking[]>(url,{headers});
   }
+
+  getDashboardList():Observable<DashModel[]>
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+
+    let url="https://localhost:8443/rackdashboard";
+ 
+    return this.http.get<DashModel[]>(url,{headers});
+  }
+
+  getAllRackData()
+  {
+   // let jsondata = {'sampleNo' : data};
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getrack";
+    return this.http.get<RackSample[]>(url,{headers});
+  }
+
+  getAllFrezeerTwentyData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/get20freeze";
+    return this.http.get<FreezerData[]>(url,{headers});
+  }
+
+  getAllFrezeerEightyData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/get80freeze";
+    return this.http.get<FreezerData[]>(url,{headers});
+  }
+
+  getALLDNALCLData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.get<DNAData[]>(url,{headers});
+  }
+
+  getALLDNABloodData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnablood";
+    console.log("Getting all dna blood");
+    return this.http.get<DNAData[]>(url,{headers});
+  }
+
+  getALLDNAPlasmaData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.get<PlasmaSerum[]>(url,{headers});
+  }
+
+  getALLMycoplasmaData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.get<Mycoplasma[]>(url,{headers});
+  }
+
+  
+
+  
 }
