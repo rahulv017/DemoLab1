@@ -64,7 +64,7 @@ export class RackServiceService {
   sendDNABloodData(data:DNAData)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/savednalcl";
+    let url="https://localhost:8443/savednablood";
     console.log(data);
     return this.http.put(url,data,{headers});
   }
@@ -151,7 +151,8 @@ export class RackServiceService {
   getALLDNABloodData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getdnalcl";
+    let url="https://localhost:8443/getdnablood";
+    console.log("Getting all dna blood");
     return this.http.get<DNAData[]>(url,{headers});
   }
 
