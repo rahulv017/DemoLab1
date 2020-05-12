@@ -41,6 +41,8 @@ import { FreezeTwentyComponent } from './freeze-twenty/freeze-twenty.component';
 import { FreezeEightyComponent } from './freeze-eighty/freeze-eighty.component';
 import { DNALABComponent } from './dnalab/dnalab.component';
 import { EnterDNAComponent } from './enter-dna/enter-dna.component';
+import { MycoplasmaLabComponent } from './mycoplasma-lab/mycoplasma-lab.component';
+import { EnterMycoplasmaComponent } from './enter-mycoplasma/enter-mycoplasma.component';
 const appRoutes: Routes = [
   { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
   { path: 'rack-enter', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
@@ -61,6 +63,8 @@ const appRoutes: Routes = [
     FreezeEightyComponent,
     DNALABComponent,
     EnterDNAComponent,
+    MycoplasmaLabComponent,
+    EnterMycoplasmaComponent,
   
   ],
   imports: [

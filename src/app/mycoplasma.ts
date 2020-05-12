@@ -1,11 +1,18 @@
+import { id } from './id';
+
 export class Mycoplasma {
 
 
     //dno:string;
-    sampleNo:number;
-
+    id:id;
+    //sampleNo:number;
+    machine:string;
+    a:string;
+    b:string;
+    bBya:string;
+    passage:string;
     result:string;
     status:boolean;
     date: Date;
-    name:string
+    user:string
 }

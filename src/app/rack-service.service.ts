@@ -163,6 +163,13 @@ export class RackServiceService {
     return this.http.get<PlasmaSerum[]>(url,{headers});
   }
 
+  getALLMycoplasmaData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.get<Mycoplasma[]>(url,{headers});
+  }
+
   
 
   

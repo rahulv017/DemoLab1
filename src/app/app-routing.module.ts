@@ -8,6 +8,7 @@ import { EnterSampleComponent } from './enter-sample/enter-sample.component';
 import { FreezeTwentyComponent } from './freeze-twenty/freeze-twenty.component';
 import { FreezeEightyComponent } from './freeze-eighty/freeze-eighty.component';
 import { DNALABComponent } from './dnalab/dnalab.component';
+import { MycoplasmaLabComponent } from './mycoplasma-lab/mycoplasma-lab.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'enterSample',component:EnterSampleComponent},
   {path:'Fridge(-20)',component:FreezeTwentyComponent},
   {path:'Fridge(-80)',component:FreezeEightyComponent},
-  {path:'DNA',component:DNALABComponent}
+  {path:'DNA',component:DNALABComponent},
+  {path:'Mycoplasma',component:MycoplasmaLabComponent}
 ];
 
 @NgModule({
