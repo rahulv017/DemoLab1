@@ -159,14 +159,14 @@ export class RackServiceService {
   getALLDNAPlasmaData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getdnalcl";
+    let url="https://localhost:8443/getstatus";
     return this.http.get<PlasmaSerum[]>(url,{headers});
   }
 
   getALLMycoplasmaData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getdnalcl";
+    let url="https://localhost:8443/getmyco";
     return this.http.get<Mycoplasma[]>(url,{headers});
   }
 

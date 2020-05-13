@@ -19,7 +19,7 @@ import { Mycoplasma } from '../mycoplasma';
   styleUrls: ['./mycoplasma-lab.component.css']
 })
 export class MycoplasmaLabComponent implements OnInit {
-  displayedColumns: string[] = [ 'DNO', 'Sample','Date','doneby','User','Report','A','B','A/B','Machine','Edit'];
+  displayedColumns: string[] = [ 'DNO', 'Sample','Date','doneby','Report','A','B','B/A','Machine','Edit'];
 dataSource;
 
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -34,6 +34,7 @@ dataSource;
 
   fetchData(response)
   {
+    console.log(response);
     this.dataSource = new MatTableDataSource<Mycoplasma>(response);
     this.dataSource.paginator = this.paginator;
   }

@@ -3,6 +3,10 @@ import { Mycoplasma } from '../mycoplasma';
 import { RackServiceService } from '../rack-service.service';
 import { LabLinking } from '../lab-linking';
 
+   {id:{dNo:"D256",sampleNo:14654},machine:"Abc",a:"h2",b:"b1",bBya:"ba",passage:"he",result:"Positive",status:true,date: new Date(),user: "Rahul"}
+
+
+
 let sample_list=[];
 @Component({
   selector: 'app-enter-lab-data',
@@ -58,6 +62,7 @@ export class EnterLabDataComponent implements OnInit {
     // this.myco.status=false;
     // console.log(`Mycoplasma is ${this.myco}`);
     // this.service.updateMycoplasma(this.myco).subscribe();
+
   
     
   }
