@@ -30,7 +30,7 @@ const ELEMENT_DATA: PendingRequest[] = [
 export class PendingRequestComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = [ 'dno', 'sample','save'];
   sample;
-  dataSource =new MatTableDataSource (ELEMENT_DATA);
+  dataSource;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:true}) sort:MatSort;
 
