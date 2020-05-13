@@ -5,7 +5,7 @@ import { LabLinking } from '../lab-linking';
 const ELEMENT_DATA:Mycoplasma[]=
 [
 
-   {sampleNo:123,result:"Positive",status:true,date: new Date(),name: "Rahul"}
+   {id:{dNo:"D256",sampleNo:14654},machine:"Abc",a:"h2",b:"b1",bBya:"ba",passage:"he",result:"Positive",status:true,date: new Date(),user: "Rahul"}
 
 ]
 let sample_list=[];
@@ -54,7 +54,7 @@ export class EnterLabDataComponent implements OnInit {
   onSaveMyco()
   {
 
-    this.myco.sampleNo=this.selectSample;
+    this.myco.id.sampleNo=this.selectSample;
     this.myco.date=this.todayDate;
     this.myco.result=this.selectResult;
     if(this.selectStatus==this.status[0])
