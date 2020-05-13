@@ -9,5 +9,6 @@ export class LabLinking {
     lCLStatus:number;
     mycoplasmaStatus:number;
     pbmncStatus:number;
+    status:boolean;
 
 }

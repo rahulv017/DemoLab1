@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Mycoplasma } from '../mycoplasma';
 import { RackServiceService } from '../rack-service.service';
 import { LabLinking } from '../lab-linking';
-const ELEMENT_DATA:Mycoplasma[]=
-[
 
-   {sampleNo:123,result:"Positive",status:true,date: new Date(),name: "Rahul"}
-
-]
 let sample_list=[];
 @Component({
   selector: 'app-enter-lab-data',
@@ -54,15 +49,15 @@ export class EnterLabDataComponent implements OnInit {
   onSaveMyco()
   {
 
-    this.myco.sampleNo=this.selectSample;
-    this.myco.date=this.todayDate;
-    this.myco.result=this.selectResult;
-    if(this.selectStatus==this.status[0])
-    this.myco.status=true;
-    else
-    this.myco.status=false;
-    console.log(`Mycoplasma is ${this.myco}`);
-    this.service.updateMycoplasma(this.myco).subscribe();
+    // this.myco.sampleNo=this.selectSample;
+    // this.myco.date=this.todayDate;
+    // this.myco.result=this.selectResult;
+    // if(this.selectStatus==this.status[0])
+    // this.myco.status=true;
+    // else
+    // this.myco.status=false;
+    // console.log(`Mycoplasma is ${this.myco}`);
+    // this.service.updateMycoplasma(this.myco).subscribe();
   
     
   }
