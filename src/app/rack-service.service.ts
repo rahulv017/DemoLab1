@@ -170,6 +170,20 @@ export class RackServiceService {
     return this.http.get<Mycoplasma[]>(url,{headers});
   }
 
+  getALLPendingRequest()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.get<LabLinking[]>(url,{headers});
+  }
+
+  sendPendingRequests(data:LabLinking)
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getdnalcl";
+    return this.http.put<LabLinking[]>(url,data,{headers});
+  }
+
   
 
   
