@@ -1,7 +1,9 @@
 import { Component, OnInit,ViewChild,AfterViewInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-
+import { LabLinking } from '../lab-linking';
+import { RackServiceService } from '../rack-service.service';
+import {MatPaginator} from '@angular/material/paginator';
 
 export interface PendingRequest {
   sample: string;
@@ -26,9 +28,10 @@ const ELEMENT_DATA: PendingRequest[] = [
   styleUrls: ['./pending-request.component.css']
 })
 export class PendingRequestComponent implements OnInit,AfterViewInit {
-  displayedColumns: string[] = ['position', 'dno', 'sample', 'status','symbol'];
+  displayedColumns: string[] = [ 'dno', 'sample','save'];
+  sample;
   dataSource =new MatTableDataSource (ELEMENT_DATA);
-
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:true}) sort:MatSort;
 
   applyFilter(filtervalue: string){
@@ -40,9 +43,31 @@ export class PendingRequestComponent implements OnInit,AfterViewInit {
   
   }
 
-  constructor() { }
+  constructor(public lablink:LabLinking,public service:RackServiceService) { }
 
   ngOnInit(): void {
+    this.service.getALLPendingRequest().subscribe(response => this.fetchData(response) )
+  }
+
+  fetchData(response)
+  {
+       this.dataSource=new MatTableDataSource(response);
+  }
+
+  onAdd(element:LabLinking)
+  {
+       if(this.sample instanceof String)
+       {
+         alert("Type numerical values.Data not saved");
+         this.sample=0;
+       }
+       else{
+         element.id.sampleNo=this.sample;
+         element.status=true;
+         this.service.sendPendingRequests(element).subscribe();
+         alert('Saved');
+         this.service.getALLPendingRequest().subscribe(response => this.fetchData(response));
+       }
   }
 
   ngAfterViewInit(){
