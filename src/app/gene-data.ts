@@ -5,7 +5,7 @@ export class GeneData {
     blood:string;
     date:Date;
     lcl:string;
-    match:string;
+    isMatch:string;
     ipsc:string;
     nsc:string;
     exome:string;
