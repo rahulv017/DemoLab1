@@ -63,7 +63,7 @@ export class GeneprintLabComponent implements OnInit {
           element.blood=data.blood;
           element.date=data.date;
           element.lcl=data.lcl;
-          element.match=data.match;
+          element.isMatch=data.isMatch;
           element.ipsc=data.ipsc;
           element.nsc=data.nsc;
           element.exome=data.exome;
@@ -86,5 +86,5 @@ export class GeneprintLabComponent implements OnInit {
   }
   
   const ELE:GeneData[]=[
-    {id:{dNo:"D123",sampleNo:1234},blood:"X:87:56:8",date:new Date(),lcl:"12",match:"Yes",ipsc:"12",nsc:"12",exome:"1.2" }
+    {id:{dNo:"D123",sampleNo:1234},blood:"X:87:56:8",date:new Date(),lcl:"12",isMatch:"Yes",ipsc:"12",nsc:"12",exome:"1.2" }
   ]
