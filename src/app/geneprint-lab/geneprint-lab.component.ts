@@ -10,6 +10,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import {GeneData  } from '../gene-data'
 import { EnterGeneprintComponent } from '../enter-geneprint/enter-geneprint.component';
 
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
+
 @Component({
   selector: 'app-geneprint-lab',
   templateUrl: './geneprint-lab.component.html',
@@ -36,6 +39,11 @@ export class GeneprintLabComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       
     }
+
+    exportTable() {
+      TableUtil.exportTableToExcel("Exportgeneprint");
+    }
+
     onEdit(data:RackSample)
     {
        data.labName="";

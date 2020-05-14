@@ -14,6 +14,8 @@ import { EnterDNAComponent } from '../enter-dna/enter-dna.component';
 import { EventEmitter } from 'protractor';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { PlasmaSerum } from '../plasma-serum';
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
 @Component({
   selector: 'app-dnalab',
   templateUrl: './dnalab.component.html',
@@ -72,6 +74,11 @@ export class DNALABComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     
   }
+
+  exportTable() {
+    TableUtil.exportTableToExcel("Exportdna");
+  }
+
   onEdit(data:RackSample)
   {
      data.labName="";

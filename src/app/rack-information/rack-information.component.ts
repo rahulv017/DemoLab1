@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
+
 export interface Lab{
   lab:string;
   sample:number;
@@ -39,6 +42,11 @@ export class RackInformationComponent implements OnInit {
     this.dataSource = new MatTableDataSource<RackSample>(response);
     this.dataSource.paginator = this.paginator;
   }
+
+  exportTable() {
+    TableUtil.exportTableToExcel("Exportrack");
+  }
+
   onEdit(data:RackSample)
   {
      data.labName="";

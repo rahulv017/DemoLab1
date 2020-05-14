@@ -13,6 +13,8 @@ import { EnterDNAComponent } from '../enter-dna/enter-dna.component';
 import { EventEmitter } from 'protractor';
 import { EnterMycoplasmaComponent } from '../enter-mycoplasma/enter-mycoplasma.component';
 import { Mycoplasma } from '../mycoplasma';
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
 @Component({
   selector: 'app-mycoplasma-lab',
   templateUrl: './mycoplasma-lab.component.html',
@@ -39,6 +41,10 @@ dataSource;
     console.log(response);
     this.dataSource = new MatTableDataSource<Mycoplasma>(response);
     this.dataSource.paginator = this.paginator;
+  }
+
+  exportTable() {
+    TableUtil.exportTableToExcel("Exportmycoplasma");
   }
 
   onEdit(element:Mycoplasma)

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { DashModel } from '../dash-model';
 import { RackServiceService } from '../rack-service.service';
-
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
 
 @Component({
   selector: 'app-dashboard',
@@ -29,6 +30,9 @@ export class DashboardComponent implements OnInit {
      this.dataSource =new MatTableDataSource (response);
      console.log(`DataSource is ${this.dataSource}`);
 
+  }
+  exportTable() {
+    TableUtil.exportTableToExcel("Exportdash");
   }
 
 }
