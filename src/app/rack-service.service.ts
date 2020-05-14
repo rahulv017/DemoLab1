@@ -11,6 +11,7 @@ import { LabLinking } from './lab-linking';
 import { FreezerData } from './freezer-data';
 import { DNAData } from './dnadata';
 import { PlasmaSerum } from './plasma-serum';
+import { GeneData } from './gene-data';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,14 @@ export class RackServiceService {
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/savednablood";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendGeneprintData(data:GeneData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/savegeneprint";
     console.log(data);
     return this.http.put(url,data,{headers});
   }
@@ -168,6 +177,13 @@ export class RackServiceService {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/getmyco"; 
     return this.http.get<Mycoplasma[]>(url,{headers});
+  }
+
+  getALLGeneprintData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getgeneprint"; 
+    return this.http.get<GeneData[]>(url,{headers});
   }
 
   getALLPendingRequest()

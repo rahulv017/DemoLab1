@@ -1,0 +1,36 @@
+<p>gene-enter works!</p>
+
+<h2 mat-dialog-title>Please Enter the Details</h2>
+<mat-dialog-content>
+    <div class="form-control">
+    Enter Blood GenePrint: <input type="text"  value="blood" name="blood" [(ngModel)]="labii.blood"> <br />
+    Enter Date: <input type="date" value="date" name="date" [(ngModel)]="labii.date"> <br />
+    LCL Geneprint: <input type="text" value="lcl" name="lcl" [(ngModel)]="labii.lcl"> <br />
+    
+    Manually Matched :
+<mat-form-field>
+    <mat-select [(value)]="labii.match">
+        <mat-option value="yes">yes</mat-option>
+        <mat-option value="no">no</mat-option>
+        
+        
+    </mat-select>
+</mat-form-field>
+<br />
+
+    IPSC: <input type="text" value="ipsc" name="ipsc" [(ngModel)]="labii.ipsc"> <br />
+    NSC: <input type="text" value="nsc" name="nsc" [(ngModel)]="labii.nsc"> <br />
+    exome: <input type="text" value="exome" name="exome" [(ngModel)]="labii.exome"> <br />
+   
+    
+
+
+</div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="labii">Save </button>
+  <button mat-button [mat-dialog-close]="false">Close</button>
+</mat-dialog-actions>
+
+

@@ -43,6 +43,8 @@ import { EnterDNAComponent } from './enter-dna/enter-dna.component';
 import { MycoplasmaLabComponent } from './mycoplasma-lab/mycoplasma-lab.component';
 import { EnterMycoplasmaComponent } from './enter-mycoplasma/enter-mycoplasma.component';
 import { LabLinking } from './lab-linking';
+import { GeneprintLabComponent } from './geneprint-lab/geneprint-lab.component';
+import { EnterGeneprintComponent } from './enter-geneprint/enter-geneprint.component';
 const appRoutes: Routes = [
   { path: '', component: RackInformationComponent, data: { title: 'RackEnter Component' } },
   { path: 'pending-request', component: PendingRequestComponent, data: { title: 'PendingReuest Component' } },
@@ -62,6 +64,8 @@ const appRoutes: Routes = [
     EnterDNAComponent,
     MycoplasmaLabComponent,
     EnterMycoplasmaComponent,
+    GeneprintLabComponent,
+    EnterGeneprintComponent,
   
   ],
   imports: [
@@ -96,7 +100,7 @@ const appRoutes: Routes = [
 
     
   ],
-  entryComponents:[EnterDNAComponent],
+  entryComponents:[EnterDNAComponent,EnterGeneprintComponent],
   providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel,LabLinking],
   bootstrap: [AppComponent]
 })
