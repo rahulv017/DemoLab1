@@ -24,8 +24,11 @@ export class RackInformationComponent implements OnInit {
   enter_sample:number;
   enter_lab:string;
 
-  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
+  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) 
+  {}
+  
   ngOnInit() {
+    this.service.authenticate().subscribe(response => this.service.JWT = response);
     this.service.getAllRackData().subscribe(response => this.fetchData(response));
     
   }

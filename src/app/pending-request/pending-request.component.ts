@@ -4,24 +4,15 @@ import { MatSort } from '@angular/material/sort';
 import { LabLinking } from '../lab-linking';
 import { RackServiceService } from '../rack-service.service';
 import {MatPaginator} from '@angular/material/paginator';
+import { EventEmitter } from 'protractor';
 
-export interface PendingRequest {
-  sample: string;
-  position: number;
-  dno: string;
-  symbol: number;
-  status:string;
+export class LabLink {
+  ele:LabLinking;
+  sample:number;
 }
 
-const ELEMENT_DATA: PendingRequest[] = [
-  {position: 1, dno: 'D045', sample: '1023',status:'Completed', symbol: 2},
-  {position: 2, dno: 'D808', sample: '4006',status:'Incomplete', symbol: 0},
-  {position: 3, dno: 'D128', sample: '6941',status:'Partially', symbol: 1},
-  {position: 4, dno: 'D090', sample: '1003',status:'Completed', symbol: 2},
-  {position: 5, dno: 'D868', sample: '4890',status:'Incomplete', symbol: 0},
-  {position: 6, dno: 'D738', sample: '9441',status:'Partially', symbol: 1},
-];
 
+let samples;
 @Component({
   selector: 'app-pending-request',
   templateUrl: './pending-request.component.html',
@@ -31,6 +22,7 @@ export class PendingRequestComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = [ 'dno', 'sample','save'];
   sample;
   dataSource;
+  lab=new Array<LabLink>();
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:true}) sort:MatSort;
 
@@ -42,30 +34,46 @@ export class PendingRequestComponent implements OnInit,AfterViewInit {
   };
   
   }
-
+    
   constructor(public lablink:LabLinking,public service:RackServiceService) { }
 
   ngOnInit(): void {
+    
+    
     this.service.getALLPendingRequest().subscribe(response => this.fetchData(response) )
   }
 
-  fetchData(response)
+  fetchData(response:LabLinking[])
   {
-       this.dataSource=new MatTableDataSource(response);
+    let i=0;
+    for(i=0;i<response.length;i++)
+    {
+      let JsonData={"ele":response[i],"sample":response[i].id.sampleNo}
+      this.lab.push(JsonData);
+    }
+       this.dataSource=new MatTableDataSource(this.lab);
   }
 
-  onAdd(element:LabLinking)
+  onBefore(event:EventListener)
   {
+  }
+
+  onAdd(element:LabLink)
+  {
+   //  let sam=samples[element.]
        if(this.sample instanceof String)
        {
          alert("Type numerical values.Data not saved");
          this.sample=0;
        }
        else{
-         element.id.sampleNo=this.sample;
-         element.status=true;
-         this.service.sendPendingRequests(element).subscribe();
+        // element.id.sampleNo=this.sample;
+         element.ele.status=true;
+         let m=element.sample;
+         console.log(element.ele);
+         this.service.sendPendingRequests(element.ele,m).subscribe();
          alert('Saved');
+         this.lab = [];
          this.service.getALLPendingRequest().subscribe(response => this.fetchData(response));
        }
   }

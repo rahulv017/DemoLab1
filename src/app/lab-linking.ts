@@ -2,11 +2,11 @@
 import { id } from './id';
 
 export class LabLinking {
-    id:id;
+    id=new id();
     dnaStatus:number;
     geneprintStatus:number;
     kyrotypingStatus:number;
-    lCLStatus:number;
+    lclStatus:number;
     mycoplasmaStatus:number;
     pbmncStatus:number;
     status:boolean;
