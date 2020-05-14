@@ -42,6 +42,7 @@ import { DNALABComponent } from './dnalab/dnalab.component';
 import { EnterDNAComponent } from './enter-dna/enter-dna.component';
 import { MycoplasmaLabComponent } from './mycoplasma-lab/mycoplasma-lab.component';
 import { EnterMycoplasmaComponent } from './enter-mycoplasma/enter-mycoplasma.component';
+import { LabLinking } from './lab-linking';
 const appRoutes: Routes = [
   { path: '', component: RackInformationComponent, data: { title: 'RackEnter Component' } },
   { path: 'pending-request', component: PendingRequestComponent, data: { title: 'PendingReuest Component' } },
@@ -96,7 +97,7 @@ const appRoutes: Routes = [
     
   ],
   entryComponents:[EnterDNAComponent],
-  providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel],
+  providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel,LabLinking],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
