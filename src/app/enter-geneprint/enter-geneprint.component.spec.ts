@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RackEnterComponent } from './rack-enter.component';
+import { EnterGeneprintComponent } from './enter-geneprint.component';
 
-describe('RackEnterComponent', () => {
-  let component: RackEnterComponent;
-  let fixture: ComponentFixture<RackEnterComponent>;
+describe('EnterGeneprintComponent', () => {
+  let component: EnterGeneprintComponent;
+  let fixture: ComponentFixture<EnterGeneprintComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RackEnterComponent ]
+      declarations: [ EnterGeneprintComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RackEnterComponent);
+    fixture = TestBed.createComponent(EnterGeneprintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

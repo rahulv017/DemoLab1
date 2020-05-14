@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EnterLabDataComponent } from './enter-lab-data.component';
+import { GeneprintLabComponent } from './geneprint-lab.component';
 
-describe('EnterLabDataComponent', () => {
-  let component: EnterLabDataComponent;
-  let fixture: ComponentFixture<EnterLabDataComponent>;
+describe('GeneprintLabComponent', () => {
+  let component: GeneprintLabComponent;
+  let fixture: ComponentFixture<GeneprintLabComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EnterLabDataComponent ]
+      declarations: [ GeneprintLabComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EnterLabDataComponent);
+    fixture = TestBed.createComponent(GeneprintLabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

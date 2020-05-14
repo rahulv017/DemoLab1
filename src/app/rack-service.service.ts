@@ -11,6 +11,7 @@ import { LabLinking } from './lab-linking';
 import { FreezerData } from './freezer-data';
 import { DNAData } from './dnadata';
 import { PlasmaSerum } from './plasma-serum';
+import { GeneData } from './gene-data';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,14 @@ export class RackServiceService {
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/savednablood";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendGeneprintData(data:GeneData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/savegeneprint";
     console.log(data);
     return this.http.put(url,data,{headers});
   }
@@ -159,29 +168,38 @@ export class RackServiceService {
   getALLDNAPlasmaData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getstatus";
+    let url="https://localhost:8443/status/true";
     return this.http.get<PlasmaSerum[]>(url,{headers});
   }
 
   getALLMycoplasmaData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getmyco";
+    let url="https://localhost:8443/getmyco"; 
     return this.http.get<Mycoplasma[]>(url,{headers});
+  }
+
+  getALLGeneprintData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getgeneprint"; 
+    return this.http.get<GeneData[]>(url,{headers});
   }
 
   getALLPendingRequest()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getdnalcl";
+    let url="https://localhost:8443/status/false";
     return this.http.get<LabLinking[]>(url,{headers});
   }
 
-  sendPendingRequests(data:LabLinking)
+  sendPendingRequests(data:LabLinking, oldSampleNo:number)
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getdnalcl";
-    return this.http.put<LabLinking[]>(url,data,{headers});
+    let url="https://localhost:8443/status/savestatus";
+    console.log(data);
+    let jsondata = {"labMapping":data, "oldSampleNo":oldSampleNo};
+    return this.http.put(url,jsondata,{headers});
   }
 
   

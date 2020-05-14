@@ -4,7 +4,6 @@ import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LabUser } from './lab-user';
-import { RackEnterComponent } from './rack-enter/rack-enter.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatRadioModule} from '@angular/material/radio';
@@ -29,7 +28,7 @@ import { BackgroundComponent } from './background/background.component';
 import {RouterModule, Routes} from "@angular/router";
 import { PendingRequestComponent } from './pending-request/pending-request.component';
 import { MatSortModule } from '@angular/material/sort';
-import { EnterLabDataComponent } from './enter-lab-data/enter-lab-data.component';
+
 import { Mycoplasma } from './mycoplasma';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -43,19 +42,19 @@ import { DNALABComponent } from './dnalab/dnalab.component';
 import { EnterDNAComponent } from './enter-dna/enter-dna.component';
 import { MycoplasmaLabComponent } from './mycoplasma-lab/mycoplasma-lab.component';
 import { EnterMycoplasmaComponent } from './enter-mycoplasma/enter-mycoplasma.component';
+import { LabLinking } from './lab-linking';
+import { GeneprintLabComponent } from './geneprint-lab/geneprint-lab.component';
+import { EnterGeneprintComponent } from './enter-geneprint/enter-geneprint.component';
 const appRoutes: Routes = [
-  { path: '', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
-  { path: 'rack-enter', component: RackEnterComponent, data: { title: 'RackEnter Component' } },
+  { path: '', component: RackInformationComponent, data: { title: 'RackEnter Component' } },
   { path: 'pending-request', component: PendingRequestComponent, data: { title: 'PendingReuest Component' } },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RackEnterComponent,
     BackgroundComponent,
     PendingRequestComponent,
-    EnterLabDataComponent,
     DashboardComponent,
     RackInformationComponent,
     EnterSampleComponent,
@@ -65,6 +64,8 @@ const appRoutes: Routes = [
     EnterDNAComponent,
     MycoplasmaLabComponent,
     EnterMycoplasmaComponent,
+    GeneprintLabComponent,
+    EnterGeneprintComponent,
   
   ],
   imports: [
@@ -99,8 +100,8 @@ const appRoutes: Routes = [
 
     
   ],
-  entryComponents:[EnterDNAComponent],
-  providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel],
+  entryComponents:[EnterDNAComponent,EnterGeneprintComponent],
+  providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel,LabLinking],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

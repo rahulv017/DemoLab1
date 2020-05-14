@@ -1,0 +1,63 @@
+
+<p>geneprint works!</p>
+
+<!-- <mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+</mat-form-field> -->
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+     
+      <ng-container matColumnDef="sample">
+        <th mat-header-cell *matHeaderCellDef> Sample No </th>
+        <td mat-cell *matCellDef="let element"> {{element.id.sampleNo}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="blood">
+        <th mat-header-cell *matHeaderCellDef> Blood Geneprint </th>
+        <td mat-cell *matCellDef="let element"> {{element.blood}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date</th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+  
+      <ng-container matColumnDef="lcl">
+          <th mat-header-cell *matHeaderCellDef> LCL_geneprint </th>
+          <td mat-cell *matCellDef="let element"> {{element.lcl}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="match">
+          <th mat-header-cell *matHeaderCellDef> Manually Matched </th>
+          <td mat-cell *matCellDef="let element"> {{element.isMatch}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ipsc">
+            <th mat-header-cell *matHeaderCellDef> IPSC </th>
+            <td mat-cell *matCellDef="let element"> {{element.ipsc}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nsc">
+            <th mat-header-cell *matHeaderCellDef> NSC </th>
+            <td mat-cell *matCellDef="let element"> {{element.nsc}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="exome">
+            <th mat-header-cell *matHeaderCellDef> EXOME </th>
+            <td mat-cell *matCellDef="let element"> {{element.exome}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Edit">
+            <th mat-header-cell *matHeaderCellDef> Add/Edit Button </th>
+            <td mat-cell *matCellDef="let element"><button  (click)="onAdd(element)">ClickMe!!</button></td>
+          </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>

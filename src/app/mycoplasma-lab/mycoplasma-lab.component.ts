@@ -25,7 +25,9 @@ dataSource;
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
-  constructor(public dialog: MatDialog,public service:RackServiceService) { }
+  constructor(public dialog: MatDialog,public service:RackServiceService) { 
+    
+  }
 
   ngOnInit() {
     this.service.getALLMycoplasmaData().subscribe(response => this.fetchData(response));
