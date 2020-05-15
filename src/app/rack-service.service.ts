@@ -220,22 +220,22 @@ export class RackServiceService {
   fetchRackCanister(data)
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getmyco"; 
-    return this.http.post<JSON[]>(url,{data,headers});
+    let url="https://localhost:8443/fetchrackinfo"; 
+    return this.http.post<RackSample[]>(url,data,{headers});
   }
 
   fetchFridge20(data)
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getmyco"; 
-    return this.http.post<JSON[]>(url,data,{headers});
+    let url="https://localhost:8443/fetch20fridge"; 
+    return this.http.post<FreezerData[]>(url,data,{headers});
   }
 
   fetchFridge80(data)
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getmyco"; 
-    return this.http.post<JSON[]>(url,data,{headers});
+    let url="https://localhost:8443/fetch80fridge"; 
+    return this.http.post<FreezerData[]>(url,data,{headers});
   }
 
   

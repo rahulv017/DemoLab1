@@ -16,6 +16,8 @@ import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { PlasmaSerum } from '../plasma-serum';
 import { TableUtil } from "../tableUtil";
 import * as XLSX from "xlsx";
+import { FreezerId } from '../freezer-id';
+import { RackId } from '../RackId';
 @Component({
   selector: 'app-dnalab',
   templateUrl: './dnalab.component.html',
@@ -158,29 +160,39 @@ export class DNALABComponent implements OnInit {
     
   onSearchSampleLCL(data:DNAData)
   {
-    let JsonData={"id":data.id,"lab":"gDNA(LCL)"};
+    let JsonData={"sampleNo":data.id.sampleNo,"labName":"gDNA(LCL)"};
         
-    this.service.fetchFridge80(JsonData).subscribe(response => alert(response.toString()));
+    this.service.fetchFridge80(JsonData).subscribe(response => this.printData(response));
   }
 
   onSearchSampleBlood(data:DNAData)
   {
-        let JsonData={"id":data.id,"lab":"gDNA(blood)"};
-        this.service.fetchFridge20(JsonData).subscribe(response => alert(response.toString()));
+        let JsonData={"sampleNo":data.id.sampleNo,"labName":"gDNA(blood)"};
+        this.service.fetchFridge20(JsonData).subscribe(response => this.printData(response));
   }
 
   onPlasma(data)
   {
-    let JsonData={"id":data.id,"lab":"Plasma"};
-        
-    this.service.fetchFridge80(JsonData).subscribe(response => alert(response.toString()));
+    let JsonData={"sampleNo":data.id.sampleNo,"labName":"Plasma"};
+    this.service.fetchFridge80(JsonData).subscribe(response => this.printData(response));
   }
 
   onSerum(data)
   {
-    let JsonData={"id":data.id,"lab":"Serum"};
+    let JsonData={"sampleNo":data.id.sampleNo,"labName":"Serum"};
         
-    this.service.fetchFridge80(JsonData).subscribe(response => alert(response.toString()));
+    this.service.fetchFridge80(JsonData).subscribe(response => this.printData(response));
+  }
+
+  printData(response:FreezerData[]){
+    let i;
+    let JsonData = new Array<FreezerId>();
+    console.log(response);
+    for(i=0;i<response.length;i++)
+    {
+      JsonData.push(response[i].id);
+    }
+    alert(JSON.stringify(JsonData));
   }
 
 }
