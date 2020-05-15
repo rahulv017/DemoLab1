@@ -158,22 +158,29 @@ export class DNALABComponent implements OnInit {
     
   onSearchSampleLCL(data:DNAData)
   {
+    let JsonData={"id":data.id,"lab":"gDNA(LCL)"};
         
+    this.service.fetchFridge80(JsonData).subscribe(response => alert(response.toString()));
   }
 
   onSearchSampleBlood(data:DNAData)
   {
-        
+        let JsonData={"id":data.id,"lab":"gDNA(blood)"};
+        this.service.fetchFridge20(JsonData).subscribe(response => alert(response.toString()));
   }
 
   onPlasma(data)
   {
-
+    let JsonData={"id":data.id,"lab":"Plasma"};
+        
+    this.service.fetchFridge80(JsonData).subscribe(response => alert(response.toString()));
   }
 
   onSerum(data)
   {
-
+    let JsonData={"id":data.id,"lab":"Serum"};
+        
+    this.service.fetchFridge80(JsonData).subscribe(response => alert(response.toString()));
   }
 
 }

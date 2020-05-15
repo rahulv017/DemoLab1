@@ -217,6 +217,27 @@ export class RackServiceService {
     return this.http.put(url,jsondata,{headers});
   }
 
+  fetchRackCanister(data)
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getmyco"; 
+    return this.http.post<JSON[]>(url,{data,headers});
+  }
+
+  fetchFridge20(data)
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getmyco"; 
+    return this.http.post<JSON[]>(url,data,{headers});
+  }
+
+  fetchFridge80(data)
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getmyco"; 
+    return this.http.post<JSON[]>(url,data,{headers});
+  }
+
   
 
   
