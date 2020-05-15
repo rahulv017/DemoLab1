@@ -12,7 +12,6 @@ import { EnterGeneprintComponent } from '../enter-geneprint/enter-geneprint.comp
 
 import { TableUtil } from "../tableUtil";
 import * as XLSX from "xlsx";
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-geneprint-lab',
@@ -23,7 +22,6 @@ export class GeneprintLabComponent implements OnInit {
 
   displayedColumns: string[] = [ 'sample', 'blood','date','lcl','match','ipsc','nsc','Edit'];
   dataSource;
-  Stored_response: GeneData[];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   enter_sample:number;
   enter_lab:string;
@@ -34,19 +32,12 @@ export class GeneprintLabComponent implements OnInit {
     ngOnInit() {
       this.service.getALLGeneprintData().subscribe(response => this.fetchData(response));
     }
-    fetchData(response:GeneData[])
+    fetchData(response)
     {
-      this.Stored_response=response;
       
       this.dataSource = new MatTableDataSource<GeneData>(response);
       this.dataSource.paginator = this.paginator;
       
-    }
-
-    exportArray() {
-      
-      
-      TableUtil.exportArrayToExcel(this.Stored_response, "Exportgeneprint");
     }
 
     exportTable() {
