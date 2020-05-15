@@ -45,6 +45,7 @@ import { EnterMycoplasmaComponent } from './enter-mycoplasma/enter-mycoplasma.co
 import { LabLinking } from './lab-linking';
 import { GeneprintLabComponent } from './geneprint-lab/geneprint-lab.component';
 import { EnterGeneprintComponent } from './enter-geneprint/enter-geneprint.component';
+import { KarotypingComponent } from './karotyping/karotyping.component';
 const appRoutes: Routes = [
   { path: '', component: RackInformationComponent, data: { title: 'RackEnter Component' } },
   { path: 'pending-request', component: PendingRequestComponent, data: { title: 'PendingReuest Component' } },
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
     EnterMycoplasmaComponent,
     GeneprintLabComponent,
     EnterGeneprintComponent,
+    KarotypingComponent,
   
   ],
   imports: [
