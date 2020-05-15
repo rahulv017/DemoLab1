@@ -17,12 +17,15 @@ export class DashboardComponent implements OnInit {
   dataSource;
   constructor(public dash:DashModel,public service : RackServiceService) {
     this.data= new Array<DashModel>();
+
+
    }
 
   ngOnInit() {
   this.service.getDashboardList().subscribe(response => this.fetchData(response));
 
   }
+  
 
   fetchData(response:DashModel[])
   {
@@ -31,6 +34,11 @@ export class DashboardComponent implements OnInit {
      console.log(`DataSource is ${this.dataSource}`);
 
   }
+
+  applyFilter(filtervalue: string){
+    this.dataSource.filter= filtervalue.trim().toLowerCase();
+  }
+
   exportTable() {
     TableUtil.exportTableToExcel("Exportdash");
   }

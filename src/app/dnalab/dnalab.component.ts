@@ -194,6 +194,10 @@ export class DNALABComponent implements OnInit {
     }
     alert(JSON.stringify(JsonData));
   }
+  
+  applyFilter(filtervalue: string){
+    this.dataSource.filter= filtervalue.trim().toLowerCase();
+  }
 
 }
 

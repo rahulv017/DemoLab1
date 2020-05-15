@@ -5,11 +5,19 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './karotyping.component.html',
   styleUrls: ['./karotyping.component.css']
 })
+
+
+
 export class KarotypingComponent implements OnInit {
 
-  constructor() { }
+  
 
+  constructor() { }
+  
   ngOnInit() {
+   
   }
 
+  
+  
 }

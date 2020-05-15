@@ -1,8 +1,7 @@
-<p>rack-information works!</p>
 
-<h1 class="m-t-xl m-b-xl"><a href="https://trungk18.com/experience/angular-material-data-table-export-to-excel-file/">
-</a>
-</h1>
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)"  matInput placeholder="Filter">
+</mat-form-field>
 
 <div class="export-container">
 <button mat-raised-button color="primary" (click)="exportTable()">Export Table</button>

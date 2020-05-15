@@ -107,4 +107,8 @@ dataSource;
     });
   }
 
+  applyFilter(filtervalue: string){
+    this.dataSource.filter= filtervalue.trim().toLowerCase();
+  }
+
 }

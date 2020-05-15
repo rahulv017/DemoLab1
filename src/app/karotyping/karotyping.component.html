@@ -1,17 +1,20 @@
-<p>karotyping works!</p>
+
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)"  matInput placeholder="Filter">
+</mat-form-field>
 
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
      
       <ng-container matColumnDef="dno">
         <th mat-header-cell *matHeaderCellDef> D No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id.dNo}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.dno}} </td>
       </ng-container>
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="sample">
         <th mat-header-cell *matHeaderCellDef> Sample No </th>
-        <td mat-cell *matCellDef="let element"> {{element.id.sampleNo}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.sample}} </td>
       </ng-container>
   
       <ng-container matColumnDef="date">
@@ -21,7 +24,10 @@
   
       <ng-container matColumnDef="upload">
           <th mat-header-cell *matHeaderCellDef> Upload Pdf </th>
-          <td mat-cell *matCellDef="let element"><button  (click)="onAdd(element)">ClickMe!!</button></td>
+          <input type="file" (change)="upload($event.target.files)" />
+          Upload Percent: {{percentDone}}% <br />
+          
+         
         </ng-container>
   
         <ng-container matColumnDef="view">

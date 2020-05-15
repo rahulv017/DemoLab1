@@ -88,6 +88,11 @@ export class RackInformationComponent implements OnInit {
   {
 
   }
+
+  applyFilter(filtervalue: string){
+    this.dataSource.filter= filtervalue.trim().toLowerCase();
+  }
+
 }
 export interface PeriodicElement {
   name: string;
