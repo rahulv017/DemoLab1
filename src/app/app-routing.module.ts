@@ -11,6 +11,7 @@ import { DNALABComponent } from './dnalab/dnalab.component';
 import { MycoplasmaLabComponent } from './mycoplasma-lab/mycoplasma-lab.component';
 import { GeneprintLabComponent } from './geneprint-lab/geneprint-lab.component';
 import { KarotypingComponent } from './karotyping/karotyping.component';
+import { PBMCLABComponent } from './pbmclab/pbmclab.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'DNA',component:DNALABComponent},
   {path:'Mycoplasma',component:MycoplasmaLabComponent},
   {path:'Geneprint',component:GeneprintLabComponent},
-  {path:'Karotyping',component:KarotypingComponent}
+  {path:'Karotyping',component:KarotypingComponent},
+  {path:'PBMC',component:PBMCLABComponent}
 ];
 
 @NgModule({

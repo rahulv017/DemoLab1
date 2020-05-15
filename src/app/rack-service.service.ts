@@ -12,6 +12,7 @@ import { FreezerData } from './freezer-data';
 import { DNAData } from './dnadata';
 import { PlasmaSerum } from './plasma-serum';
 import { GeneData } from './gene-data';
+import { PBMCDATA } from './pbmcdata';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,14 @@ export class RackServiceService {
   }
 
   sendDNABloodData(data:DNAData)
+  {
+    const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/savednablood";
+    console.log(data);
+    return this.http.put(url,data,{headers});
+  }
+
+  sendPBMCData(data:PBMCDATA)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/savednablood";
@@ -184,6 +193,12 @@ export class RackServiceService {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
     let url="https://localhost:8443/getgeneprint"; 
     return this.http.get<GeneData[]>(url,{headers});
+  }
+  getALLPBMCData()
+  {
+    const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
+    let url="https://localhost:8443/getgeneprint"; 
+    return this.http.get<PBMCDATA[]>(url,{headers});
   }
 
   getALLPendingRequest()

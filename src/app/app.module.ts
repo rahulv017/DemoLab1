@@ -46,6 +46,8 @@ import { LabLinking } from './lab-linking';
 import { GeneprintLabComponent } from './geneprint-lab/geneprint-lab.component';
 import { EnterGeneprintComponent } from './enter-geneprint/enter-geneprint.component';
 import { KarotypingComponent } from './karotyping/karotyping.component';
+import { PBMCLABComponent } from './pbmclab/pbmclab.component';
+import { EnterPBMCComponent } from './enter-pbmc/enter-pbmc.component';
 const appRoutes: Routes = [
   { path: '', component: RackInformationComponent, data: { title: 'RackEnter Component' } },
   { path: 'pending-request', component: PendingRequestComponent, data: { title: 'PendingReuest Component' } },
@@ -68,6 +70,8 @@ const appRoutes: Routes = [
     GeneprintLabComponent,
     EnterGeneprintComponent,
     KarotypingComponent,
+    PBMCLABComponent,
+    EnterPBMCComponent,
   
   ],
   imports: [
@@ -102,7 +106,7 @@ const appRoutes: Routes = [
 
     
   ],
-  entryComponents:[EnterDNAComponent,EnterGeneprintComponent],
+  entryComponents:[EnterDNAComponent,EnterGeneprintComponent,EnterPBMCComponent],
   providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel,LabLinking],
   bootstrap: [AppComponent]
 })
