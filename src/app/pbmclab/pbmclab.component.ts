@@ -26,7 +26,7 @@ import { PBMCDATA } from '../pbmcdata';
 })
 export class PBMCLABComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'DNO', 'Sample','CellTrack','Mirror','DateC','DateP','doneby','BloodFreeze','DNA','totalSample','Remarks','Cyro','Edit'];
+  displayedColumns: string[] = [ 'DNO', 'Sample','CellTrack','Mirror','DateC','DateP','doneBy','BloodFreeze','DNA','totalSample','Remarks','Cryo','Edit'];
 dataSource;
 
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -96,7 +96,7 @@ dataSource;
         element.dateC=data.dateC;
         element.dateP=data.dateP;
         element.count=data.count;
-        element.doneby=data.doneby;
+        element.doneBy=data.doneBy;
         element.remarks=data.remarks;
        
      //   element.catalogue=data.catalogue;

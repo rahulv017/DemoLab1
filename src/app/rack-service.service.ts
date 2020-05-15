@@ -74,7 +74,7 @@ export class RackServiceService {
   sendPBMCData(data:PBMCDATA)
   {
     const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/savednablood";
+    let url="https://localhost:8443/savepbmc";
     console.log(data);
     return this.http.put(url,data,{headers});
   }
@@ -197,7 +197,7 @@ export class RackServiceService {
   getALLPBMCData()
   {
     const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getgeneprint"; 
+    let url="https://localhost:8443/getpbmc"; 
     return this.http.get<PBMCDATA[]>(url,{headers});
   }
 

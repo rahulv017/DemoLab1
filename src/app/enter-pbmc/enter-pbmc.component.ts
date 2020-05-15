@@ -19,7 +19,7 @@ export class EnterPBMCComponent implements OnInit {
     this.labii.dateC=this.data.dateC;
     this.labii.dateP=this.data.dateP;
     this.labii.count=this.data.count;
-    this.labii.doneby=this.data.doneby;
+    this.labii.doneBy=this.data.doneBy;
     this.labii.remarks=this.data.remarks;
   
     

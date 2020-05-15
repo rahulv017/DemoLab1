@@ -4,10 +4,9 @@ export class PBMCDATA {
 
     id:id;
     dateC:Date;
-    doneby:string;
+    doneBy:string;
     dateP:Date;
     count:string;
     remarks:string;
-    cyrovials:number;
 
 }
