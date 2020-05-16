@@ -31,7 +31,7 @@ export class RackInformationComponent implements OnInit {
   {}
   
   ngOnInit() {
-    this.service.authenticate().subscribe(response => this.service.JWT = response);
+   // this.service.authenticate().subscribe(response => this.service.JWT = response);
     this.service.getAllRackData().subscribe(response => this.fetchData(response));
     
   }
