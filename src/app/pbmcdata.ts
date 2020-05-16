@@ -8,5 +8,6 @@ export class PBMCDATA {
     dateP:Date;
     count:string;
     remarks:string;
+    status:boolean;
 
 }

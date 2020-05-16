@@ -12,5 +12,6 @@ export class DNAData {
     a260By280:string;
     a260By330:string;
     catalogue:string;
+    status:boolean;
 
 }

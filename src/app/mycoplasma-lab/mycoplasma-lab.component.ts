@@ -71,6 +71,7 @@ dataSource;
         element.result=data.result;
         element.machine=data.machine;
         element.passage=data.passage;
+        element.status=data.status;
      //   element.catalogue=data.catalogue;
     //  console.log(data.totalVol);
       console.log(element);

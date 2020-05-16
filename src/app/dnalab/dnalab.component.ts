@@ -114,6 +114,7 @@ export class DNALABComponent implements OnInit {
         element.a260By330=data.a260By330;
         element.a260By280=data.a260By280;
         element.catalogue=data.catalogue;
+        element.status=data.status;
       console.log(data.totalVol);
       console.log(element);
      this.service.sendDNALCLData(element).subscribe();
@@ -147,6 +148,7 @@ export class DNALABComponent implements OnInit {
         element.a260By330=data.a260By330;
         element.a260By280=data.a260By280;
         element.catalogue=data.catalogue;
+        element.status=data.status;
       console.log(data.totalVol);
       console.log(element);
      this.service.sendDNABloodData(element).subscribe();
@@ -203,5 +205,5 @@ export class DNALABComponent implements OnInit {
 
 const ELE:DNAData[]=[
   {id:{dNo:"D256",sampleNo:14256},date:new Date(),doneBy:"SN",conc:"12",totalVol:"12",a260:"1.2",a280:"1.3",a260By330:"1.3",
-      a260By280:"1.40",catalogue:"yes" }
+      a260By280:"1.40",catalogue:"yes",status:true }
 ]

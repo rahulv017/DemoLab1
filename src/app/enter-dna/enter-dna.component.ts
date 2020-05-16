@@ -42,6 +42,7 @@ export class EnterDNAComponent implements OnInit {
      this.labii.a260By330=this.data.a260By330;
      this.labii.a260By280=this.data.a260By280;
      this.labii.catalogue=this.data.catalogue;
+     this.labii.status=this.data.status;
      //this.data=this.canS.getData();
      console.log(`Data recived is ${this.data.id.sampleNo}  `);
   }

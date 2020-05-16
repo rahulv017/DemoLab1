@@ -21,6 +21,7 @@ export class EnterPBMCComponent implements OnInit {
     this.labii.count=this.data.count;
     this.labii.doneBy=this.data.doneBy;
     this.labii.remarks=this.data.remarks;
+    this.labii.status=this.data.status;
   
     
      

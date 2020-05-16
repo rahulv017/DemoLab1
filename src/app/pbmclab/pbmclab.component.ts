@@ -98,6 +98,7 @@ dataSource;
         element.count=data.count;
         element.doneBy=data.doneBy;
         element.remarks=data.remarks;
+        element.status=data.status;
        
      //   element.catalogue=data.catalogue;
     //  console.log(data.totalVol);

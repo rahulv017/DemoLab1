@@ -10,6 +10,17 @@
     Date: <input type="date" value="date" name="date" [(ngModel)]="labii.date"> <br />
     User: <input type="text" value="user" name="user" [(ngModel)]="labii.user"> <br />
     Machine: <input type="text" value="Machine" name="machine" [(ngModel)]="labii.machine"> <br />
+
+    Completed:
+    <mat-form-field>
+        <mat-select [(value)]="labii.status">
+            <mat-option value=true >True</mat-option>
+            <mat-option value=false >False</mat-option>
+          
+            
+            
+        </mat-select>
+    </mat-form-field>
    
 
 
