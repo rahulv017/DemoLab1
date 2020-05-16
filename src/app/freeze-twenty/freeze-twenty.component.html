@@ -28,12 +28,12 @@
   
       <ng-container matColumnDef="Remove">
           <th mat-header-cell *matHeaderCellDef> Remove Button </th>
-          <td mat-cell *matCellDef="let element"><button mat-button (click)="onEdit(element)">ClickMe!!</button></td>
+          <td mat-cell *matCellDef="let element"><button mat-button (click)="onEdit(element)">Remove</button></td>
         </ng-container>
   
         <ng-container matColumnDef="Add">
           <th mat-header-cell *matHeaderCellDef> Add Entry Button </th>
-          <td mat-cell *matCellDef="let element"><button  (click)="onAdd(element)">ClickMe!!</button></td>
+          <td mat-cell *matCellDef="let element"><button  (click)="onAdd(element)">Add</button></td>
         </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
