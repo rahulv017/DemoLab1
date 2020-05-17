@@ -31,6 +31,7 @@ export class EnterGeneprintComponent implements OnInit {
      this.labii.ipsc=this.data.ipsc;
      this.labii.nsc=this.data.nsc;
      this.labii.exome=this.data.exome;
+     this.labii.status=this.labii.status;
      
      console.log(`Data recived is ${this.data.id.sampleNo}  `);
   }

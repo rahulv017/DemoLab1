@@ -32,6 +32,18 @@
      {{email}}
      {{pass}}
      </form>-->
-<app-background></app-background>
+<!--<app-background></app-background>-->
     <!-- <app-rack-enter></app-rack-enter>-->
+
+    <div *ngIf="!validLogin" class="container">
+      <div>
+        User Name : <input type="text" name="username" [(ngModel)]="username">
+        Password : <input type="password" name="password" [(ngModel)]="password">
+      </div>
+      <button (click)=checkLogin() class="btn btn-success">
+        Login
+      </button>
+    </div>
+
+<app-background *ngIf = "validLogin"></app-background>
 <router-outlet></router-outlet>

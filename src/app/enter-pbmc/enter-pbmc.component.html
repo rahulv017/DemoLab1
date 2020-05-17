@@ -1,0 +1,54 @@
+
+<h2 mat-dialog-title>Please Enter the Details</h2>
+<mat-dialog-content>
+    <div class="form-control">
+    Date of Collection <input type="date" value="dateC" name="dateC" [(ngModel)]="labii.dateC"> <br />
+    Date of processing <input type="date" value="A" name="dateP" [(ngModel)]="labii.dateP"> <br />
+    Total Sample<input type="text" value="B" name="totalSample" [(ngModel)]="labii.count"> <br />
+
+   Person Handling:
+    <mat-form-field>
+        <mat-select [(value)]="labii.doneBy">
+            <mat-option value="KS">KS</mat-option>
+            <mat-option value="SV">SV</mat-option>
+            
+            
+        </mat-select>
+    </mat-form-field>
+    <br />
+
+    Remarks:
+    <mat-form-field>
+        <mat-select [(value)]="labii.remarks">
+            <mat-option value="NO RBC Contamination">NO RBC Contamination</mat-option>
+            <mat-option value="MILD RBC Contamination">MILD RBC Contamination</mat-option>
+            <mat-option value="HBsAg POSITIVE SAMPLE DISCARDED">HBsAg POSITIVE SAMPLE DISCARDED</mat-option>
+            
+            
+        </mat-select>
+    </mat-form-field>
+    <br />
+
+    Completed:
+    <mat-form-field>
+        <mat-select [(value)]="labii.status">
+            <mat-option value=true >True</mat-option>
+            <mat-option value=false >False</mat-option>
+          
+            
+            
+        </mat-select>
+    </mat-form-field>
+
+
+
+
+
+<br />
+</div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="labii">Save </button>
+  <button mat-button [mat-dialog-close]="false">Close</button>
+</mat-dialog-actions>

@@ -1,10 +1,7 @@
+import { RackId } from './RackId';
+
     export class RackSample {
-    id:{
-    canId:string;
-    rackId:string;
-    boxId:string;
-    cellId:number;
-    }
+    id:RackId;
     labName:string;
     sampleNo:number;
 }

@@ -1,9 +1,8 @@
+import { FreezerId } from './freezer-id';
+
 export class FreezerData {
 
-    id:{
-        boxId:string;
-        cellId:number;
-    }
+    id:FreezerId;
     sampleNo:number;
     labName:string;
 }

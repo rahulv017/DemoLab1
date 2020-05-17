@@ -24,6 +24,7 @@ export class EnterMycoplasmaComponent implements OnInit {
    this.labii.user=this.data.user;
    this.labii.passage=this.data.passage;
    this.labii.result=this.labii.result;
+   this.labii.status=this.labii.status;
    
     
   }

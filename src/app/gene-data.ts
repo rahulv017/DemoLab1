@@ -9,5 +9,6 @@ export class GeneData {
     ipsc:string;
     nsc:string;
     exome:string;
+    status:boolean;
 
 }

@@ -1,6 +1,14 @@
-<p>dashboard works!</p>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)"  matInput placeholder="Filter">
+</mat-form-field>
+
+<div class="export-container">
+	<button mat-raised-button color="primary" (click)="exportTable()">Export Table</button>
+</div>
+
+<table id="Exportdash" mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
   
       
     <ng-container matColumnDef="can_id">

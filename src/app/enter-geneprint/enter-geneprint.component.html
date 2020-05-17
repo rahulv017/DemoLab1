@@ -1,4 +1,4 @@
-<p>gene-enter works!</p>
+
 
 <h2 mat-dialog-title>Please Enter the Details</h2>
 <mat-dialog-content>
@@ -22,6 +22,16 @@
     NSC: <input type="text" value="nsc" name="nsc" [(ngModel)]="labii.nsc"> <br />
     exome: <input type="text" value="exome" name="exome" [(ngModel)]="labii.exome"> <br />
    
+    Completed:
+    <mat-form-field>
+        <mat-select [(value)]="labii.status">
+            <mat-option value=true >True</mat-option>
+            <mat-option value=false >False</mat-option>
+          
+            
+            
+        </mat-select>
+    </mat-form-field>
     
 
 

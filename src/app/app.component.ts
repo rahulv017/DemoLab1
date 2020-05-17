@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef,AfterViewInit } from '@angular/core';
-import { LabUser } from './lab-user';
 import { Router } from '@angular/router';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -13,26 +13,25 @@ export class AppComponent {
   pass:string;
   @ViewChild('userForm',{read: ElementRef,static:false}) userForm:ElementRef;
 
-  login:LabUser=new LabUser();
-  constructor( private user:LabUser,private router:Router)
+  constructor( private router:Router, private loginservice:AuthenticationService)
   {
-  
+    this.validLogin = this.loginservice.isUserLoggedIn();
   }
-  onClick()
-  {
-    alert('You entered '+ this.login.username+' '+ this.login.pass);
-    if(this.login.username==='vyasrahul017@gmail.com'&&this.login.pass==='rahul')
-    {
-      alert("Correct!!!");
-      this.router.navigate(['/rackDetails']);
+
+  username = '';
+  password = '';
+  validLogin
+  
+
+  checkLogin() {
+    (this.loginservice.authenticate(this.username, this.password).subscribe(
+      data => {
+       this.validLogin= true;
+    }, error=>{
+      this.validLogin = false;
     }
-    else{
-          alert('Incorrect !! Try again');
-          this.login.username='';
-          this.login.pass='';
-    }
-    
-  //  alert("OK!!");
+    )
+    );
   }
 
   ngAfterViewInit()

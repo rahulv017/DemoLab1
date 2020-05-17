@@ -10,6 +10,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import {GeneData  } from '../gene-data'
 import { EnterGeneprintComponent } from '../enter-geneprint/enter-geneprint.component';
 
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
+
 @Component({
   selector: 'app-geneprint-lab',
   templateUrl: './geneprint-lab.component.html',
@@ -36,6 +39,11 @@ export class GeneprintLabComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       
     }
+
+    exportTable() {
+      TableUtil.exportTableToExcel("Exportgeneprint");
+    }
+
     onEdit(data:RackSample)
     {
        data.labName="";
@@ -67,6 +75,7 @@ export class GeneprintLabComponent implements OnInit {
           element.ipsc=data.ipsc;
           element.nsc=data.nsc;
           element.exome=data.exome;
+          element.status=data.status;
           
         console.log(element);
        this.service.sendGeneprintData(element).subscribe();
@@ -82,9 +91,13 @@ export class GeneprintLabComponent implements OnInit {
     // {
           
     // }
+
+    applyFilter(filtervalue: string){
+      this.dataSource.filter= filtervalue.trim().toLowerCase();
+    }
   
   }
   
   const ELE:GeneData[]=[
-    {id:{dNo:"D123",sampleNo:1234},blood:"X:87:56:8",date:new Date(),lcl:"12",isMatch:"Yes",ipsc:"12",nsc:"12",exome:"1.2" }
+    {id:{dNo:"D123",sampleNo:1234},blood:"X:87:56:8",date:new Date(),lcl:"12",isMatch:"Yes",ipsc:"12",nsc:"12",exome:"1.2",status:true }
   ]

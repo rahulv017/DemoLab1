@@ -3,13 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LabUser } from './lab-user';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatRadioModule} from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CellData } from './CellData';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RackSample } from './rack-sample';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { RackServiceService } from './rack-service.service';
@@ -45,10 +44,12 @@ import { EnterMycoplasmaComponent } from './enter-mycoplasma/enter-mycoplasma.co
 import { LabLinking } from './lab-linking';
 import { GeneprintLabComponent } from './geneprint-lab/geneprint-lab.component';
 import { EnterGeneprintComponent } from './enter-geneprint/enter-geneprint.component';
-const appRoutes: Routes = [
-  { path: '', component: RackInformationComponent, data: { title: 'RackEnter Component' } },
-  { path: 'pending-request', component: PendingRequestComponent, data: { title: 'PendingReuest Component' } },
-];
+import { KarotypingComponent } from './karotyping/karotyping.component';
+import { PBMCLABComponent } from './pbmclab/pbmclab.component';
+import { EnterPBMCComponent } from './enter-pbmc/enter-pbmc.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AuthHttpInterceptorService } from './auth-http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,11 @@ const appRoutes: Routes = [
     EnterMycoplasmaComponent,
     GeneprintLabComponent,
     EnterGeneprintComponent,
+    KarotypingComponent,
+    PBMCLABComponent,
+    EnterPBMCComponent,
+    LoginComponent,
+    LogoutComponent,
   
   ],
   imports: [
@@ -91,17 +97,13 @@ const appRoutes: Routes = [
    MatSortModule,
    MatDatepickerModule,
    MatPaginatorModule,
-   MatDialogModule,
-   RouterModule.forRoot(
-    appRoutes,
-    { useHash: true }
-  )
+   MatDialogModule
 
 
     
   ],
-  entryComponents:[EnterDNAComponent,EnterGeneprintComponent],
-  providers: [LabUser,CellData,RackSample,Mycoplasma,DashModel,LabLinking],
+  entryComponents:[EnterDNAComponent,EnterGeneprintComponent,EnterPBMCComponent],
+  providers: [CellData,RackSample,Mycoplasma,DashModel,LabLinking,{provide:HTTP_INTERCEPTORS,useClass:AuthHttpInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

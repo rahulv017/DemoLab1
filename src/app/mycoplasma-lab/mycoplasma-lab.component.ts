@@ -13,6 +13,8 @@ import { EnterDNAComponent } from '../enter-dna/enter-dna.component';
 import { EventEmitter } from 'protractor';
 import { EnterMycoplasmaComponent } from '../enter-mycoplasma/enter-mycoplasma.component';
 import { Mycoplasma } from '../mycoplasma';
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
 @Component({
   selector: 'app-mycoplasma-lab',
   templateUrl: './mycoplasma-lab.component.html',
@@ -41,6 +43,10 @@ dataSource;
     this.dataSource.paginator = this.paginator;
   }
 
+  exportTable() {
+    TableUtil.exportTableToExcel("Exportmycoplasma");
+  }
+
   onEdit(element:Mycoplasma)
   {
     const dialogRef = this.dialog.open(EnterMycoplasmaComponent, {
@@ -65,12 +71,17 @@ dataSource;
         element.result=data.result;
         element.machine=data.machine;
         element.passage=data.passage;
+        element.status=data.status;
      //   element.catalogue=data.catalogue;
     //  console.log(data.totalVol);
       console.log(element);
      this.service.updateMycoplasma(element).subscribe();
       }
     });
+  }
+ 
+  applyFilter(filtervalue: string){
+    this.dataSource.filter= filtervalue.trim().toLowerCase();
   }
 
 }

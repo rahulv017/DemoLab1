@@ -1,4 +1,13 @@
-<p>dnalab works!</p>
+
+
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)"  matInput placeholder="Filter">
+</mat-form-field>
+
+<div class="export-container">
+<button mat-raised-button color="primary" (click)="exportTable()">Export Table</button>
+</div>
+
 
 <label id="example-radio-group-label">Pick the Lab</label>
 <mat-radio-group
@@ -12,7 +21,7 @@
 
 <div *ngIf="fav_lab==labs[0]">
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+    <table id="Exportdna" mat-table [dataSource]="dataSource">
   
      
       <ng-container matColumnDef="DNO">
@@ -78,7 +87,7 @@
 
           <ng-container matColumnDef="Edit">
             <th mat-header-cell *matHeaderCellDef> Add/Edit Button </th>
-            <td mat-cell *matCellDef="let element"><button  (click)="onAddLCL(element)">ClickMe!!</button></td>
+            <td mat-cell *matCellDef="let element"><button  (click)="onAddLCL(element)">Add/Edit</button></td>
           </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

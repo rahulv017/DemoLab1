@@ -14,6 +14,10 @@ import { EnterDNAComponent } from '../enter-dna/enter-dna.component';
 import { EventEmitter } from 'protractor';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { PlasmaSerum } from '../plasma-serum';
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
+import { FreezerId } from '../freezer-id';
+import { RackId } from '../RackId';
 @Component({
   selector: 'app-dnalab',
   templateUrl: './dnalab.component.html',
@@ -72,6 +76,11 @@ export class DNALABComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     
   }
+
+  exportTable() {
+    TableUtil.exportTableToExcel("Exportdna");
+  }
+
   onEdit(data:RackSample)
   {
      data.labName="";
@@ -105,6 +114,7 @@ export class DNALABComponent implements OnInit {
         element.a260By330=data.a260By330;
         element.a260By280=data.a260By280;
         element.catalogue=data.catalogue;
+        element.status=data.status;
       console.log(data.totalVol);
       console.log(element);
      this.service.sendDNALCLData(element).subscribe();
@@ -138,6 +148,7 @@ export class DNALABComponent implements OnInit {
         element.a260By330=data.a260By330;
         element.a260By280=data.a260By280;
         element.catalogue=data.catalogue;
+        element.status=data.status;
       console.log(data.totalVol);
       console.log(element);
      this.service.sendDNABloodData(element).subscribe();
@@ -151,27 +162,48 @@ export class DNALABComponent implements OnInit {
     
   onSearchSampleLCL(data:DNAData)
   {
+    let JsonData={"sampleNo":data.id.sampleNo,"labName":"gDNA(LCL)"};
         
+    this.service.fetchFridge80(JsonData).subscribe(response => this.printData(response));
   }
 
   onSearchSampleBlood(data:DNAData)
   {
-        
+        let JsonData={"sampleNo":data.id.sampleNo,"labName":"gDNA(blood)"};
+        this.service.fetchFridge20(JsonData).subscribe(response => this.printData(response));
   }
 
   onPlasma(data)
   {
-
+    let JsonData={"sampleNo":data.id.sampleNo,"labName":"Plasma"};
+    this.service.fetchFridge80(JsonData).subscribe(response => this.printData(response));
   }
 
   onSerum(data)
   {
+    let JsonData={"sampleNo":data.id.sampleNo,"labName":"Serum"};
+        
+    this.service.fetchFridge80(JsonData).subscribe(response => this.printData(response));
+  }
 
+  printData(response:FreezerData[]){
+    let i;
+    let JsonData = new Array<FreezerId>();
+    console.log(response);
+    for(i=0;i<response.length;i++)
+    {
+      JsonData.push(response[i].id);
+    }
+    alert(JSON.stringify(JsonData));
+  }
+  
+  applyFilter(filtervalue: string){
+    this.dataSource.filter= filtervalue.trim().toLowerCase();
   }
 
 }
 
 const ELE:DNAData[]=[
   {id:{dNo:"D256",sampleNo:14256},date:new Date(),doneBy:"SN",conc:"12",totalVol:"12",a260:"1.2",a280:"1.3",a260By330:"1.3",
-      a260By280:"1.40",catalogue:"yes" }
+      a260By280:"1.40",catalogue:"yes",status:true }
 ]

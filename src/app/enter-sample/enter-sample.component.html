@@ -1,4 +1,4 @@
-<p>enter-sample works!</p>
+
 
 <h2 mat-dialog-title>Please Enter the Details</h2>
 <mat-dialog-content>
@@ -6,10 +6,13 @@
     Enter the vial Associated:
 <mat-form-field>
     <mat-select [(value)]="labii.lab">
-        <mat-option value="PBMC">PBMC</mat-option>
+        <mat-option value="PBMC(Mirror)">PBMC(Mirror)</mat-option>
+        <mat-option value="PBMC(CellTrack)">PBMC(CellTrack)</mat-option>
         <mat-option value="LCL">LCL</mat-option>
         <mat-option value="gDNA(blood)">gDNA(blood)</mat-option>
         <mat-option value="gDNA(LCL)">gDNA(LCL)</mat-option>
+        <mat-option value="Plasma">Plasma</mat-option>
+        <mat-option value="Serum">Serum</mat-option>
         
     </mat-select>
 </mat-form-field>
