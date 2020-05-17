@@ -1,0 +1,7 @@
+<section class="example-section" >
+    <mat-checkbox  *ngFor="let x of data;index as i" class="example-margin" [(ngModel)]=checked[i]>{{x}}</mat-checkbox>
+    <br>
+    
+  </section>
+
+  <button mat-button (click)="onClick()">Save!!</button>

@@ -1,0 +1,36 @@
+<p>view-lab-report works!</p>
+
+<p>Your ADBS ID is: </p>
+<div>{{data.adbs_ID}}</div>
+<button mat-button  #op1 (click)="onClickLCL()">LCL Report</button>
+<button mat-button #op2 (click)="onClickDNA()">DNA Report</button>
+<button mat-button #op3 (click)="onClickPBMNC()">PBMNC Report</button>
+<button mat-button #op4 (click)="onClickKyrotyping()">Kyrotyping Report</button>
+<button mat-button #op5 (click)="onClickGeneprint()">Geneprint Report</button>
+
+<div *ngIf=isSelected >
+    <p>You have clicked LCL</p>
+    <div>
+        <br>
+        LCL Jupiter:{{lab.lclvials_Jupiter}}
+        <br> 
+        LCL Pluto:{{lab.lclvials_Pluto}}
+        <br>
+        LCL Venus:{{lab.lclvials_Venus}}
+    </div>
+    <button mat-button (click)="isSelected=!isSelected" >Close</button> 
+</div>
+
+<!-- <div *ngIf=LCL >
+    <p>You have clicked LCL</p>
+    <button mat-button (click)="LCL=!LCL" >Close</button> 
+</div>
+
+
+<div *ngIf=DNA >
+    <p>You have clicked LCL</p>
+    <button mat-button (click)="DNA=!DNA" >Close</button> 
+</div> -->
+
+<button mat-button (click)="onDecide()">Decide Deep Test!!</button>
+<div *ngIf="isDecided"><app-decide-deep-test [childMessage]="message"></app-decide-deep-test>></div>

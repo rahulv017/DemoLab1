@@ -1,0 +1,147 @@
+<mat-form-field>
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+  </mat-form-field>
+  
+  
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ADBS ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.adbs_ID}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="ass_id">
+      <th mat-header-cell *matHeaderCellDef> Assessment ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.assessment_ID}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="h">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="i">
+      <th mat-header-cell *matHeaderCellDef> Gender </th>
+      <td mat-cell *matCellDef="let element"> {{element.i}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="n">
+      <th mat-header-cell *matHeaderCellDef> Primary Diagnosis </th>
+      <td mat-cell *matCellDef="let element"> {{element.n}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="o">
+      <th mat-header-cell *matHeaderCellDef> Related Proband </th>
+      <td mat-cell *matCellDef="let element"> {{element.o}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="v">
+      <th mat-header-cell *matHeaderCellDef> KuppuSwamy SAS </th>
+      <td mat-cell *matCellDef="let element"> {{element.v}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="w">
+      <th mat-header-cell *matHeaderCellDef> Edin Handedness </th>
+      <td mat-cell *matCellDef="let element"> {{element.w}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="x">
+      <th mat-header-cell *matHeaderCellDef> Work SAS </th>
+      <td mat-cell *matCellDef="let element"> {{element.x}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="y">
+      <th mat-header-cell *matHeaderCellDef> GlobalAssFn </th>
+      <td mat-cell *matCellDef="let element"> {{element.y}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="z">
+      <th mat-header-cell *matHeaderCellDef> ACE-IQ </th>
+      <td mat-cell *matCellDef="let element"> {{element.z}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="aa">
+      <th mat-header-cell *matHeaderCellDef> IRLE </th>
+      <td mat-cell *matCellDef="let element"> {{element.aa}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ab">
+      <th mat-header-cell *matHeaderCellDef> Rothbert-Temp </th>
+      <td mat-cell *matCellDef="let element"> {{element.ab}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ac">
+      <th mat-header-cell *matHeaderCellDef> MINI-IPIP </th>
+      <td mat-cell *matCellDef="let element"> {{element.ac}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ad">
+      <th mat-header-cell *matHeaderCellDef> HAM-A </th>
+      <td mat-cell *matCellDef="let element"> {{element.ad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ae">
+      <th mat-header-cell *matHeaderCellDef> HAM-D</th>
+      <td mat-cell *matCellDef="let element"> {{element.ae}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="af">
+      <th mat-header-cell *matHeaderCellDef> SANS </th>
+      <td mat-cell *matCellDef="let element"> {{element.af}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ag">
+      <th mat-header-cell *matHeaderCellDef> SAPS </th>
+      <td mat-cell *matCellDef="let element"> {{element.ag}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ah">
+      <th mat-header-cell *matHeaderCellDef> NIMH-Leife CH </th>
+      <td mat-cell *matCellDef="let element"> {{element.ah}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ai">
+      <th mat-header-cell *matHeaderCellDef> YMRS </th>
+      <td mat-cell *matCellDef="let element"> {{element.ai}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="aj">
+      <th mat-header-cell *matHeaderCellDef> AP-SE Scale </th>
+      <td mat-cell *matCellDef="let element"> {{element.aj}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ak">
+      <th mat-header-cell *matHeaderCellDef> Assist </th>
+      <td mat-cell *matCellDef="let element"> {{element.ak}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="al">
+      <th mat-header-cell *matHeaderCellDef> SADQ </th>
+      <td mat-cell *matCellDef="let element"> {{element.al}} </td>
+    </ng-container>
+    <ng-container matColumnDef="am">
+      <th mat-header-cell *matHeaderCellDef> CDR </th>
+      <td mat-cell *matCellDef="let element"> {{element.am}} </td>
+    </ng-container>
+    <ng-container matColumnDef="an">
+      <th mat-header-cell *matHeaderCellDef> YBOCS </th>
+      <td mat-cell *matCellDef="let element"> {{element.an}} </td>
+    </ng-container>
+  
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
+    
+  

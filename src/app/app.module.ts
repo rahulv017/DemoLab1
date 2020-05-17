@@ -27,7 +27,8 @@ import { BackgroundComponent } from './background/background.component';
 import {RouterModule, Routes} from "@angular/router";
 import { PendingRequestComponent } from './pending-request/pending-request.component';
 import { MatSortModule } from '@angular/material/sort';
-
+import { FirstComponent } from './first/first.component';
+import { SecondComponent } from './second/second.component';
 import { Mycoplasma } from './mycoplasma';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -50,6 +51,21 @@ import { EnterPBMCComponent } from './enter-pbmc/enter-pbmc.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthHttpInterceptorService } from './auth-http-interceptor.service';
+import { ThirdComponent } from './third/third.component';
+// import { LoginComponent } from './login/login.component';
+import { FilteringComponent } from './filtering/filtering.component'; 
+import { RowFilter } from './filtering/RowFilter';
+import { ColFilterService } from './col-filter.service';
+import { Status } from './status';
+import { Deep } from './Deep';
+import { UpdateBriefComponent } from './update-brief/update-brief.component';
+
+import { TransferUserService } from './TransferUserService';
+import { FourthComponentComponent } from './fourth-component/fourth-component.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ViewLabReportComponent } from './view-lab-report/view-lab-report.component'
+import { UserServiceService } from './user-service.service';
+import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +88,15 @@ import { AuthHttpInterceptorService } from './auth-http-interceptor.service';
     EnterPBMCComponent,
     LoginComponent,
     LogoutComponent,
+    FirstComponent,
+    SecondComponent,
+    ThirdComponent,
+   // LoginComponent,
+    FourthComponentComponent,
+   ViewLabReportComponent,
+   DecideDeepTestComponent,
+   FilteringComponent,
+   UpdateBriefComponent
   
   ],
   imports: [
@@ -97,13 +122,15 @@ import { AuthHttpInterceptorService } from './auth-http-interceptor.service';
    MatSortModule,
    MatDatepickerModule,
    MatPaginatorModule,
-   MatDialogModule
+   MatDialogModule,
+   ScrollingModule,
+   
 
 
     
   ],
   entryComponents:[EnterDNAComponent,EnterGeneprintComponent,EnterPBMCComponent],
-  providers: [CellData,RackSample,Mycoplasma,DashModel,LabLinking,{provide:HTTP_INTERCEPTORS,useClass:AuthHttpInterceptorService,multi:true}],
+  providers: [CellData,RackSample,Mycoplasma,DashModel,LabLinking,TransferUserService,UserServiceService,RowFilter,ColFilterService,Status,Deep,{provide:HTTP_INTERCEPTORS,useClass:AuthHttpInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

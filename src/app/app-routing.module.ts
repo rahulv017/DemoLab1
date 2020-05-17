@@ -18,6 +18,14 @@ import { AuthGaurdService } from './auth-gaurd.service';
 import { BackgroundComponent } from './background/background.component';
 import { PendingRequestComponent } from './pending-request/pending-request.component';
 import { AppComponent } from './app.component';
+import { FirstComponent } from './first/first.component';
+import { FilteringComponent } from './filtering/filtering.component';
+import { SecondComponent } from './second/second.component';
+import { ThirdComponent } from './third/third.component';
+import { FourthComponentComponent } from './fourth-component/fourth-component.component';
+import { ViewLabReportComponent } from './view-lab-report/view-lab-report.component';
+import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
+import { UpdateBriefComponent } from './update-brief/update-brief.component';
 
 
 const routes: Routes = [
@@ -33,7 +41,14 @@ const routes: Routes = [
   {path:'Mycoplasma',component:MycoplasmaLabComponent, canActivate:[AuthGaurdService]},
   {path:'Geneprint',component:GeneprintLabComponent, canActivate:[AuthGaurdService]},
   {path:'Karotyping',component:KarotypingComponent, canActivate:[AuthGaurdService]},
-  {path:'PBMC',component:PBMCLABComponent, canActivate:[AuthGaurdService]}
+  {path:'PBMC',component:PBMCLABComponent, canActivate:[AuthGaurdService]},
+  { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
+  { path: 'filter', component: FilteringComponent, data: { title: 'Filtering Component' } },
+  { path: 'second', component: SecondComponent, data: { title: 'Second Component' } },
+  {path: 'breifView/:id',component:FourthComponentComponent},
+  {path: 'labView',component:ViewLabReportComponent},
+  {path: 'DecideDeep',component:DecideDeepTestComponent},
+  {path: 'updateDetails', component:UpdateBriefComponent}
 ];
 
 @NgModule({
