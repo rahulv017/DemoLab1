@@ -17,6 +17,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGaurdService } from './auth-gaurd.service';
 import { BackgroundComponent } from './background/background.component';
 import { PendingRequestComponent } from './pending-request/pending-request.component';
+import { AppComponent } from './app.component';
 
 
 const routes: Routes = [

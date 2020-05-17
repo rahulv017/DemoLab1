@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-background',
@@ -8,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class BackgroundComponent implements OnInit {
   opened:boolean;
 
-  constructor() {
+  constructor(private router: Router) {
     this.opened=false;
    }
 
+   
+
   ngOnInit(): void {
+    this.router.navigate(['/RackInformation'])
   }
 
 }

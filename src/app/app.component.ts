@@ -15,17 +15,18 @@ export class AppComponent {
 
   constructor( private router:Router, private loginservice:AuthenticationService)
   {
-  
+    this.validLogin = this.loginservice.isUserLoggedIn();
   }
 
   username = '';
   password = '';
-  validLogin = this.loginservice.isUserLoggedIn();
+  validLogin
+  
 
   checkLogin() {
     (this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
-      this.validLogin = true;
+       this.validLogin= true;
     }, error=>{
       this.validLogin = false;
     }
