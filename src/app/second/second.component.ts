@@ -148,14 +148,22 @@ let i;
 
 onSociodemo()
 {
-  this.dataSource= new MatTableDataSource(user);
   this.isSocio=!this.isSocio;
+  this.isLab=false;
+  this.isTest=false;
+  if(this.isSocio==true)
+  this.dataSource= new MatTableDataSource(user);
+ 
 }
 
 onTest()
 {
+  this.isTest=!this.isTest;
+  this.isSocio=false;
+  this.isLab=false;
+  if(this.isTest===true)
   this.dataSource= new MatTableDataSource(user);
-   this.isTest=!this.isTest;
+  
 }
 
 onOtherDetails()
@@ -166,6 +174,9 @@ onOtherDetails()
 onLabStatus()
 {
   this.isLab=!this.isLab;
+  this.isSocio=false;
+  this.isTest=false;
+  if(this.isLab===true)
   this.inputS.getLabStatusDetails().subscribe(response => this.fetchData(response),err => console.log(err));
 
 
