@@ -56,7 +56,7 @@ export class InputServiceService {
 
   getLabStatusDetails():Observable<LabLinking[]>
   {
-    let _url1:string="https://localhost:8443/getstatus";
+    let _url1:string="https://localhost:8443/status/true";
     //let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
    // console.log(JsonData);
