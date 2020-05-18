@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import {User} from '../User';
@@ -8,6 +8,7 @@ import{Router} from '@angular/router';
 import{InputServiceService} from '../input-service.service';
 import { ColFilterService } from '../col-filter.service';
 import {Status} from '../status';
+import {MatPaginator} from '@angular/material/paginator';
 
 export interface PeriodicElement {
   name: string;
@@ -41,6 +42,7 @@ export class SecondComponent implements OnInit {
 
   color:string[]=["blue","red","yellow","green"];
   isSocio:boolean;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   isTest:boolean;
   isLab:boolean;
   isOther:boolean;

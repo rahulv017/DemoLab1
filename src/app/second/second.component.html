@@ -95,8 +95,10 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 </cdk-virtual-scroll-viewport>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 </div>
+
 
 
 <div *ngIf="isTest" >
@@ -197,8 +199,10 @@
 <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
 </table>
 </cdk-virtual-scroll-viewport>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 </div>
+
 
 
 <div *ngIf="isLab" >
@@ -234,6 +238,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
   </table>
   </cdk-virtual-scroll-viewport>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
   </div>
-  </div>
+  
   
