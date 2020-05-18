@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { TransferUserService } from '../TransferUserService';
 import {User} from '../User';
-import { strict } from 'assert';
+//import { strict } from 'assert';
 import { UserServiceService } from '../user-service.service';
 import { Router } from '@angular/router';
 export interface PeriodicElement {

@@ -45,7 +45,6 @@
       </button>
     </div>
 
-<app-background *ngIf = "validLogin"></app-background>
-
-<!-- <app-background-cohort></app-background-cohort> -->
+<app-background *ngIf = "validLogin && roles===lab[0]"></app-background>
+<app-background-cohort *ngIf = "validLogin && roles===lab[1]"></app-background-cohort>
 <router-outlet></router-outlet>

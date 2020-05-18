@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
-import '../assets/dummy.json';
+//import '../assets/dummy.json';
 import { Observable } from 'rxjs';
 import {User} from './User';
 import { RowFilter } from './filtering/RowFilter';

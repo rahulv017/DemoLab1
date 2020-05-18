@@ -17,6 +17,7 @@ export class AuthenticationService {
           let tokenStr= 'Bearer '+userData.jwt;
           console.log(tokenStr);
           sessionStorage.setItem('token', tokenStr);
+          sessionStorage.setItem('roles', userData.roles);
           return userData;
          }
        )
@@ -33,6 +34,7 @@ export class AuthenticationService {
   logOut() {
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('roles');
   }
 
 }

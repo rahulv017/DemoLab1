@@ -16,17 +16,24 @@ export class AppComponent {
   constructor( private router:Router, private loginservice:AuthenticationService)
   {
     this.validLogin = this.loginservice.isUserLoggedIn();
+    this.roles = sessionStorage.getItem('roles');
   }
 
   username = '';
   password = '';
-  validLogin
+  validLogin;
+  roles;
+  lab = ["[lab]","[cohort]"]
   
 
   checkLogin() {
     (this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
        this.validLogin= true;
+       console.log(data);
+       //if(role)
+      this.roles = data.roles;
+      console.log(this.roles);
     }, error=>{
       this.validLogin = false;
     }
