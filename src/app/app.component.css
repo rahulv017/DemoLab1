@@ -1,1 +1,28 @@
 /* this is empty*/
+.login-container {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+  }
+
+  .login-toolbar {
+    justify-content: center;
+    margin-top: 250px;
+  }
+
+  .login-content {
+    width: 420px;
+    display: block;
+    margin: 0 auto;
+  }
+  .mat-raised-button {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    display: block;
+  }
+  

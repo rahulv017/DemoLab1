@@ -35,7 +35,7 @@
 <!--<app-background></app-background>-->
     <!-- <app-rack-enter></app-rack-enter>-->
 
-    <div *ngIf="!validLogin" class="container">
+   <!-- <div *ngIf="!validLogin" class="container">
       <div>
         User Name : <input type="text" name="username" [(ngModel)]="username">
         Password : <input type="password" name="password" [(ngModel)]="password">
@@ -43,7 +43,31 @@
       <button (click)=checkLogin() class="btn btn-success">
         Login
       </button>
-    </div>
+    </div>-->
+
+
+    <div *ngIf="!validLogin" class="container">
+      <div class="login-content">
+       
+         <mat-toolbar class="login-toolbar" color="primary">ADBS</mat-toolbar><br/>
+         <mat-card>
+           <mat-form-field>
+         <mat-icon matPrefix>person_outline</mat-icon>
+          <input type="text" name="username" matInput placeholder="Username" [(ngModel)]="username">
+           </mat-form-field>
+         <br/><br/>
+        <mat-form-field>
+         <mat-icon matPrefix>lock_outline</mat-icon>
+         <input type="password" name="password" matInput placeholder="Password" [(ngModel)]="password">
+        </mat-form-field>
+         <br/><br/>
+       
+       <button (click)=checkLogin() class="btn btn-success" mat-raised-button color="primary">Login</button>
+       </mat-card>
+      </div>
+     
+     </div>
+
 
 <app-background *ngIf = "validLogin && roles===lab[0]"></app-background>
 <app-background-cohort *ngIf = "validLogin && roles===lab[1]"></app-background-cohort>
