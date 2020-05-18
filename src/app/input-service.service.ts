@@ -10,6 +10,7 @@ import { Deep } from './Deep';
 import { Dashboard } from './Dashboard';
 import { throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import { LabLinking } from './lab-linking';
 
 
 @Injectable({
@@ -53,14 +54,14 @@ export class InputServiceService {
      return this._http.post<User[]>(_url1,data);
   }
 
-  getLabStatusDetails():Observable<Status[]>
+  getLabStatusDetails():Observable<LabLinking[]>
   {
     let _url1:string="https://localhost:8443/getstatus";
     //let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
    // console.log(JsonData);
     // return this._http.post<Status>(_url1,JsonData,{headers});
-     return this._http.get<Status[]>(_url1,).pipe(catchError(this.handleError));
+     return this._http.get<LabLinking[]>(_url1,).pipe(catchError(this.handleError));
      
 
   }

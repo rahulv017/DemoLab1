@@ -9,6 +9,8 @@ import{InputServiceService} from '../input-service.service';
 import { ColFilterService } from '../col-filter.service';
 import {Status} from '../status';
 import {MatPaginator} from '@angular/material/paginator';
+import { LabLink } from '../pending-request/pending-request.component';
+import { LabLinking } from '../lab-linking';
 
 export interface PeriodicElement {
   name: string;
@@ -40,20 +42,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class SecondComponent implements OnInit {
 
-  color:string[]=["blue","red","yellow","green"];
+  color:string[]=["red","yellow","green"];
   isSocio:boolean;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   isTest:boolean;
   isLab:boolean;
   isOther:boolean;
-  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_name','date_of_consent','lab_group','remarks','date_of_assessment','viewLab','viewOther','EditDetails'];
+  displayedColumns: string[] = ['ADBS_ID', 'Assessment_ID', 'D_no', 'Family_no','p_name','date_of_consent','lab_group','remarks','date_of_assessment','viewOther','EditDetails'];
  
 
 
   displayedColumns1: string[] = ['ADBS_ID', 'Assessment_ID', 'sociodemography','HOPI','Developmental','physical_exam',
   'MSE','Life_chart','Treatment','DSM5CC','Pedigree','MINI','ASRS','HMSE','CGI_S'];
 dataSource:any;
-displayedColumns2: string[]=['DNO','LCL','DNA'];
+displayedColumns2: string[]=['DNO','DNA','PBMC','Geneprint','Mycoplasma','Sample'];
 //displayedCol:string[];
 
 
@@ -98,13 +100,13 @@ constructor(private TransferS:TransferUserService,private UserS:UserServiceServi
   //  this.router.navigate(['/breifView',this.textArea]);
 
   }
-onClick(data)
-{
-this.UserS.setData(data);
-console.log(data);
-this.router.navigate(['/labView']);
+// onClick(data)
+// {
+// this.UserS.setData(data);
+// console.log(data);
+// this.router.navigate(['/labView']);
 
-}
+// }
 
 onClick1(data)
 {
@@ -169,7 +171,7 @@ onLabStatus()
 
 }
 
-fetchData(response:Status[])
+fetchData(response:LabLinking[])
 {
   console.log(response);
    this.dataSource= new MatTableDataSource(response);
