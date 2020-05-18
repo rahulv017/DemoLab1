@@ -66,6 +66,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { ViewLabReportComponent } from './view-lab-report/view-lab-report.component'
 import { UserServiceService } from './user-service.service';
 import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
+import { BackgroundCohortComponent } from './background-cohort/background-cohort.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.com
    ViewLabReportComponent,
    DecideDeepTestComponent,
    FilteringComponent,
-   UpdateBriefComponent
+   UpdateBriefComponent,
+   BackgroundCohortComponent
   
   ],
   imports: [
