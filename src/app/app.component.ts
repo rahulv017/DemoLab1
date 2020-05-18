@@ -35,6 +35,7 @@ export class AppComponent {
       this.roles = data.roles;
       console.log(this.roles);
     }, error=>{
+      alert(error);
       this.validLogin = false;
     }
     )
