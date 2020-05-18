@@ -39,8 +39,16 @@ displayedColumns: string[] = ['h','i','n','o','v','w',
 
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
+
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.o.toLowerCase().includes(filter) || data.n.toLowerCase().includes(filter) || data.v.toString().includes(filter);
+      return data.i.toLowerCase().includes(filter) || data.n.toLowerCase().includes(filter)  || data.o.toLowerCase().includes(filter) 
+      || data.v.toLowerCase().includes(filter)  || data.w.toLowerCase().includes(filter)  || data.x.toLowerCase().includes(filter) 
+      || data.y.toLowerCase().includes(filter)  || data.z.toLowerCase().includes(filter)  || data.aa.toLowerCase().includes(filter) 
+      || data.ab.toLowerCase().includes(filter)  || data.ac.toLowerCase().includes(filter)  || data.ad.toLowerCase().includes(filter) 
+      || data.ae.toLowerCase().includes(filter)  || data.af.toLowerCase().includes(filter)  || data.ag.toLowerCase().includes(filter) 
+      || data.ah.toLowerCase().includes(filter)  || data.ai.toLowerCase().includes(filter)  || data.aj.toLowerCase().includes(filter) 
+      || data.ak.toLowerCase().includes(filter)  || data.al.toLowerCase().includes(filter)  || data.am.toLowerCase().includes(filter) 
+      || data.an.toLowerCase().includes(filter)  || data.user.adbs_ID.toString().includes(filter)  || data.user.assessment_ID.toString().includes(filter) ;
   };
   
   }

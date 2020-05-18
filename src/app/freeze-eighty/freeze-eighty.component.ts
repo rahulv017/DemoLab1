@@ -77,6 +77,11 @@ export class FreezeEightyComponent implements OnInit {
 
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
+
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.id.boxId.toLowerCase().includes(filter) || data.id.cellId.toString().includes(filter) || data.labName.toLowerCase().includes(filter) 
+      || data.sampleNo.toString().includes(filter);
+      }
   }
 
 }

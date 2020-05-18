@@ -94,6 +94,14 @@ export class GeneprintLabComponent implements OnInit {
 
     applyFilter(filtervalue: string){
       this.dataSource.filter= filtervalue.trim().toLowerCase();
+
+      this.dataSource.filterPredicate = function(data, filter: string): boolean {
+        return data.id.sampleNo.toString().includes(filter) || data.blood.toLowerCase().includes(filter) || data.lcl.toLowerCase().includes(filter) 
+        || data.isMatch.toLowerCase().includes(filter) || data.ipsc.toLowerCase().includes(filter) || 
+       data.nsc.toLowerCase().includes(filter) || data.exome.toLowerCase().includes(filter) || data.status.toString().includes(filter)
+       || data.date.toString().includes(filter);
+        }
+
     }
   
   }

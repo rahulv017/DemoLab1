@@ -82,6 +82,14 @@ dataSource;
  
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
+
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.id.sampleNo.toString().includes(filter)  || data.id.dNo.toLowerCase().includes(filter) || data.a.toLowerCase().includes(filter) || data.b.toLowerCase().includes(filter) 
+      || data.bBya.toLowerCase().includes(filter) || data.user.toLowerCase().includes(filter) || 
+     data.result.toLowerCase().includes(filter) || data.machine.toLowerCase().includes(filter) || data.passage.toLowerCase().includes(filter)
+     || data.date.toString().includes(filter);
+
   }
 
+}
 }

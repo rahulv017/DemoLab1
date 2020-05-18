@@ -110,6 +110,15 @@ dataSource;
 
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
+
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.id.sampleNo.toString().includes(filter)  || data.id.dNo.toLowerCase().includes(filter) || data.doneBy.toLowerCase().includes(filter)
+       || data.count.toLowerCase().includes(filter) 
+      || data.remarks.toLowerCase().includes(filter) || data.dateP.toString().includes(filter)
+     || data.dateC.toString().includes(filter);
+
+  }
+
   }
 
 }
