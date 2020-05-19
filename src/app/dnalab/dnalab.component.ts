@@ -201,11 +201,9 @@ export class DNALABComponent implements OnInit {
     this.dataSource.filter= filtervalue.trim().toLowerCase();
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
       return data.id.dNo.toLowerCase().includes(filter) || data.id.sampleNo.toString().includes(filter) 
-      
-      || data.date.toString().includes(filter) || data.doneBy.toLowerCase().includes(filter) || data.conc.toString().includes(filter) 
+       || data.doneBy.toLowerCase().includes(filter) || data.conc.toLowerCase().includes(filter) 
       || data.totalVol.toLowerCase().includes(filter) || data.a260.toLowerCase().includes(filter) || data.a280.toLowerCase().includes(filter)
-      || data.a260By330.toLowerCase().includes(filter) || data.a260By280.toLowerCase().includes(filter) || data.catalogue.toLowerCase().includes(filter)
-      || data.status.toString().includes(filter);
+      || data.a260By330.toLowerCase().includes(filter) || data.a260By280.toLowerCase().includes(filter) || data.catalogue.toLowerCase().includes(filter);
       
     }
 
