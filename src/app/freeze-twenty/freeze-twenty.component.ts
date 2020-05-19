@@ -24,6 +24,15 @@ export class FreezeTwentyComponent implements OnInit {
   constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
   ngOnInit() {
     this.service.getAllFrezeerTwentyData().subscribe(response => this.fetchData(response));
+
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      if(filter!=null || filter!=undefined)
+      {
+      return data.id.boxId.toLowerCase().includes(filter) || data.id.cellId.toString().includes(filter)
+       || data.labName.toLowerCase().includes(filter) 
+      || data.sampleNo.toString().includes(filter);
+      }
+    }
     
   }
 
@@ -76,12 +85,17 @@ export class FreezeTwentyComponent implements OnInit {
   }
 
   applyFilter(filtervalue: string){
-    this.dataSource.filter= filtervalue.trim().toLowerCase();
 
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.id.boxId.toLowerCase().includes(filter) || data.id.cellId.toString().includes(filter) || data.labName.toLowerCase().includes(filter) 
+    if(filtervalue){
+
+    this.dataSource.filter= filtervalue.trim().toLowerCase();
+    }
+
+  /**   this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.id.boxId.toLowerCase().includes(filter) || data.id.cellId.toString().includes(filter)
+       || data.labName.toLowerCase().includes(filter) 
       || data.sampleNo.toString().includes(filter);
-      }
+      }*/
   }
 
 }
