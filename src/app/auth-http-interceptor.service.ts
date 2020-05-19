@@ -19,15 +19,7 @@ export class AuthHttpInterceptorService implements HttpInterceptor {
         }
       })
     }
-    return next.handle(req).pipe(tap((response: HttpResponse<any>) => {
-      console.log(response);
-      if (response instanceof HttpResponse) {
-        if (response.body.status == 403) {
-          this.router.navigate(['']);
-          return response;
-        }
-      }
-    }))
+    return next.handle(req)
   }
 
   private handleError(error: HttpErrorResponse) {
