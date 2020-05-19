@@ -19,19 +19,21 @@ export class AuthHttpInterceptorService implements HttpInterceptor {
         }
       })
     }
-    return next.handle(req)
+    return next.handle(req).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
+    console.log(error);
     if (error.error instanceof ErrorEvent) {
-      sessionStorage.clear()
-      this.router.navigate(['']);
+      sessionStorage.clear();
+      
+      location.reload()
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
     } else {
-
-      sessionStorage.clear()
-      this.router.navigate(['']);
+      alert("Invalid Credentials or Session Expired")
+      sessionStorage.clear();
+      location.reload();
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
