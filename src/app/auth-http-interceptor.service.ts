@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { catchError, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,15 @@ export class AuthHttpInterceptorService implements HttpInterceptor {
         }
       })
     }
-    return next.handle(req).pipe(catchError(this.handleError))
+    return next.handle(req).pipe(tap((response: HttpResponse<any>) => {
+      console.log(response);
+      if (response instanceof HttpResponse) {
+        if (response.body.status == 403) {
+          this.router.navigate(['']);
+          return response;
+        }
+      }
+    }))
   }
 
   private handleError(error: HttpErrorResponse) {
