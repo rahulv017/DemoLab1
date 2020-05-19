@@ -95,7 +95,7 @@ export class RackInformationComponent implements OnInit {
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
       return data.sampleNo.toString().includes(filter)  || data.id.canId.toLowerCase().includes(filter) || data.id.boxId.toLowerCase().includes(filter) 
       || data.id.rackId.toLowerCase().includes(filter) 
-      || data.cellId.toLowerCase().includes(filter) || data.labName.toLowerCase().includes(filter);
+      || data.cellId.toString().includes(filter) || data.labName.toLowerCase().includes(filter);
 
   }
 

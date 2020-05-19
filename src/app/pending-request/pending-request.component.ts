@@ -29,7 +29,7 @@ export class PendingRequestComponent implements OnInit,AfterViewInit {
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.ele.id.sampleNo.toLowerCase().includes(filter);
+      return data.ele.id.dNo.toLowerCase().includes(filter);
   };
   
   }
