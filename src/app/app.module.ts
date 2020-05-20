@@ -52,6 +52,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthHttpInterceptorService } from './auth-http-interceptor.service';
 import { ThirdComponent } from './third/third.component';
+
 // import { LoginComponent } from './login/login.component';
 import { FilteringComponent } from './filtering/filtering.component'; 
 import { RowFilter } from './filtering/RowFilter';
@@ -59,7 +60,7 @@ import { ColFilterService } from './col-filter.service';
 import { Status } from './status';
 import { Deep } from './Deep';
 import { UpdateBriefComponent } from './update-brief/update-brief.component';
-
+import {ReactiveFormsModule} from '@angular/forms';
 import { TransferUserService } from './TransferUserService';
 import { FourthComponentComponent } from './fourth-component/fourth-component.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -98,7 +99,7 @@ import { BackgroundCohortComponent } from './background-cohort/background-cohort
    DecideDeepTestComponent,
    FilteringComponent,
    UpdateBriefComponent,
-   BackgroundCohortComponent
+   BackgroundCohortComponent,
   
   ],
   imports: [
@@ -126,7 +127,8 @@ import { BackgroundCohortComponent } from './background-cohort/background-cohort
    MatPaginatorModule,
    MatDialogModule,
    ScrollingModule,
-   
+   ReactiveFormsModule
+  
 
 
     
