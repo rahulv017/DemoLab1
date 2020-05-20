@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
 import { FreezerData } from '../freezer-data';
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-freeze-twenty',
   templateUrl: './freeze-twenty.component.html',
@@ -20,6 +21,14 @@ export class FreezeTwentyComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   enter_sample:number;
   enter_lab:string;
+  boxfilter = new FormControl('');
+  cellfilter = new FormControl('');
+  samplefilter=new FormControl('');
+  globalFilter = '';
+  filteredValues = {
+    boxId: '', cellId: '', sampleNo: '',
+    labName: ''
+  };
 
   constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
   ngOnInit() {
@@ -43,6 +52,22 @@ export class FreezeTwentyComponent implements OnInit {
     
     this.dataSource = new MatTableDataSource<FreezerData>(response);
     this.dataSource.paginator = this.paginator;
+    this.boxfilter.valueChanges.subscribe((boxFilterValue) => {
+      this.filteredValues['boxId'] = boxFilterValue;
+      this.dataSource.filter = JSON.stringify(this.filteredValues);
+    });
+
+    this.cellfilter.valueChanges.subscribe((cellFilterValue) => {
+      this.filteredValues['cellId'] = cellFilterValue;
+      this.dataSource.filter = JSON.stringify(this.filteredValues);
+    });
+
+    this.samplefilter.valueChanges.subscribe((sampleFilterValue) => {
+      this.filteredValues['sampleNo'] = sampleFilterValue;
+      this.dataSource.filter = JSON.stringify(this.filteredValues);
+    });
+
+    this.dataSource.filterPredicate = this.customFilterPredicate();
   }
   onEdit(data:RackSample)
   {
@@ -101,6 +126,27 @@ export class FreezeTwentyComponent implements OnInit {
               return true;
             else return false;
       }
+  }
+
+  customFilterPredicate() {
+    const myFilterPredicate = (data: FreezerData, filter: string): boolean => {
+      // var globalMatch = !this.globalFilter;
+
+      // if (this.globalFilter) {
+      //   // search all text fields
+      //   globalMatch = data.id.boxId.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      // }
+
+      // if (!globalMatch) {
+      //   return;
+      // }
+
+      let searchString = JSON.parse(filter);
+      return data.id.cellId.toString().trim().indexOf(searchString.cellId) !== -1 &&
+        data.id.boxId.toString().trim().toLowerCase().indexOf(searchString.boxId.toLowerCase()) !== -1 
+        && data.sampleNo.toString().trim().indexOf(searchString.sampleNo) !== -1;
+    }
+    return myFilterPredicate;
   }
 
 }
