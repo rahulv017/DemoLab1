@@ -25,14 +25,16 @@ export class FreezeTwentyComponent implements OnInit {
   ngOnInit() {
     this.service.getAllFrezeerTwentyData().subscribe(response => this.fetchData(response));
 
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      if(filter!=null || filter!=undefined)
+    /*this.dataSource.filterPredicate = function(data:FreezerData, filter: string): boolean {
+      if(data.labName)
       {
       return data.id.boxId.toLowerCase().includes(filter) || data.id.cellId.toString().includes(filter)
        || data.labName.toLowerCase().includes(filter) 
       || data.sampleNo.toString().includes(filter);
       }
-    }
+    }*/
+
+   // this.applyFilter
     
   }
 
@@ -86,16 +88,19 @@ export class FreezeTwentyComponent implements OnInit {
 
   applyFilter(filtervalue: string){
 
-    if(filtervalue){
+    //if(filtervalue){
 
     this.dataSource.filter= filtervalue.trim().toLowerCase();
-    }
+    //}
 
-  /**   this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.id.boxId.toLowerCase().includes(filter) || data.id.cellId.toString().includes(filter)
-       || data.labName.toLowerCase().includes(filter) 
-      || data.sampleNo.toString().includes(filter);
-      }*/
+     this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      
+      if((data.id.boxId && data.id.boxId.toLowerCase().includes(filter)) || (data.id.cellId && data.id.cellId.toString().includes(filter))
+       || (data.sampleNo && data.sampleNo.toString().includes(filter)) || (data.labName && data.labName.toLowerCase().includes(filter))) //data.labName.toLowerCase().includes(filter) 
+      //|| data.sampleNo.toString().includes(filter);
+              return true;
+            else return false;
+      }
   }
 
 }
