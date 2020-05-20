@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input (keyup)="applyFilter($event)"   [ngModel]="globalFilter" matInput placeholder="Filter">
+  <input (keyup)="applyFilter($event.target.value)"  matInput placeholder="Filter">
 </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -7,36 +7,18 @@
   
      
       <ng-container matColumnDef="Box">
-        <th mat-header-cell *matHeaderCellDef> Box No 
-          <div>
-            <mat-form-field>
-        <input matInput class="form-field" [formControl]="boxfilter" placeholder="BoxID Filter">
-      </mat-form-field>
-            </div>
-        </th>
+        <th mat-header-cell *matHeaderCellDef> Box No </th>
         <td mat-cell *matCellDef="let element"> {{element.id.boxId}} </td>
       </ng-container>
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="Cell">
-        <th mat-header-cell *matHeaderCellDef> Cell No 
-          <div>
-            <mat-form-field>
-        <input matInput class="form-field" [formControl]="cellfilter" placeholder="CellID Filter">
-      </mat-form-field>
-            </div>
-        </th>
+        <th mat-header-cell *matHeaderCellDef> Cell No </th>
         <td mat-cell *matCellDef="let element"> {{element.id.cellId}} </td>
       </ng-container>
   
       <ng-container matColumnDef="Sample">
-          <th mat-header-cell *matHeaderCellDef> Sample No
-            <div>
-              <mat-form-field>
-          <input matInput class="form-field" [formControl]="samplefilter" placeholder="Sample ID Filter">
-        </mat-form-field>
-              </div>
-          </th>
+          <th mat-header-cell *matHeaderCellDef> Sample No</th>
           <td mat-cell *matCellDef="let element"> {{element.sampleNo}} </td>
         </ng-container>
   
