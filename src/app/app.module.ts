@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatSelectModule} from '@angular/material/select';
@@ -105,6 +105,7 @@ import { BackgroundCohortComponent } from './background-cohort/background-cohort
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatCheckboxModule,
     MatSelectModule,
     MatRadioModule,
