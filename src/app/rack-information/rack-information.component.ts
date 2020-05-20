@@ -9,6 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
 import { TableUtil } from "../tableUtil";
 import * as XLSX from "xlsx";
+import { FormControl } from '@angular/forms';
 
 export interface Lab{
   lab:string;
@@ -27,6 +28,17 @@ export class RackInformationComponent implements OnInit {
   enter_sample:number;
   enter_lab:string;
 
+  boxfilter = new FormControl('');
+  rackfilter = new FormControl('');
+  samplefilter=new FormControl('');
+  canisterfilter=new FormControl('');
+  globalFilter = '';
+  filteredValues = {
+    canId:'',rackId: '', boxId: '',cellId:'', sampleNo: '',
+    labName: ''
+  };
+
+
   constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) 
   {}
   
@@ -41,6 +53,27 @@ export class RackInformationComponent implements OnInit {
     
     this.dataSource = new MatTableDataSource<RackSample>(response);
     this.dataSource.paginator = this.paginator;
+    this.boxfilter.valueChanges.subscribe((boxFilterValue) => {
+      this.filteredValues['boxId'] = boxFilterValue;
+      this.dataSource.filter = JSON.stringify(this.filteredValues);
+    });
+
+    this.rackfilter.valueChanges.subscribe((cellFilterValue) => {
+      this.filteredValues['rackId'] = cellFilterValue;
+      this.dataSource.filter = JSON.stringify(this.filteredValues);
+    });
+
+    this.canisterfilter.valueChanges.subscribe((cellFilterValue) => {
+      this.filteredValues['canId'] = cellFilterValue;
+      this.dataSource.filter = JSON.stringify(this.filteredValues);
+    });
+
+    this.samplefilter.valueChanges.subscribe((sampleFilterValue) => {
+      this.filteredValues['sampleNo'] = sampleFilterValue;
+      this.dataSource.filter = JSON.stringify(this.filteredValues);
+    });
+
+    this.dataSource.filterPredicate = this.customFilterPredicate();
   }
 
   exportTable() {
@@ -84,6 +117,30 @@ export class RackInformationComponent implements OnInit {
      // this.router.navigate(['/enterSample']);
   
     
+
+
+     customFilterPredicate() {
+      const myFilterPredicate = (data: RackSample, filter: string): boolean => {
+        // var globalMatch = !this.globalFilter;
+  
+        // if (this.globalFilter) {
+        //   // search all text fields
+        //   globalMatch = data.id.boxId.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+        // }
+  
+        // if (!globalMatch) {
+        //   return;
+        // }
+  
+        let searchString = JSON.parse(filter);
+         if((data.id.canId && data.id.canId.toString().trim().toLowerCase().indexOf(searchString.canId.toLowerCase()) !== -1) &&
+          (data.id.boxId && data.id.boxId.toString().trim().toLowerCase().indexOf(searchString.boxId.toLowerCase()) !== -1) 
+          && (data.sampleNo&& data.sampleNo.toString().trim().indexOf(searchString.sampleNo) !== -1) && (data.id.rackId && data.id.rackId.toString().trim().toLowerCase().indexOf(searchString.rackId.toLowerCase()) !== -1))
+          return true;
+          else return false;
+      }
+      return myFilterPredicate;
+    }
   onSave()
   {
 
@@ -102,40 +159,14 @@ export class RackInformationComponent implements OnInit {
   }
 
 }
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+
 const ELE: RackSample[]=[
   {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123},
   {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123},
   {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123},
   {id:{canId:"C1",boxId:"B1",rackId:"R1",cellId:1},labName:"PBMC",sampleNo:123}
 ]
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
-];
+
 
  
 
