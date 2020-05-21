@@ -112,10 +112,13 @@ dataSource;
     this.dataSource.filter= filtervalue.trim().toLowerCase();
 
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.id.sampleNo.toString().includes(filter)  || data.id.dNo.toLowerCase().includes(filter) || data.doneBy.toLowerCase().includes(filter)
-       || data.count.toLowerCase().includes(filter) 
-      || data.remarks.toLowerCase().includes(filter) || data.dateP.toString().includes(filter)
-     || data.dateC.toString().includes(filter);
+      if((data.id.sampleNo && data.id.sampleNo.toString().includes(filter))  || (data.id.dNo && data.id.dNo.toLowerCase().includes(filter)) || (data.doneBy && data.doneBy.toLowerCase().includes(filter))
+       || (data.count && data.count.toLowerCase().includes(filter)) 
+      || (data.remarks && data.remarks.toLowerCase().includes(filter)) ||(data.dateP && data.dateP.toString().includes(filter))
+     || (data.dateC && data.dateC.toString().includes(filter)))
+     return true;
+     else
+     return false;
 
   }
 

@@ -24,7 +24,7 @@ export class FreezeTwentyComponent implements OnInit {
   boxfilter = new FormControl('');
   cellfilter = new FormControl('');
   samplefilter=new FormControl('');
-  globalFilter = '';
+ // globalFilter = '';
   filteredValues = {
     boxId: '', cellId: '', sampleNo: '',
     labName: ''
@@ -111,7 +111,7 @@ export class FreezeTwentyComponent implements OnInit {
 
   }
 
-  applyFilter(filtervalue: string){
+ /* applyFilter(filtervalue: string){
 
     //if(filtervalue){
 
@@ -126,7 +126,7 @@ export class FreezeTwentyComponent implements OnInit {
               return true;
             else return false;
       }
-  }
+  }*/
 
   customFilterPredicate() {
     const myFilterPredicate = (data: FreezerData, filter: string): boolean => {

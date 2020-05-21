@@ -32,7 +32,7 @@ export class RackInformationComponent implements OnInit {
   rackfilter = new FormControl('');
   samplefilter=new FormControl('');
   canisterfilter=new FormControl('');
-  globalFilter = '';
+  //globalFilter = '';
   filteredValues = {
     canId:'',rackId: '', boxId: '',cellId:'', sampleNo: '',
     labName: ''
@@ -146,7 +146,7 @@ export class RackInformationComponent implements OnInit {
 
   }
 
-  applyFilter(filtervalue: string){
+  /*applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
 
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
@@ -156,7 +156,7 @@ export class RackInformationComponent implements OnInit {
 
   }
 
-  }
+  }*/
 
 }
 

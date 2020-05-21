@@ -23,8 +23,8 @@ export class FreezeEightyComponent implements OnInit {
   enter_lab:string;
   boxfilter = new FormControl('');
   cellfilter = new FormControl('');
-  samplefilter=new FormControl('')
-  globalFilter = '';
+  samplefilter=new FormControl('');
+  //globalFilter = '';
   filteredValues = {
     boxId: '', cellId: '', sampleNo: '',
     labName: ''
@@ -107,24 +107,24 @@ export class FreezeEightyComponent implements OnInit {
   //     || data.sampleNo.toString().includes(filter);
   //     }
   // }
-  applyFilter(filter) {
+  /*applyFilter(filter) {
     this.globalFilter = filter;
     this.dataSource.filter = JSON.stringify(this.filteredValues);
-  }
+  }*/
 
 
   customFilterPredicate() {
     const myFilterPredicate = (data: FreezerData, filter: string): boolean => {
-      var globalMatch = !this.globalFilter;
+     // var globalMatch = !this.globalFilter;
 
-      if (this.globalFilter) {
+     // if (this.globalFilter) {
         // search all text fields
-        globalMatch = data.id.boxId.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
-      }
+      //  globalMatch = data.id.boxId.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      //}
 
-      if (!globalMatch) {
-        return;
-      }
+      //if (!globalMatch) {
+     //   return;
+     // }
 
       let searchString = JSON.parse(filter);
       return data.id.cellId.toString().trim().indexOf(searchString.cellId) !== -1 &&

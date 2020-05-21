@@ -199,12 +199,15 @@ export class DNALABComponent implements OnInit {
   
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.id.dNo.toLowerCase().includes(filter) || data.id.sampleNo.toString().includes(filter) 
-       || data.doneBy.toLowerCase().includes(filter) || data.conc.toLowerCase().includes(filter) 
-      || data.totalVol.toLowerCase().includes(filter) || data.a260.toLowerCase().includes(filter) || data.a280.toLowerCase().includes(filter)
-      || data.a260By330.toLowerCase().includes(filter) || data.a260By280.toLowerCase().includes(filter) || data.catalogue.toLowerCase().includes(filter);
-      
+
+    this.dataSource.filterPredicate = function(data:DNAData, filter: string): boolean {
+      if((data.id.dNo && data.id.dNo.toLowerCase().includes(filter)) || (data.id.sampleNo && data.id.sampleNo.toString().includes(filter))|| (data.date&& data.date.toString().includes(filter))
+       ||(data.doneBy && data.doneBy.toLowerCase().includes(filter)) || (data.conc && data.conc.toLowerCase().includes(filter))
+      || (data.totalVol && data.totalVol.toLowerCase().includes(filter)) || (data.a260 && data.a260.toLowerCase().includes(filter)) || (data.a280 && data.a280.toLowerCase().includes(filter))
+      || (data.a260By330 && data.a260By330.toLowerCase().includes(filter)) || (data.a260By280 && data.a260By280.toLowerCase().includes(filter)) || (data.catalogue && data.catalogue.toLowerCase().includes(filter)))
+      return true;
+      else
+      return false;
     }
 
   }
@@ -215,3 +218,5 @@ const ELE:DNAData[]=[
   {id:{dNo:"D256",sampleNo:14256},date:new Date(),doneBy:"SN",conc:"12",totalVol:"12",a260:"1.2",a280:"1.3",a260By330:"1.3",
       a260By280:"1.40",catalogue:"yes",status:true }
 ]
+
+

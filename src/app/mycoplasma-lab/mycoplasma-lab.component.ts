@@ -83,11 +83,14 @@ dataSource;
   applyFilter(filtervalue: string){
     this.dataSource.filter= filtervalue.trim().toLowerCase();
 
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.id.sampleNo.toString().includes(filter)  || data.id.dNo.toLowerCase().includes(filter) || data.a.toLowerCase().includes(filter) || data.b.toLowerCase().includes(filter) 
-      || data.bBya.toLowerCase().includes(filter) || data.user.toLowerCase().includes(filter) || 
-     data.result.toLowerCase().includes(filter) || data.machine.toLowerCase().includes(filter) || data.passage.toLowerCase().includes(filter)
-     || data.date.toString().includes(filter);
+    this.dataSource.filterPredicate = function(data:Mycoplasma, filter: string): boolean {
+      if((data.id.sampleNo && data.id.sampleNo.toString().includes(filter) ) || (data.id.dNo && data.id.dNo.toLowerCase().includes(filter)) || (data.a && data.a.toLowerCase().includes(filter)) || (data.b && data.b.toLowerCase().includes(filter)) 
+      || (data.bBya && data.bBya.toLowerCase().includes(filter)) || (data.user && data.user.toLowerCase().includes(filter)) || 
+     (data.result && data.result.toLowerCase().includes(filter)) || (data.machine && data.machine.toLowerCase().includes(filter)) || (data.passage && data.passage.toLowerCase().includes(filter))
+     || (data.date && data.date.toString().includes(filter)))
+     return true;
+     else
+     return false;
 
   }
 

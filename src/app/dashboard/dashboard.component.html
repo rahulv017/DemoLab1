@@ -1,8 +1,8 @@
 
 
-<mat-form-field>
+<!--<mat-form-field>
   <input (keyup)="applyFilter($event.target.value)"  matInput placeholder="Filter">
-</mat-form-field>
+</mat-form-field>-->
 
 <div class="export-container">
 	<button mat-raised-button color="primary" (click)="exportTable()">Export Table</button>
@@ -12,13 +12,24 @@
   
       
     <ng-container matColumnDef="can_id">
-      <th mat-header-cell *matHeaderCellDef > Cannister ID </th>
+      <th mat-header-cell *matHeaderCellDef > Cannister ID
+        <div>
+          <mat-form-field>
+      <input matInput class="form-field" [formControl]="canfilter" name = "canisterf" placeholder="Cannister Filter">
+    </mat-form-field>
+          </div> </th>
       <td mat-cell *matCellDef="let element"> {{element.cannister}} </td>
     </ng-container>
   
    
     <ng-container matColumnDef="rack_id">
-      <th mat-header-cell *matHeaderCellDef > Rack Number </th>
+      <th mat-header-cell *matHeaderCellDef > Rack Number 
+        <div>
+          <mat-form-field>
+      <input matInput class="form-field" [formControl]="rackfilter" name = "rackf" placeholder="Rack Filter">
+    </mat-form-field>
+          </div>
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.rack}} </td>
     </ng-container>
   
