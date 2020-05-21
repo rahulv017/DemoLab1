@@ -238,6 +238,12 @@ export class RackServiceService {
     return this.http.post<FreezerData[]>(url,data);
   }
 
+  fetchCyroVials(data)
+  {
+    let url="https://localhost:8443/fetch80fridge"; 
+    return this.http.post<number>(url,data);
+  }
+
   removeRackEntry(data:RackSample)
   {
     let url="https://localhost:8443/fetch80fridge"; 

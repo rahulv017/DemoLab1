@@ -17,6 +17,8 @@ import { TableUtil } from "../tableUtil";
 import * as XLSX from "xlsx";
 import { EnterPBMCComponent } from '../enter-pbmc/enter-pbmc.component';
 import { PBMCDATA } from '../pbmcdata';
+import { RackId } from '../RackId';
+import { FreezerId } from '../freezer-id';
 
 
 @Component({
@@ -57,24 +59,54 @@ dataSource;
 
   }
 
-  onCellTrack(element)
+  onCellTrack(element:PBMCDATA)
   {
-
+    let JsonData={"sampleNo":element.id.sampleNo,"labName":"PBMC(CellTrack)"};
+    this.service.fetchRackCanister(JsonData).subscribe(response => this.printData(response));
   }
 
-  onMirror(element)
+  onMirror(element:PBMCDATA)
   {
-
+    let JsonData={"sampleNo":element.id.sampleNo,"labName":"PBMC(Mirror)"};
+    this.service.fetchRackCanister(JsonData).subscribe(response => this.printData(response));
   }
 
-  onCyro(element)
+  onCyro(element:PBMCDATA)
   {
+    let JsonData={"sampleNo":element.id.sampleNo};
+    this.service.fetchCyroVials(JsonData).subscribe(response =>
+         alert(`Count of cyrovials is ${response}`));
     
   }
 
-  onBloodFreeze(element)
+  onBloodFreeze(element:PBMCDATA)
   {
+    let JsonData={"sampleNo":element.id.sampleNo,"labName":"BloodFreeze"};
+        
+    this.service.fetchFridge80(JsonData).subscribe(response => this.printData1(response));
+  }
 
+  printData(response:RackSample[])
+  {
+      let JsonData=new Array<RackId>();
+      console.log(response);
+      let i=0;
+      for(i=0;i<response.length;i++)
+      {
+        JsonData.push(response[i].id);
+      }
+      alert(JSON.stringify(JsonData));
+  }
+
+  printData1(response:FreezerData[]){
+    let i;
+    let JsonData = new Array<FreezerId>();
+    console.log(response);
+    for(i=0;i<response.length;i++)
+    {
+      JsonData.push(response[i].id);
+    }
+    alert(JSON.stringify(JsonData));
   }
 
   onEdit(element:PBMCDATA)
