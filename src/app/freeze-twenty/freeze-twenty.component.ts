@@ -77,7 +77,7 @@ export class FreezeTwentyComponent implements OnInit {
       data.labName="";
       data.sampleNo=0;
       this.dataSource.paginator = this.paginator;
-      this.service.removeFridgeEntry(data).subscribe();
+      this.service.removeFridge20Entry(data).subscribe();
       alert("Deleted!!");
     }
 

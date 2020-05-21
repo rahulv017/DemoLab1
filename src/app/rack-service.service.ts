@@ -244,7 +244,13 @@ export class RackServiceService {
     return this.http.put(url,data);
   }
 
-  removeFridgeEntry(data:FreezerData)
+  removeFridge20Entry(data:FreezerData)
+  {
+    let url="https://localhost:8443/fetch80fridge"; 
+    return this.http.put(url,data);
+  }
+
+  removeFridge80Entry(data:FreezerData)
   {
     let url="https://localhost:8443/fetch80fridge"; 
     return this.http.put(url,data);
