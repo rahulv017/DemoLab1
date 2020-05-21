@@ -238,6 +238,18 @@ export class RackServiceService {
     return this.http.post<FreezerData[]>(url,data);
   }
 
+  removeRackEntry(data:RackSample)
+  {
+    let url="https://localhost:8443/fetch80fridge"; 
+    return this.http.put(url,data);
+  }
+
+  removeFridgeEntry(data:FreezerData)
+  {
+    let url="https://localhost:8443/fetch80fridge"; 
+    return this.http.put(url,data);
+  }
+
   
 
   

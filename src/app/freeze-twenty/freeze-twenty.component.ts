@@ -71,9 +71,16 @@ export class FreezeTwentyComponent implements OnInit {
   }
   onEdit(data:RackSample)
   {
-     data.labName="";
-     data.sampleNo=0;
-     this.dataSource.paginator = this.paginator;
+    let message=confirm("This operation is irreversible.Click OK to continue");
+    if(message)
+    {
+      data.labName="";
+      data.sampleNo=0;
+      this.dataSource.paginator = this.paginator;
+      this.service.removeFridgeEntry(data).subscribe();
+      alert("Deleted!!");
+    }
+
 
   }
 

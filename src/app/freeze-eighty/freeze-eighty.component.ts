@@ -57,11 +57,17 @@ export class FreezeEightyComponent implements OnInit {
 
     this.dataSource.filterPredicate = this.customFilterPredicate();
   }
-  onEdit(data:RackSample)
+  onEdit(data:FreezerData)
   {
-     data.labName="";
-     data.sampleNo=0;
-     this.dataSource.paginator = this.paginator;
+    let message=confirm("This operation is irreversible.Click OK to continue");
+    if(message)
+    {
+      data.labName="";
+      data.sampleNo=0;
+      this.dataSource.paginator = this.paginator;
+      this.service.removeFridgeEntry(data).subscribe();
+      alert("Deleted!!");
+    }
 
   }
 
