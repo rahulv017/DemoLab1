@@ -135,7 +135,7 @@ export class RackInformationComponent implements OnInit {
         let searchString = JSON.parse(filter);
          if((data.id.canId && data.id.canId.toString().trim().toLowerCase().indexOf(searchString.canId.toLowerCase()) !== -1) &&
           (data.id.boxId && data.id.boxId.toString().trim().toLowerCase().indexOf(searchString.boxId.toLowerCase()) !== -1) 
-          && (data.sampleNo&& data.sampleNo.toString().trim().indexOf(searchString.sampleNo) !== -1) && (data.id.rackId && data.id.rackId.toString().trim().toLowerCase().indexOf(searchString.rackId.toLowerCase()) !== -1))
+          && (data.sampleNo.toString().trim().indexOf(searchString.sampleNo) !== -1) && (data.id.rackId && data.id.rackId.toString().trim().toLowerCase().indexOf(searchString.rackId.toLowerCase()) !== -1))
           return true;
           else return false;
       }
