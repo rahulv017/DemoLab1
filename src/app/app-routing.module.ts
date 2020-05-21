@@ -42,13 +42,13 @@ const routes: Routes = [
   {path:'Geneprint',component:GeneprintLabComponent, canActivate:[AuthGaurdService]},
   {path:'Karotyping',component:KarotypingComponent, canActivate:[AuthGaurdService]},
   {path:'PBMC',component:PBMCLABComponent, canActivate:[AuthGaurdService]},
-  { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
-  { path: 'filter', component: FilteringComponent, data: { title: 'Filtering Component' } },
-  { path: 'second', component: SecondComponent, data: { title: 'Second Component' } },
-  {path: 'breifView/:id',component:FourthComponentComponent},
-  {path: 'labView',component:ViewLabReportComponent},
-  {path: 'DecideDeep',component:DecideDeepTestComponent},
-  {path: 'updateDetails', component:UpdateBriefComponent}
+  { path: 'first', component: FirstComponent, data: { title: 'First Component' }, canActivate:[AuthGaurdService] },
+  { path: 'filter', component: FilteringComponent, data: { title: 'Filtering Component'},canActivate:[AuthGaurdService] },
+  { path: 'second', component: SecondComponent, data: { title: 'Second Component' },canActivate:[AuthGaurdService] },
+  {path: 'breifView/:id',component:FourthComponentComponent,canActivate:[AuthGaurdService]},
+  {path: 'labView',component:ViewLabReportComponent,canActivate:[AuthGaurdService]},
+  {path: 'DecideDeep',component:DecideDeepTestComponent,canActivate:[AuthGaurdService]},
+  {path: 'updateDetails', component:UpdateBriefComponent,canActivate:[AuthGaurdService]}
 ];
 
 @NgModule({
