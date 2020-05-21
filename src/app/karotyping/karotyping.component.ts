@@ -1,8 +1,17 @@
-
 import { Component, OnInit,ViewChild,AfterViewInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType} from '@angular/common/http';
+
+import {MatPaginator} from '@angular/material/paginator';
+
+import { RackServiceService } from '../rack-service.service';
+import { RackSample } from '../rack-sample';
+import { Router } from '@angular/router';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
+import { KaryotypeData } from '../karyotypedata';
 
 @Component({
   selector: 'app-karotyping',
@@ -17,10 +26,25 @@ export class KarotypingComponent implements OnInit {
   pdfSrc: string = '/pdf-test.pdf';
   
 
-  constructor( private http: HttpClient,) { }
-  
-  ngOnInit(): void {
+  displayedColumns: string[] = [ 'dno', 'sample','upload','view'];
+  dataSource;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  enter_sample:number;
+  enter_lab:string;
+
+  constructor(public service:RackServiceService,public router:Router,private http: HttpClient,) { }
+  ngOnInit() {
+    this.service.getALLKaryotypeData().subscribe(response => this.fetchData(response));
+    
   }
+
+  fetchData(response)
+  {
+    
+    this.dataSource = new MatTableDataSource<KaryotypeData>(response);
+    this.dataSource.paginator = this.paginator;
+  }
+
 
   upload(files: File[]){
     //pick from one of the 4 styles of file uploads below
