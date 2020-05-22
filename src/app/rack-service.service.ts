@@ -194,6 +194,12 @@ export class RackServiceService {
     let url="https://localhost:8443/getgeneprint"; 
     return this.http.get<GeneData[]>(url);
   }
+
+  getAllKaryotypeData(){
+    let url="https://localhost:8443/getgeneprint"; 
+    return this.http.get<GeneData[]>(url);
+  }
+
   getALLPBMCData()
   {
  //   const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
@@ -240,7 +246,8 @@ export class RackServiceService {
 
   fetchCyroVials(data)
   {
-    let url="https://localhost:8443/fetch80fridge"; 
+    console.log(data);
+    let url="https://localhost:8443/fetchcryovials"; 
     return this.http.post<number>(url,data);
   }
 

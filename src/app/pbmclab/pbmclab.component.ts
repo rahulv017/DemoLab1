@@ -74,6 +74,7 @@ dataSource;
   onCyro(element:PBMCDATA)
   {
     let JsonData={"sampleNo":element.id.sampleNo};
+    console.log(element.id.sampleNo);
     this.service.fetchCyroVials(JsonData).subscribe(response =>
          alert(`Count of cyrovials is ${response}`));
     
