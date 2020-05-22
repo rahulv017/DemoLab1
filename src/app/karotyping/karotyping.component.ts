@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild,AfterViewInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType} from '@angular/common/http';
+import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpHeaders} from '@angular/common/http';
 
 import {MatPaginator} from '@angular/material/paginator';
 
@@ -55,9 +55,13 @@ export class KarotypingComponent implements OnInit {
   
   //this will fail since file.io dosen't accept this type of upload
   //but it is still possible to upload a file with this style
-  uploadAndProgressSingle(file: File,element:KaryotypeData){    
-    let JsonData={"sampleNo":element.id.sampleNo,"file":file};
-    this.http.put('https://file.io', JsonData, {reportProgress: true, observe: 'events'})
+  uploadAndProgressSingle(file: File,element:KaryotypeData){
+    const uploadPdfData = new FormData();
+    uploadPdfData.append('file',file);
+    uploadPdfData.append('sampleNo',element.id.sampleNo.toString());    
+    //let pdfFile={"sampleNo":element.id.sampleNo,"file":file};
+    //const header:HttpHeaders=new HttpHeaders({'enctype':'multipart/form-data'})
+    this.http.put('https://localhost:8443/uploadFile', uploadPdfData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.percentDone = Math.round(100 * event.loaded / event.total);
