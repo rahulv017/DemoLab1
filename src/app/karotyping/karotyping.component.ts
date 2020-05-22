@@ -73,9 +73,16 @@ export class KarotypingComponent implements OnInit {
                   alert('Got an error !! file Not uploaded')});
   }
 
-  onAdd()
+  onAdd(element:KaryotypeData)
   {
-
+    this.http.post('https://localhost:8443/uploadFile',element.id.sampleNo).subscribe(data => this.downloadFile(data)),//console.log(data),
+    error => console.log('Error downloading the file.'),
+    () => console.info('OK');
+  }
+  downloadFile(data) {
+    const blob = new Blob([data], { type: 'text/pdf' });
+    const url= window.URL.createObjectURL(blob);
+    window.open(url);
   }
 }
 
