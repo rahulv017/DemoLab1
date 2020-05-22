@@ -246,23 +246,23 @@ export class RackServiceService {
 
   removeRackEntry(data:RackSample)
   {
-    let url="https://localhost:8443/fetch80fridge"; 
+    let url="https://localhost:8443/removerack"; 
     return this.http.put(url,data);
   }
 
   removeFridge20Entry(data:FreezerData)
   {
-    let url="https://localhost:8443/fetch80fridge"; 
+    let url="https://localhost:8443/removefridge20"; 
     return this.http.put(url,data);
   }
 
   removeFridge80Entry(data:FreezerData)
   {
-    let url="https://localhost:8443/fetch80fridge"; 
+    let url="https://localhost:8443/removefridge80"; 
     return this.http.put(url,data);
   }
 
-  
+
 
   
 }
