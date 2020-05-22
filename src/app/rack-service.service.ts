@@ -13,6 +13,7 @@ import { DNAData } from './dnadata';
 import { PlasmaSerum } from './plasma-serum';
 import { GeneData } from './gene-data';
 import { PBMCDATA } from './pbmcdata';
+import { KaryotypeData } from './karyotypedata';
 
 @Injectable({
   providedIn: 'root'
@@ -197,7 +198,7 @@ export class RackServiceService {
 
   getAllKaryotypeData(){
     let url="https://localhost:8443/getgeneprint"; 
-    return this.http.get<GeneData[]>(url);
+    return this.http.get<KaryotypeData[]>(url);
   }
 
   getALLPBMCData()
