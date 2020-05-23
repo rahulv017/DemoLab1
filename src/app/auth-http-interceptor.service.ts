@@ -31,14 +31,26 @@ export class AuthHttpInterceptorService implements HttpInterceptor {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
     } else {
-      alert("Invalid Credentials or Session Expired")
-      sessionStorage.clear();
-      location.reload();
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+      if(error instanceof HttpErrorResponse)
+      {
+        if(error.message=="File not found")
+        {
+          alert('FIle Not found error');
+        }
+        else{
+          alert("Invalid Credentials or Session Expired")
+          sessionStorage.clear();
+          location.reload();
+          // The backend returned an unsuccessful response code.
+          // The response body may contain clues as to what went wrong,
+          console.error(
+            `Backend returned code ${error.status}, ` +
+            `body was: ${error.error}`);
+        }
+        
+
+      }
+      
     }
     // return an observable with a user-facing error message
     return throwError(
