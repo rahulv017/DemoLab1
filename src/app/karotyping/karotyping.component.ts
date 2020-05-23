@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpHeaders} from '@angular/common/http';
 
 import {MatPaginator} from '@angular/material/paginator';
-
+import * as fileSaver from 'file-saver';
 import { RackServiceService } from '../rack-service.service';
 import { RackSample } from '../rack-sample';
 import { Router } from '@angular/router';
@@ -75,13 +75,18 @@ export class KarotypingComponent implements OnInit {
 
   onAdd(element:KaryotypeData)
   {
-    this.http.post('https://localhost:8443/uploadFile',element.id.sampleNo).subscribe(data => this.downloadFile(data)),//console.log(data),
+    this.http.post('https://localhost:8443/uploadFile',element.id.sampleNo,{responseType: 'blob'}).subscribe(data => this.downloadFile(data)),//console.log(data),
     error => console.log('Error downloading the file.'),
     () => console.info('OK');
   }
   downloadFile(data) {
-    const blob = new Blob([data], { type: 'text/pdf' });
-    const url= window.URL.createObjectURL(blob);
+   // const blob = new Blob([data.blob()], { type: 'text/pdf' });
+   // const url= window.URL.createObjectURL(blob);
+    let blob:any = new Blob([data.blob()], { type: 'text/text; charset=utf-8' });
+			const url= window.URL.createObjectURL(blob);
+			window.open(url);
+			window.location.href = data.url;
+			fileSaver.saveAs(blob, 'xyz.pdf');
     window.open(url);
   }
 }
