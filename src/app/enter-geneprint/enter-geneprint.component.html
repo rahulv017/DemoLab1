@@ -7,6 +7,9 @@
     Enter Date: <input type="date" value="date" name="date" [(ngModel)]="labii.date"> <br />
     LCL Geneprint: <input type="text" value="lcl" name="lcl" [(ngModel)]="labii.lcl"> <br />
     
+    <div *ngIf="labii.isMatch"><small >It's Matching</small></div> 
+
+    <div *ngIf="!labii.isMatch">
     Manually Matched :
 <mat-form-field>
     <mat-select [(value)]="labii.isMatch">
@@ -16,6 +19,7 @@
         
     </mat-select>
 </mat-form-field>
+</div>
 <br />
 
     IPSC: <input type="text" value="ipsc" name="ipsc" [(ngModel)]="labii.ipsc"> <br />

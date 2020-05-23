@@ -24,6 +24,8 @@ export class EnterGeneprintComponent implements OnInit {
    labii=labi;
   
   ngOnInit() {
+    if(this.labii.lcl==this.labii.blood)
+    this.labii.isMatch="yes";
     this.labii.blood=this.data.blood;
      this.labii.date=this.data.date;
      this.labii.lcl=this.data.lcl;
