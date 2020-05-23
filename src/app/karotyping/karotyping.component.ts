@@ -75,19 +75,31 @@ export class KarotypingComponent implements OnInit {
 
   onAdd(element:KaryotypeData)
   {
-    this.http.post('https://localhost:8443/uploadFile',element.id.sampleNo,{responseType: 'blob'}).subscribe(data => this.downloadFile(data)),//console.log(data),
+    let headers = new HttpHeaders();
+    let jsonData = {"sampleNo":element.id.sampleNo};
+    headers = headers.append('Accept', 'application/pdf; charset=utf-8');
+    this.http.post('https://localhost:8443/downloadfile',jsonData,{
+      headers: headers,
+      observe: 'response',
+      responseType: 'blob'
+    }).subscribe(response => {const filename = response.headers.get('filename');
+    this.saveFile(response.body, filename);}),//console.log(data),
     error => console.log('Error downloading the file.'),
     () => console.info('OK');
   }
   downloadFile(data) {
    // const blob = new Blob([data.blob()], { type: 'text/pdf' });
    // const url= window.URL.createObjectURL(blob);
-    let blob:any = new Blob([data.blob()], { type: 'text/text; charset=utf-8' });
+    let blob:any = new Blob([data], { type: 'application/pdf; charset=utf-8' });
 			const url= window.URL.createObjectURL(blob);
 			window.open(url);
 			window.location.href = data.url;
 			fileSaver.saveAs(blob, 'xyz.pdf');
     window.open(url);
+  }
+  saveFile(data: any, filename?: string) {
+    const blob = new Blob([data], {type: 'application/pdf; charset=utf-8'});
+    fileSaver.saveAs(blob, filename);
   }
 }
 
