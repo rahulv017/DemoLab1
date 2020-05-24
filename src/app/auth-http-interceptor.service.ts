@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse, HttpRespo
 import { catchError, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +32,20 @@ export class AuthHttpInterceptorService implements HttpInterceptor {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
     } else {
+      console.log("Inside else");
       if(error instanceof HttpErrorResponse)
       {
-        if(error.message=="File not found")
+        let errorMessage = `Error Code: ${error.status}\nUrl: ${error.url}`;
+        console.log(HttpErrorResponse.name);
+        console.error(
+          `Backend returned code ${error.status}, ` +
+          `body was: ${error.error}`);
+        console.log(errorMessage);
+        console.log(JSON.stringify(error));
+        console.log(error.headers.get("body"));
+        if(error.url==="https://localhost:8443/downloadfile")
         {
-          alert('FIle Not found error');
+          alert('FIle Not found');
         }
         else{
           alert("Invalid Credentials or Session Expired")
