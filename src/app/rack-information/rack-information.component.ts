@@ -1,9 +1,10 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, Input, OnInit,ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { RackServiceService } from '../rack-service.service';
 import { RackSample } from '../rack-sample';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
@@ -39,12 +40,14 @@ export class RackInformationComponent implements OnInit {
   };
 
 
-  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) 
+  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog,private appService: AppService) 
   {}
   
   ngOnInit() {
    // this.service.authenticate().subscribe(response => this.service.JWT = response);
     this.service.getAllRackData().subscribe(response => this.fetchData(response));
+
+    this.appService.setTitle('Rack Information');
     
   }
 

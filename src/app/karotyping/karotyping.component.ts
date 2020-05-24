@@ -1,7 +1,8 @@
-import { Component, OnInit,ViewChild,AfterViewInit} from '@angular/core';
+import { Component, Input, OnInit,ViewChild,AfterViewInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType, HttpHeaders} from '@angular/common/http';
+import { AppService } from '../app.service';
 
 import {MatPaginator} from '@angular/material/paginator';
 import * as fileSaver from 'file-saver';
@@ -32,9 +33,11 @@ export class KarotypingComponent implements OnInit {
   enter_sample:number;
   enter_lab:string;
   uploadSuccess=false;
-  constructor(public service:RackServiceService,public router:Router,private http: HttpClient,) { }
+  constructor(public service:RackServiceService,public router:Router,private appService: AppService,private http: HttpClient,) { }
   ngOnInit() {
     this.service.getAllKaryotypeData().subscribe(response => this.fetchData(response));
+
+    this.appService.setTitle('KaryoTyping');
     
   }
 

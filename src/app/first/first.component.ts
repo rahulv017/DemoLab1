@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {User} from  '../User'
 import { InputServiceService } from '../input-service.service';
 import { Router } from '@angular/router';
 import { TransferUserService } from '../TransferUserService';
 import {MatTableDataSource} from '@angular/material/table';
 import { Dashboard } from '../Dashboard'
+import { AppService } from '../app.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class FirstComponent implements OnInit {
    dataSource;
 
   displayedColumns:string[];
-  constructor(private inputS:InputServiceService,private router:Router,private transfer:TransferUserService) {
+  constructor(private inputS:InputServiceService,private router:Router,private transfer:TransferUserService,private appService: AppService) {
    this.displayedColumns = ['Brief','Deep','Dementia','Addiction','Bipolar','OCD','Schizophrenia','Population'];
 
    }
@@ -42,6 +43,8 @@ export class FirstComponent implements OnInit {
   ngOnInit(): void {
 
     this.fetchData();
+
+    this.appService.setTitle('DashBoard');
   }
 
 

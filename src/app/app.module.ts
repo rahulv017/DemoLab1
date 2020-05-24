@@ -67,6 +67,8 @@ import { ViewLabReportComponent } from './view-lab-report/view-lab-report.compon
 import { UserServiceService } from './user-service.service';
 import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
 import { BackgroundCohortComponent } from './background-cohort/background-cohort.component';
+import { AppService } from './app.service';
+
 
 @NgModule({
   declarations: [
@@ -133,7 +135,7 @@ import { BackgroundCohortComponent } from './background-cohort/background-cohort
     
   ],
   entryComponents:[EnterDNAComponent,EnterGeneprintComponent,EnterPBMCComponent],
-  providers: [CellData,RackSample,Mycoplasma,DashModel,LabLinking,TransferUserService,UserServiceService,RowFilter,ColFilterService,Status,Deep,{provide:HTTP_INTERCEPTORS,useClass:AuthHttpInterceptorService,multi:true}],
+  providers: [CellData,RackSample,Mycoplasma,AppService,DashModel,LabLinking,TransferUserService,UserServiceService,RowFilter,ColFilterService,Status,Deep,{provide:HTTP_INTERCEPTORS,useClass:AuthHttpInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { RowFilter } from './RowFilter';
 import { ColFilterService } from '../col-filter.service';
 import { Router } from '@angular/router';
 import { InputServiceService } from '../input-service.service';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-filtering',
@@ -19,7 +20,7 @@ export class FilteringComponent implements OnInit {
   num;
   concanted:string='';
   name_list;
-  constructor(private rowUser:RowFilter,private userList:ColFilterService,private router:Router,private inputS:InputServiceService) {
+  constructor(private rowUser:RowFilter,private userList:ColFilterService,private router:Router,private inputS:InputServiceService,private appService: AppService) {
     this.rowUser=new RowFilter;
     this.name_list='';
     this.table=['Brief','Deep'];
@@ -115,7 +116,9 @@ export class FilteringComponent implements OnInit {
              this.router.navigate(['/second']);
    }
   
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.appService.setTitle('Filtering');
   }
 
 }

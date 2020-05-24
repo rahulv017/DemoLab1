@@ -1,10 +1,11 @@
 
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component,Input, OnInit,ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { RackServiceService } from '../rack-service.service';
 import { RackSample } from '../rack-sample';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {GeneData  } from '../gene-data'
@@ -27,10 +28,13 @@ export class GeneprintLabComponent implements OnInit {
   enter_lab:string;
   
   
-    constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
+    constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog,private appService: AppService) { }
   
     ngOnInit() {
       this.service.getALLGeneprintData().subscribe(response => this.fetchData(response));
+
+      this.appService.setTitle('GenePrint');
+
     }
     fetchData(response)
     {

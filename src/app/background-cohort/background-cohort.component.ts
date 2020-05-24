@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-background-cohort',
@@ -7,10 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./background-cohort.component.css']
 })
 export class BackgroundCohortComponent implements OnInit {
-
+  title: String;
   opened:boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private appService: AppService) {
     this.opened=false;
    }
 
@@ -18,6 +19,8 @@ export class BackgroundCohortComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.navigate(['/first']);
+    this.appService.getTitle().subscribe(appTitle => this.title = appTitle);
+  
   }
 
 }

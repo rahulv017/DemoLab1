@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input,OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { DashModel } from '../dash-model';
 import { RackServiceService } from '../rack-service.service';
 import { TableUtil } from "../tableUtil";
 import * as XLSX from "xlsx";
 import { FormControl } from '@angular/forms';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +27,7 @@ export class DashboardComponent implements OnInit {
   
   };
 
-  constructor(public dash:DashModel,public service : RackServiceService) {
+  constructor(public dash:DashModel,public service : RackServiceService,private appService: AppService) {
     this.data= new Array<DashModel>();
 
 
@@ -34,6 +35,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   this.service.getDashboardList().subscribe(response => this.fetchData(response));
+
+  this.appService.setTitle('Available Cells');
 
   }
   

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-background',
@@ -8,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class BackgroundComponent implements OnInit {
   opened:boolean;
+  title: String;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private appService: AppService) {
     this.opened=false;
    }
 
@@ -17,6 +19,7 @@ export class BackgroundComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.navigate(['/RackInformation'])
+    this.appService.getTitle().subscribe(appTitle => this.title = appTitle);
   }
 
 }

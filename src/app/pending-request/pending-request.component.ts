@@ -1,10 +1,11 @@
-import { Component, OnInit,ViewChild,AfterViewInit} from '@angular/core';
+import { Component,Input, OnInit,ViewChild,AfterViewInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { LabLinking } from '../lab-linking';
 import { RackServiceService } from '../rack-service.service';
 import {MatPaginator} from '@angular/material/paginator';
 import { EventEmitter } from 'protractor';
+import { AppService } from '../app.service';
 
 export class LabLink {
   ele:LabLinking;
@@ -34,12 +35,14 @@ export class PendingRequestComponent implements OnInit,AfterViewInit {
   
   }
     
-  constructor(public lablink:LabLinking,public service:RackServiceService) { }
+  constructor(public lablink:LabLinking,public service:RackServiceService,private appService: AppService) { }
 
   ngOnInit(): void {
     
     
     this.service.getALLPendingRequest().subscribe(response => this.fetchData(response) )
+
+    this.appService.setTitle('Pending Request');
   }
 
   fetchData(response:LabLinking[])

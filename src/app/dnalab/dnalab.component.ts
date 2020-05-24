@@ -1,10 +1,11 @@
 
-import { Component, OnInit,ViewChild, Output } from '@angular/core';
+import { Component,Input,OnInit,ViewChild, Output } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { RackServiceService } from '../rack-service.service';
 import { RackSample } from '../rack-sample';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
@@ -35,10 +36,12 @@ export class DNALABComponent implements OnInit {
   labs=['gDNA(LCL)','gDNA(Blood)','Plasma Serum'];
   fav_lab=this.labs[0];
 
-  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
+  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog,private appService: AppService) { }
   ngOnInit() {
     
     this.service.getALLDNALCLData().subscribe(response => this.fetchData(response));
+
+    this.appService.setTitle('DNA Lab');
     
     
   }

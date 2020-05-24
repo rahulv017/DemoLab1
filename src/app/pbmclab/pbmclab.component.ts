@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild} from '@angular/core';
+import { Component, Input,OnInit,ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { RackServiceService } from '../rack-service.service';
@@ -19,6 +19,7 @@ import { EnterPBMCComponent } from '../enter-pbmc/enter-pbmc.component';
 import { PBMCDATA } from '../pbmcdata';
 import { RackId } from '../RackId';
 import { FreezerId } from '../freezer-id';
+import { AppService } from '../app.service';
 
 
 @Component({
@@ -34,12 +35,14 @@ dataSource;
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
-  constructor(public dialog: MatDialog,public service:RackServiceService) { 
+  constructor(public dialog: MatDialog,public service:RackServiceService,private appService: AppService) { 
     
   }
 
   ngOnInit() {
     this.service.getALLPBMCData().subscribe(response => this.fetchData(response));
+
+    this.appService.setTitle('PBMC');
     
   }
 

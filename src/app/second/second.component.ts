@@ -11,6 +11,7 @@ import {Status} from '../status';
 import {MatPaginator} from '@angular/material/paginator';
 import { LabLink } from '../pending-request/pending-request.component';
 import { LabLinking } from '../lab-linking';
+import { AppService } from '../app.service';
 
 export interface PeriodicElement {
   name: string;
@@ -78,7 +79,7 @@ return data.name.toLowerCase().includes(filter) || data.symbol.toLowerCase().inc
 
 };
 
-constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router,private inputS:InputServiceService,private colS:ColFilterService) {
+constructor(private TransferS:TransferUserService,private UserS:UserServiceService,private router:Router,private inputS:InputServiceService,private colS:ColFilterService,private appService: AppService) {
   this.isLab=false;
   this.isOther=false;
   this.isSocio=false;
@@ -144,7 +145,7 @@ let i;
 // })
 // this.displayedCol=x;
 // console.log(this.displayedCol);
-
+this.appService.setTitle('Brief Table');
 }
 
 onSociodemo()
