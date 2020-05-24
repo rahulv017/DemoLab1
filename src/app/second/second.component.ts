@@ -43,6 +43,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class SecondComponent implements OnInit {
 
   color:string[]=["red","yellow","green"];
+  lab_status=["Sample Not collected","Sample Collected","Report Generated"];
   isSocio:boolean;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   isTest:boolean;

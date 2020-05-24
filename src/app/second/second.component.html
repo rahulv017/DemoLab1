@@ -220,7 +220,7 @@
     <ng-container matColumnDef="DNA"  class="example-item">
       <th mat-header-cell *matHeaderCellDef>DNA Status</th>
      
-      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element. dnaStatus]" >DNA Status</button></td>
+      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element. dnaStatus]" >{{lab_status[element.dnaStatus]}}</button></td>
       <!--<td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==1" [style.background-color]="color[1]" (click)="onEdit(element)">ClickMe!!</button></td>
       <td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==2" [style.background-color]="color[2]" (click)="onEdit(element)">ClickMe!!</button></td>-->
     </ng-container>
@@ -228,7 +228,7 @@
     <ng-container matColumnDef="PBMC"  class="example-item">
       <th mat-header-cell *matHeaderCellDef>PBMC Status</th>
      
-      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element.pbmncStatus ]" >PBMC Status</button></td>
+      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element.pbmncStatus ]" >{{lab_status[element.pbmncStatus]}}</button></td>
       <!--<td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==1" [style.background-color]="color[1]" (click)="onEdit(element)">ClickMe!!</button></td>
       <td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==2" [style.background-color]="color[2]" (click)="onEdit(element)">ClickMe!!</button></td>-->
     </ng-container>
@@ -236,7 +236,7 @@
     <ng-container matColumnDef="Geneprint"  class="example-item">
       <th mat-header-cell *matHeaderCellDef>Geneprint Status</th>
      
-      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element.geneprintStatus]" >Geneprint Status</button></td>
+      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element.geneprintStatus]" >{{lab_status[element.geneprintStatus]}}</button></td>
       <!--<td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==1" [style.background-color]="color[1]" (click)="onEdit(element)">ClickMe!!</button></td>
       <td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==2" [style.background-color]="color[2]" (click)="onEdit(element)">ClickMe!!</button></td>-->
     </ng-container>
@@ -244,7 +244,7 @@
     <ng-container matColumnDef="Mycoplasma"  class="example-item">
       <th mat-header-cell *matHeaderCellDef>Mycoplasma Status</th>
      
-      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element.mycoplasmaStatus]" >Mycoplasma Status</button></td>
+      <td mat-cell *matCellDef="let element"><button mat-button  [style.background-color]="color[element.mycoplasmaStatus]" >{{lab_status[element.mycoplasmaStatus]}}</button></td>
       <!--<td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==1" [style.background-color]="color[1]" (click)="onEdit(element)">ClickMe!!</button></td>
       <td mat-cell *matCellDef="let element"><button mat-button  *ngIf="element.dna_Status==2" [style.background-color]="color[2]" (click)="onEdit(element)">ClickMe!!</button></td>-->
     </ng-container>
