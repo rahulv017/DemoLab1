@@ -50,7 +50,8 @@ export class PendingRequestComponent implements OnInit,AfterViewInit {
     let i=0;
     for(i=0;i<response.length;i++)
     {
-      let JsonData={"ele":response[i],"sample":response[i].id.sampleNo}
+      //let JsonData={"ele":response[i],"sample":response[i].id.sampleNo}
+      let JsonData={"ele":response[i],"sample":0}
       this.lab.push(JsonData);
     }
        this.dataSource=new MatTableDataSource(this.lab);
