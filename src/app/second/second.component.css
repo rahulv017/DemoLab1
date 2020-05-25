@@ -13,7 +13,7 @@ table {
   display: table-cell;
   padding: 2px 10px;
   line-break: unset;
-  width: 100%;
+  /*width: 100%;*/
   white-space: nowrap;
   overflow:initial;
   vertical-align: middle;
