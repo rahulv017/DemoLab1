@@ -12,6 +12,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import { LabLink } from '../pending-request/pending-request.component';
 import { LabLinking } from '../lab-linking';
 import { AppService } from '../app.service';
+import { TableUtil } from "../tableUtil";
+import * as XLSX from "xlsx";
 
 export interface PeriodicElement {
   name: string;
@@ -190,6 +192,9 @@ fetchData(response:LabLinking[])
    this.dataSource= new MatTableDataSource(response);
 }
 
+exportTable() {
+  TableUtil.exportTableToExcel("ExportBrief");
+}
 
 }
 

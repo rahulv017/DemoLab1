@@ -42,3 +42,8 @@ table {
   height: 100%;
   writing-mode: vertical-lr;
 }
+
+.export-container {
+  text-align: right;
+  margin-bottom: 20px;
+}

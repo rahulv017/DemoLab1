@@ -3,10 +3,14 @@
 </mat-form-field>
 
 
+  
 <button mat-button (click)="onSociodemo()" >Personal Details</button>
 <button mat-button (click)="onTest()" >Test Details</button>
 <button mat-button (click)="onLabStatus()" >Lab Status Details</button>
-<button mat-button (click)="onOtherDetails()">Other Details</button>
+
+<div class="export-container">
+  <button mat-raised-button color="primary" (click)="exportTable()">Export Table</button>
+  </div>
 
 <div *ngIf="isSocio" >
 
@@ -17,7 +21,7 @@
   
 
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table id="ExportBrief" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
      <ng-container matColumnDef="ADBS_ID"  class="example-item" class="example-item">
       <th mat-header-cell *matHeaderCellDef>ADBS_ID</th>
@@ -101,7 +105,7 @@
   
 
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table id="ExportBrief" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="ADBS_ID"  class="example-item" class="example-item">
     <th mat-header-cell *matHeaderCellDef>ADBS_ID</th>
@@ -202,7 +206,7 @@
   <div class="cdk-virtual-scroll-data-source-example">
     <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport">
       
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table id="ExportBrief" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="DNO" class="example-item">
       <th mat-header-cell *matHeaderCellDef> D_no </th>

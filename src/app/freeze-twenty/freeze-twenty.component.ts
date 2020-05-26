@@ -4,6 +4,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import { RackServiceService } from '../rack-service.service';
 import { RackSample } from '../rack-sample';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
@@ -30,9 +32,11 @@ export class FreezeTwentyComponent implements OnInit {
     labName: ''
   };
 
-  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog) { }
+  constructor(public service:RackServiceService,public router:Router,public dialog: MatDialog,private appService: AppService) { }
   ngOnInit() {
     this.service.getAllFrezeerTwentyData().subscribe(response => this.fetchData(response));
+
+    this.appService.setTitle('Freezer -20');
 
     /*this.dataSource.filterPredicate = function(data:FreezerData, filter: string): boolean {
       if(data.labName)
