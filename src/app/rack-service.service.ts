@@ -24,7 +24,7 @@ export class RackServiceService {
 
  /* authenticate():Observable<jwt>{
     let data = { "username":"Piyush","password":"Piyush"};
-    let url = "https://localhost:8443/authenticate";
+    let url = "http://localhost:8080/authenticate";
     return this.http.post<jwt>(url,data);
   }*/
 
@@ -35,7 +35,7 @@ export class RackServiceService {
   sendRackData(data:RackSample)
   {
     //const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/saverackinfo";
+    let url="http://localhost:8080/saverackinfo";
     console.log(data);
     return this.http.put(url,data);
   }
@@ -43,7 +43,7 @@ export class RackServiceService {
   sendFrezerTwentyData(data:FreezerData)
   {
     //const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/save20freeze";
+    let url="http://localhost:8080/save20freeze";
     console.log(data);
     return this.http.put(url,data);
   }
@@ -51,7 +51,7 @@ export class RackServiceService {
   sendFrezerEightyData(data:FreezerData)
   {
   //  const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/save80freeze";
+    let url="http://localhost:8080/save80freeze";
     console.log(data);
     return this.http.put(url,data);
   }
@@ -59,7 +59,7 @@ export class RackServiceService {
   sendDNALCLData(data:DNAData)
   {
     //const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/savednalcl";
+    let url="http://localhost:8080/savednalcl";
     console.log(data);
     return this.http.put(url,data);
   }
@@ -67,7 +67,7 @@ export class RackServiceService {
   sendDNABloodData(data:DNAData)
   {
     //const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/savednablood";
+    let url="http://localhost:8080/savednablood";
     console.log(data);
     return this.http.put(url,data);
   }
@@ -75,7 +75,7 @@ export class RackServiceService {
   sendPBMCData(data:PBMCDATA)
   {
   //  const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/savepbmc";
+    let url="http://localhost:8080/savepbmc";
     console.log(data);
     return this.http.put(url,data);
   }
@@ -83,7 +83,7 @@ export class RackServiceService {
   sendGeneprintData(data:GeneData)
   {
   //  const headers = {'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/savegeneprint";
+    let url="http://localhost:8080/savegeneprint";
     console.log(data);
     return this.http.put(url,data);
   }
@@ -93,7 +93,7 @@ export class RackServiceService {
     console.log(data);
     let jsondata = {'sampleNo' : data};
   //  const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getrack";
+    let url="http://localhost:8080/getrack";
     return this.http.post<RackSample[]>(url,jsondata);
   }
 
@@ -102,7 +102,7 @@ export class RackServiceService {
       console.log(data);
      // let jsondata = {'sampleNo' : data};
     //const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/deleterack";
+    let url="http://localhost:8080/deleterack";
     return this.http.put<RackSample[]>(url,data);
 
   }
@@ -113,7 +113,7 @@ export class RackServiceService {
     // let jsondata = {'sampleNo' : data};
   // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
 
-   let url="https://localhost:8443/updatemycoplasma";
+   let url="http://localhost:8080/updatemycoplasma";
 
    return this.http.put(url,data);
   }
@@ -124,7 +124,7 @@ export class RackServiceService {
     // let jsondata = {'sampleNo' : data};
    //const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
 
-   let url="https://localhost:8443/getstatus";
+   let url="http://localhost:8080/getstatus";
 
    return this.http.get<LabLinking[]>(url);
   }
@@ -133,7 +133,7 @@ export class RackServiceService {
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
 
-    let url="https://localhost:8443/rackdashboard";
+    let url="http://localhost:8080/rackdashboard";
  
     return this.http.get<DashModel[]>(url);
   }
@@ -142,35 +142,35 @@ export class RackServiceService {
   {
    // let jsondata = {'sampleNo' : data};
   //  const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getrack";
+    let url="http://localhost:8080/getrack";
     return this.http.get<RackSample[]>(url);
   }
 
   getAllFrezeerTwentyData()
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/get20freeze";
+    let url="http://localhost:8080/get20freeze";
     return this.http.get<FreezerData[]>(url);
   }
 
   getAllFrezeerEightyData()
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/get80freeze";
+    let url="http://localhost:8080/get80freeze";
     return this.http.get<FreezerData[]>(url);
   }
 
   getALLDNALCLData()
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getdnalcl";
+    let url="http://localhost:8080/getdnalcl";
     return this.http.get<DNAData[]>(url);
   }
 
   getALLDNABloodData()
   {
  //   const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getdnablood";
+    let url="http://localhost:8080/getdnablood";
     console.log("Getting all dna blood");
     return this.http.get<DNAData[]>(url);
   }
@@ -178,47 +178,47 @@ export class RackServiceService {
   getALLDNAPlasmaData()
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/status/true";
+    let url="http://localhost:8080/status/true";
     return this.http.get<PlasmaSerum[]>(url);
   }
 
   getALLMycoplasmaData()
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getmyco"; 
+    let url="http://localhost:8080/getmyco"; 
     return this.http.get<Mycoplasma[]>(url);
   }
 
   getALLGeneprintData()
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getgeneprint"; 
+    let url="http://localhost:8080/getgeneprint"; 
     return this.http.get<GeneData[]>(url);
   }
 
   getAllKaryotypeData(){
-    let url="https://localhost:8443/getgeneprint"; 
+    let url="http://localhost:8080/getgeneprint"; 
     return this.http.get<KaryotypeData[]>(url);
   }
 
   getALLPBMCData()
   {
  //   const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/getpbmc"; 
+    let url="http://localhost:8080/getpbmc"; 
     return this.http.get<PBMCDATA[]>(url);
   }
 
   getALLPendingRequest()
   {
   //  const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/status/false";
+    let url="http://localhost:8080/status/false";
     return this.http.get<LabLinking[]>(url);
   }
 
   sendPendingRequests(data:LabLinking, oldSampleNo:number)
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/status/savestatus";
+    let url="http://localhost:8080/status/savestatus";
     console.log(data);
     let jsondata = {"labMapping":data, "oldSampleNo":oldSampleNo};
     return this.http.put(url,jsondata);
@@ -227,46 +227,46 @@ export class RackServiceService {
   fetchRackCanister(data)
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/fetchrackinfo"; 
+    let url="http://localhost:8080/fetchrackinfo"; 
     return this.http.post<RackSample[]>(url,data);
   }
 
   fetchFridge20(data)
   {
   //  const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/fetch20fridge"; 
+    let url="http://localhost:8080/fetch20fridge"; 
     return this.http.post<FreezerData[]>(url,data);
   }
 
   fetchFridge80(data)
   {
    // const headers = { 'Authorization': 'Bearer '+this.JWT.jwt};
-    let url="https://localhost:8443/fetch80fridge"; 
+    let url="http://localhost:8080/fetch80fridge"; 
     return this.http.post<FreezerData[]>(url,data);
   }
 
   fetchCyroVials(data)
   {
     console.log(data);
-    let url="https://localhost:8443/fetchcryovials"; 
+    let url="http://localhost:8080/fetchcryovials"; 
     return this.http.post<number>(url,data);
   }
 
   removeRackEntry(data:RackSample)
   {
-    let url="https://localhost:8443/removerack"; 
+    let url="http://localhost:8080/removerack"; 
     return this.http.put(url,data);
   }
 
   removeFridge20Entry(data:FreezerData)
   {
-    let url="https://localhost:8443/removefridge20"; 
+    let url="http://localhost:8080/removefridge20"; 
     return this.http.put(url,data);
   }
 
   removeFridge80Entry(data:FreezerData)
   {
-    let url="https://localhost:8443/removefridge80"; 
+    let url="http://localhost:8080/removefridge80"; 
     return this.http.put(url,data);
   }
 

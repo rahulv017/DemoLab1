@@ -17,10 +17,10 @@ import { LabLinking } from './lab-linking';
   providedIn: 'root'
 })
 export class InputServiceService {
-
+   url="http://localhost:8080";
   constructor(private route:Router, private _http:HttpClient) { }
 
-   private _url:string="https://localhost:8443/search";
+   private _url:string="http://localhost:8080/search";
  //  private jwtToken:string="Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODY5NzUzMDgsImlhdCI6MTU4NjkzOTMwOH0.eltQ1vAmfLjmzarkarnP466hCtteqvN6oix49qx6-OY";
 
   getUserData(patientID:number):Observable<User[]>
@@ -36,7 +36,7 @@ export class InputServiceService {
   getUserDataBrief():Observable<User[]>
   {
    //let JsonData={'adbsID':[patientID]};
-   let _url1 : string="https://localhost:8443/brieftable"
+   let _url1 : string="http://localhost:8080/brieftable"
   //   const headers = { 'Authorization': this.jwtToken};
    //  console.log(patientID);
       return this._http.get<User[]>(_url1);
@@ -46,7 +46,7 @@ export class InputServiceService {
 
   getBreifTable(data:string):Observable<User[]>
   {
-    let _url1:string="https://localhost:8443/filter";
+    let _url1:string="http://localhost:8080/filter";
   //  let JsonData={'adbsID':[patientID]};
    //  const headers = { 'Authorization': this.jwtToken};
      console.log(data);
@@ -56,7 +56,7 @@ export class InputServiceService {
 
   getLabStatusDetails():Observable<LabLinking[]>
   {
-    let _url1:string="https://localhost:8443/status/true";
+    let _url1:string="http://localhost:8080/status/true";
     //let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
    // console.log(JsonData);
@@ -84,7 +84,7 @@ export class InputServiceService {
 
   getLabSpecificDetails(data)
   {
-    let _url1:string="https://localhost:8443/getlabdetails";
+    let _url1:string="http://localhost:8080/getlabdetails";
     //let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
     console.log(data);
@@ -94,7 +94,7 @@ export class InputServiceService {
 
   saveBriefUpdated(data:User)
   {
-    let _url1:string="https://localhost:8443/updatebrieftable";
+    let _url1:string="http://localhost:8080/updatebrieftable";
    // let JsonData={'assess_id':data.Assessment_ID};
  //   const headers = { 'Authorization': this.jwtToken};
     console.log(data);
@@ -104,7 +104,7 @@ export class InputServiceService {
 
   getCompleteDeepTable():Observable<Deep[]>
   {
-    let _url1:string="https://localhost:8443/deeptable";
+    let _url1:string="http://localhost:8080/deeptable";
    // let JsonData={'assess_id':data.Assessment_ID};
    // const headers = { 'Authorization': this.jwtToken};
    // console.log(data);
@@ -114,7 +114,7 @@ export class InputServiceService {
 
   getUserDataByAssID(patientID:string):Observable<User>
   {
-    let _url1:string="https://localhost:8443/searchbyassessment"
+    let _url1:string="http://localhost:8080/searchbyassessment"
    let JsonData={"D_no":patientID};
   //   const headers = { 'Authorization': this.jwtToken};
      console.log(patientID);
@@ -124,7 +124,7 @@ export class InputServiceService {
   }
   saveDeepUser(data:Deep)
   {
-    let _url1:string="https://localhost:8443/insert";
+    let _url1:string="http://localhost:8080/insert";
    // let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
     console.log(data);
@@ -134,7 +134,7 @@ export class InputServiceService {
 
   getDashboardData():Observable<Dashboard[]>
   {
-    let _url1:string="https://localhost:8443/dashboard";
+    let _url1:string="http://localhost:8080/dashboard";
     // let JsonData={'assess_id':data.Assessment_ID};
   //   const headers = { 'Authorization': this.jwtToken};
     // console.log(data);

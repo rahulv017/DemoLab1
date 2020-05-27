@@ -64,7 +64,7 @@ export class KarotypingComponent implements OnInit {
     uploadPdfData.append('sampleNo',element.id.sampleNo.toString());    
     //let pdfFile={"sampleNo":element.id.sampleNo,"file":file};
     //const header:HttpHeaders=new HttpHeaders({'enctype':'multipart/form-data'})
-    this.http.put('https://localhost:8443/uploadFile', uploadPdfData, {reportProgress: true, observe: 'events'})
+    this.http.put('http://localhost:8080/uploadFile', uploadPdfData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.percentDone = Math.round(100 * event.loaded / event.total);
@@ -81,7 +81,7 @@ export class KarotypingComponent implements OnInit {
     let headers = new HttpHeaders();
     let jsonData = {"sampleNo":element.id.sampleNo};
     headers = headers.append('Accept', 'application/pdf; charset=utf-8');
-    this.http.post('https://localhost:8443/downloadfile',jsonData,{
+    this.http.post('http://localhost:8080/downloadfile',jsonData,{
       headers: headers,
       observe: 'response',
       responseType: 'blob'
