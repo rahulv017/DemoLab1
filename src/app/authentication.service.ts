@@ -8,15 +8,14 @@ import { PathService } from './path.service';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  path;
-  port;
+  
   constructor(private httpClient:HttpClient,private pathS:PathService) {
-    this.path=this.pathS.getPath();
-    this.port=this.pathS.getPort();
+   
    }
   
   authenticate(username, password) {
-    return this.httpClient.post<any>(this.path+this.port+'/authenticate',{"username":username,"password":password}).pipe(
+    //console.log(this.path);
+    return this.httpClient.post<any>(this.pathS.getPath()+this.pathS.getPort()+'/authenticate',{"username":username,"password":password}).pipe(
        map(
          userData => {
           sessionStorage.setItem('username',username);
