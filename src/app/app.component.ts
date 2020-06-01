@@ -18,9 +18,14 @@ export class AppComponent {
   constructor( private router:Router, private loginservice:AuthenticationService,private pathS:PathService)
   {
     this.path=this.path.substring(0,this.path.lastIndexOf(':'));
+<<<<<<< HEAD
     // this.port=this.port.substring(this.port.lastIndexOf(':'),this.port.lastIndexOf('/'));
     this.port=':8080';
     this.pathS.setPath(this.path);
+=======
+  this.port=this.port.substring(this.port.lastIndexOf(':'),this.port.lastIndexOf('/'));
+   this.pathS.setPath(this.path);
+>>>>>>> trial
     this.pathS.setPort(this.port);
     console.log(this.pathS.getPath()+this.pathS.getPort());
     this.validLogin = this.loginservice.isUserLoggedIn();
