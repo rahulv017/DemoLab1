@@ -12,9 +12,10 @@ export class AppComponent {
   email:string;
   pass:string;
   @ViewChild('userForm',{read: ElementRef,static:false}) userForm:ElementRef;
-
+   path=window.location.href;
   constructor( private router:Router, private loginservice:AuthenticationService)
   {
+    this.path=this.path.substring(0,this.path.lastIndexOf('/'));
     this.validLogin = this.loginservice.isUserLoggedIn();
     this.roles = sessionStorage.getItem('roles');
   }

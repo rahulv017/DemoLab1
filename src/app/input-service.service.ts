@@ -11,6 +11,7 @@ import { Dashboard } from './Dashboard';
 import { throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import { LabLinking } from './lab-linking';
+import { PathService } from './path.service';
 
 
 @Injectable({
@@ -18,9 +19,13 @@ import { LabLinking } from './lab-linking';
 })
 export class InputServiceService {
    url="http://localhost:8080";
-  constructor(private route:Router, private _http:HttpClient) { }
+   path:string;
+  constructor(private route:Router, private _http:HttpClient,private pathS:PathService) {
+    this.path=this.pathS.getPath();
+    console.log(this.path);
+   }
 
-   private _url:string="http://localhost:8080/search";
+   private _url:string=this.path+'/search';
  //  private jwtToken:string="Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQaXl1c2giLCJleHAiOjE1ODY5NzUzMDgsImlhdCI6MTU4NjkzOTMwOH0.eltQ1vAmfLjmzarkarnP466hCtteqvN6oix49qx6-OY";
 
   getUserData(patientID:number):Observable<User[]>
@@ -36,7 +41,7 @@ export class InputServiceService {
   getUserDataBrief():Observable<User[]>
   {
    //let JsonData={'adbsID':[patientID]};
-   let _url1 : string="http://localhost:8080/brieftable"
+   let _url1 : string=this.path+'/brieftable';
   //   const headers = { 'Authorization': this.jwtToken};
    //  console.log(patientID);
       return this._http.get<User[]>(_url1);
@@ -46,7 +51,7 @@ export class InputServiceService {
 
   getBreifTable(data:string):Observable<User[]>
   {
-    let _url1:string="http://localhost:8080/filter";
+    let _url1:string=this.path+'/filter';
   //  let JsonData={'adbsID':[patientID]};
    //  const headers = { 'Authorization': this.jwtToken};
      console.log(data);
@@ -56,7 +61,7 @@ export class InputServiceService {
 
   getLabStatusDetails():Observable<LabLinking[]>
   {
-    let _url1:string="http://localhost:8080/status/true";
+    let _url1:string=this.path+'/status/true';
     //let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
    // console.log(JsonData);
@@ -84,7 +89,7 @@ export class InputServiceService {
 
   getLabSpecificDetails(data)
   {
-    let _url1:string="http://localhost:8080/getlabdetails";
+    let _url1:string=this.path+'/getlabdetails';
     //let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
     console.log(data);
@@ -94,7 +99,7 @@ export class InputServiceService {
 
   saveBriefUpdated(data:User)
   {
-    let _url1:string="http://localhost:8080/updatebrieftable";
+    let _url1:string=this.path+'/updatebrieftable';
    // let JsonData={'assess_id':data.Assessment_ID};
  //   const headers = { 'Authorization': this.jwtToken};
     console.log(data);
@@ -104,7 +109,7 @@ export class InputServiceService {
 
   getCompleteDeepTable():Observable<Deep[]>
   {
-    let _url1:string="http://localhost:8080/deeptable";
+    let _url1:string=this.path+'/deeptable';
    // let JsonData={'assess_id':data.Assessment_ID};
    // const headers = { 'Authorization': this.jwtToken};
    // console.log(data);
@@ -114,7 +119,7 @@ export class InputServiceService {
 
   getUserDataByAssID(patientID:string):Observable<User>
   {
-    let _url1:string="http://localhost:8080/searchbyassessment"
+    let _url1:string=this.path+'/searchbyassessment';
    let JsonData={"D_no":patientID};
   //   const headers = { 'Authorization': this.jwtToken};
      console.log(patientID);
@@ -124,7 +129,7 @@ export class InputServiceService {
   }
   saveDeepUser(data:Deep)
   {
-    let _url1:string="http://localhost:8080/insert";
+    let _url1:string=this.path+'/insert';
    // let JsonData={'assess_id':data.Assessment_ID};
   //  const headers = { 'Authorization': this.jwtToken};
     console.log(data);
@@ -134,7 +139,7 @@ export class InputServiceService {
 
   getDashboardData():Observable<Dashboard[]>
   {
-    let _url1:string="http://localhost:8080/dashboard";
+    let _url1:string=this.path+'/dashboard';
     // let JsonData={'assess_id':data.Assessment_ID};
   //   const headers = { 'Authorization': this.jwtToken};
     // console.log(data);
