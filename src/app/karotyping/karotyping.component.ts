@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EnterSampleComponent } from '../enter-sample/enter-sample.component';
 import { KaryotypeData } from '../karyotypedata';
+import { PathService } from '../path.service';
 
 @Component({
   selector: 'app-karotyping',
@@ -33,10 +34,13 @@ export class KarotypingComponent implements OnInit {
   enter_sample:number;
   enter_lab:string;
   uploadSuccess=false;
-  constructor(public service:RackServiceService,public router:Router,private appService: AppService,private http: HttpClient,) { }
+  path;
+  port;
+  constructor(public service:RackServiceService,public router:Router,private appService: AppService,private http: HttpClient,private pathS:PathService) { }
   ngOnInit() {
     this.service.getAllKaryotypeData().subscribe(response => this.fetchData(response));
-
+    this.path=this.pathS.getPath();
+    this.port=this.pathS.getPort();
     this.appService.setTitle('KaryoTyping');
     
   }
@@ -64,7 +68,7 @@ export class KarotypingComponent implements OnInit {
     uploadPdfData.append('sampleNo',element.id.sampleNo.toString());    
     //let pdfFile={"sampleNo":element.id.sampleNo,"file":file};
     //const header:HttpHeaders=new HttpHeaders({'enctype':'multipart/form-data'})
-    this.http.put('http://localhost:8080/uploadFile', uploadPdfData, {reportProgress: true, observe: 'events'})
+    this.http.put(this.path+this.port+'/uploadFile', uploadPdfData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.percentDone = Math.round(100 * event.loaded / event.total);
@@ -81,7 +85,7 @@ export class KarotypingComponent implements OnInit {
     let headers = new HttpHeaders();
     let jsonData = {"sampleNo":element.id.sampleNo};
     headers = headers.append('Accept', 'application/pdf; charset=utf-8');
-    this.http.post('http://localhost:8080/downloadfile',jsonData,{
+    this.http.post(this.path+this.port+'/downloadfile',jsonData,{
       headers: headers,
       observe: 'response',
       responseType: 'blob'

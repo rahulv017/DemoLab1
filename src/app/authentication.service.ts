@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import {map, catchError} from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { PathService } from './path.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
-  constructor(private httpClient:HttpClient) { }
+  path;
+  port;
+  constructor(private httpClient:HttpClient,private pathS:PathService) {
+    this.path=this.pathS.getPath();
+    this.port=this.pathS.getPort();
+   }
   
   authenticate(username, password) {
-    return this.httpClient.post<any>('http://localhost:8080/authenticate',{"username":username,"password":password}).pipe(
+    return this.httpClient.post<any>(this.path+this.port+'/authenticate',{"username":username,"password":password}).pipe(
        map(
          userData => {
           sessionStorage.setItem('username',username);
