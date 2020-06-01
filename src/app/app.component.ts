@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef,AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
+import { PathService } from './path.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,14 @@ export class AppComponent {
   pass:string;
   @ViewChild('userForm',{read: ElementRef,static:false}) userForm:ElementRef;
    path=window.location.href;
-  constructor( private router:Router, private loginservice:AuthenticationService)
+   port=window.location.href;
+  constructor( private router:Router, private loginservice:AuthenticationService,private pathS:PathService)
   {
-    this.path=this.path.substring(0,this.path.lastIndexOf('/'));
+    this.path=this.path.substring(0,this.path.lastIndexOf(':'));
+    this.port=this.port.substring(this.port.lastIndexOf(':'),this.port.lastIndexOf('/'));
+    this.pathS.setPath(this.path);
+    this.pathS.setPort(this.port);
+    console.log(this.pathS.getPath()+this.pathS.getPort());
     this.validLogin = this.loginservice.isUserLoggedIn();
     this.roles = sessionStorage.getItem('roles');
   }

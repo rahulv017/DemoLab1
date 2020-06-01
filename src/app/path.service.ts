@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class PathService {
 
   path:string;
+  port:string;
   constructor() { }
 
   getPath()
@@ -16,5 +17,14 @@ export class PathService {
   setPath(data:string)
   {
     this.path=data;
+  }
+
+  getPort()
+  {
+    return this.port;
+  }
+  setPort(data)
+  {
+    this.port=data;
   }
 }
