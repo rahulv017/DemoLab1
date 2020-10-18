@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import {map, catchError} from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { throwError } from 'rxjs';
+import{Observable} from 'rxjs';
 import { PathService } from './path.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  path;
+  path=this.pathS.getPath();
   port;
   constructor(private httpClient:HttpClient,private pathS:PathService) {
-    this.path=this.pathS.getPath();
+    
     this.port=this.pathS.getPort();
    }
   
@@ -32,8 +33,14 @@ export class AuthenticationService {
     );
   }
 
+  signUpService(username:string,password:string,role:string):Observable<string>
+  {
+    return this.httpClient.post<any>(this.path+this.port+'/signup',{"username":username,"password":password
+  ,"role":role}).pipe(catchError(this.handleError));
+  }
 
- /* private handleError(error: HttpErrorResponse) {
+
+  private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -47,7 +54,7 @@ export class AuthenticationService {
     // return an observable with a user-facing error message
     return throwError(
       'INVALID CREDENTIALS');
-  };*/
+  };
 
 
   

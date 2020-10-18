@@ -68,6 +68,7 @@ import { UserServiceService } from './user-service.service';
 import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
 import { BackgroundCohortComponent } from './background-cohort/background-cohort.component';
 import { AppService } from './app.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { AppService } from './app.service';
    DecideDeepTestComponent,
    FilteringComponent,
    UpdateBriefComponent,
-   BackgroundCohortComponent
+   BackgroundCohortComponent,
+   SignUpComponent
   
   ],
   imports: [

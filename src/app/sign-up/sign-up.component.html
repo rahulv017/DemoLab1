@@ -1,0 +1,22 @@
+<div class="container">
+    <div>
+      User Name : <input type="text" name="username" [(ngModel)]="username">
+      Password : <input type="password" name="password" [(ngModel)]="password">
+      <label id="example-radio-group-label">Pick your Role</label>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [(ngModel)]="role">
+  <mat-radio-button class="example-radio-button" *ngFor="let role of roles" [value]="role">
+    {{role}}
+  </mat-radio-button>
+</mat-radio-group>
+
+
+    </div>
+    <button (click)=checkSignUp() class="btn btn-success">
+      Login
+      <app-background *ngIf = "!invalidSignUp"></app-background>
+    </button>
+  </div>
+

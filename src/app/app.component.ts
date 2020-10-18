@@ -55,4 +55,9 @@ export class AppComponent {
     console.log(this.userForm.nativeElement);
   
   }
+
+  onSignUp()
+  {
+    this.router.navigate(['/signUp']);
+  }
 }

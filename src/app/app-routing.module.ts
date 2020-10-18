@@ -26,9 +26,11 @@ import { FourthComponentComponent } from './fourth-component/fourth-component.co
 import { ViewLabReportComponent } from './view-lab-report/view-lab-report.component';
 import { DecideDeepTestComponent } from './decide-deep-test/decide-deep-test.component';
 import { UpdateBriefComponent } from './update-brief/update-brief.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
+  { path: 'signUp', component:SignUpComponent},
   { path: 'RackInformation', component: RackInformationComponent,canActivate:[AuthGaurdService]},
   { path: 'pending-request', component: PendingRequestComponent,canActivate:[AuthGaurdService]},
   {path:'logout',component: LogoutComponent, canActivate:[AuthGaurdService]},
