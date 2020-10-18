@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { LabLinking } from '../lab-linking';
 import { RackServiceService } from '../rack-service.service';
 import {MatPaginator} from '@angular/material/paginator';
-import { EventEmitter } from 'protractor';
+import { EventEmitter, element } from 'protractor';
 import { AppService } from '../app.service';
 
 export class LabLink {
@@ -50,8 +50,8 @@ export class PendingRequestComponent implements OnInit,AfterViewInit {
     let i=0;
     for(i=0;i<response.length;i++)
     {
+      let JsonData={"ele":response[i],"sample":response[i].id.sampleNo}
       //let JsonData={"ele":response[i],"sample":response[i].id.sampleNo}
-      let JsonData={"ele":response[i],"sample":0}
       this.lab.push(JsonData);
     }
        this.dataSource=new MatTableDataSource(this.lab);

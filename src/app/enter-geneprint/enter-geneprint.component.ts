@@ -28,7 +28,7 @@ export class EnterGeneprintComponent implements OnInit {
     this.labii.blood=this.data.blood;
      this.labii.date=this.data.date;
      this.labii.lcl=this.data.lcl;
-     this.labii.isMatch=this.data.isMatch;
+     this.labii.isMatch="yes";
      this.labii.ipsc=this.data.ipsc;
      this.labii.nsc=this.data.nsc;
      this.labii.exome=this.data.exome;
