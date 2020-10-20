@@ -10,7 +10,13 @@ export class AuthGaurdService implements CanActivate {
   constructor(private router: Router, private loginservice: AuthenticationService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    if(this.loginservice.isUserLoggedIn())
+    console.log(this.router.url.toString());
+    
+    if(this.router.url.toString()=="/signUp"){
+      //this.router.navigate(['/signUp']);
+      return false;
+    }
+    else if(this.loginservice.isUserLoggedIn())
       return true;
     this.router.navigate(['']);
     return false;

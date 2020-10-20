@@ -34,10 +34,13 @@ export class AuthenticationService {
     );
   }
 
-  signUpService(username:string,password:string,role:string):Observable<string>
+  signUpService(uname:string,pass:string,roles:string):Observable<string>
   {
-    return this.httpClient.post<any>(this.path+this.port+'/signup',{"username":username,"password":password
-  ,"role":role}).pipe(catchError(this.handleError));
+    console.log(uname+pass+roles);
+    let jsonData = {'uname' : uname,
+                    'pass' : pass,
+                    'roles' : roles  };
+    return this.httpClient.put<string>(this.pathS.getPath()+this.pathS.getPort()+'/signup',jsonData);//.pipe(catchError(this.handleError));
   }
 
 

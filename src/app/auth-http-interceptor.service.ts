@@ -10,9 +10,21 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class AuthHttpInterceptorService implements HttpInterceptor {
   
-  constructor(private router:Router) { }
+  constructor(private router:Router) {
+
+  }
   
   intercept(req: HttpRequest<any>,next:HttpHandler){
+    
+    console.log(req.url.toString());
+
+    if(req.url.toString()=='http://localhost:8080/signup')
+    {
+      console.log("Hi");
+      req = req.clone();
+      return next.handle(req);
+    }
+    
     if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
       req = req.clone({
         setHeaders: {

@@ -46,7 +46,7 @@
     </div>-->
 
 
-  <div *ngIf="!validLogin" class="container">
+    <div *ngIf="!validLogin && !validSignUp" class="container">
       <div class="login-content">
        
          <mat-toolbar class="login-toolbar" color="primary">ADBS</mat-toolbar><br/>
@@ -69,7 +69,7 @@
      
      </div>
 
-
 <app-background *ngIf = "validLogin && roles===lab[0]"></app-background>
 <app-background-cohort *ngIf = "validLogin && roles===lab[1]"></app-background-cohort>
+<!--<app-sign-up *ngIf = "validSignUp"></app-sign-up>-->
 <router-outlet></router-outlet>

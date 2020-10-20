@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-   roles=['Lab','Cohort'];
+   roles=['lab','cohort'];
    role:string;
    invalidSignUp:boolean;
    username:string;
@@ -23,21 +23,25 @@ export class SignUpComponent implements OnInit {
 
    checkSignUp()
    {
-        this.signUp.signUpService(this.username,this.password,this.role).subscribe(response => this.fetchData(response));
+        this.signUp.signUpService(this.username,this.password,this.role).subscribe(response => this.fetchData());
    }
 
-   fetchData(data:string)
+   fetchData()
    {
+    window.alert("Sucessfull! Login Again");
+    sessionStorage.clear();
+    //this.router.navigate(['']);
+    window.location.assign('');
+   }
+    /*
+    console.log(data);
           if(data=="Success")
           {
-
-              window.alert("Sucessfull !!Login Again");
-                 
-               this.router.navigate(['']);
+              
           }
           else{
             window.alert("Unsuccessful attempt!!SignUp Again");
           }
    }
-   
+   */
 }

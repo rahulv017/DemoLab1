@@ -23,13 +23,16 @@ export class AppComponent {
   this.pathS.setPath(this.path);
     this.pathS.setPort(this.port);
     console.log(this.pathS.getPath()+this.pathS.getPort());
-    this.validLogin = this.loginservice.isUserLoggedIn();
+    //this.validLogin = this.loginservice.isUserLoggedIn();
     this.roles = sessionStorage.getItem('roles');
+    this.validLogin = false;
+    this.validSignUp = false;
   }
 
   username = '';
   password = '';
   validLogin;
+  validSignUp;
   roles;
   lab = ["[lab]","[cohort]"]
   
@@ -58,6 +61,9 @@ export class AppComponent {
 
   onSignUp()
   {
+    console.log("sigining up");
+    this.validSignUp = true;
     this.router.navigate(['/signUp']);
+    //this.validSignUp = false;
   }
 }
