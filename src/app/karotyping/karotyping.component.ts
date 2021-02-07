@@ -36,12 +36,14 @@ export class KarotypingComponent implements OnInit {
   uploadSuccess=false;
   path;
   port;
+  _url:string;
   constructor(public service:RackServiceService,public router:Router,private appService: AppService,private http: HttpClient,private pathS:PathService) { }
   ngOnInit() {
     this.service.getAllKaryotypeData().subscribe(response => this.fetchData(response));
     this.path=this.pathS.getPath();
     this.port=this.pathS.getPort();
     this.appService.setTitle('KaryoTyping');
+    this._url=this.pathS.getPath();
     
   }
 
@@ -68,7 +70,7 @@ export class KarotypingComponent implements OnInit {
     uploadPdfData.append('sampleNo',element.id.sampleNo.toString());    
     //let pdfFile={"sampleNo":element.id.sampleNo,"file":file};
     //const header:HttpHeaders=new HttpHeaders({'enctype':'multipart/form-data'})
-    this.http.put(this.path+this.port+'/uploadFile', uploadPdfData, {reportProgress: true, observe: 'events'})
+    this.http.put(this._url+'/uploadFile', uploadPdfData, {reportProgress: true, observe: 'events'})
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.percentDone = Math.round(100 * event.loaded / event.total);
@@ -85,7 +87,7 @@ export class KarotypingComponent implements OnInit {
     let headers = new HttpHeaders();
     let jsonData = {"sampleNo":element.id.sampleNo};
     headers = headers.append('Accept', 'application/pdf; charset=utf-8');
-    this.http.post(this.path+this.port+'/downloadfile',jsonData,{
+    this.http.post(this._url+'/downloadfile',jsonData,{
       headers: headers,
       observe: 'response',
       responseType: 'blob'

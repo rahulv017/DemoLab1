@@ -17,11 +17,16 @@ export class AppComponent {
    port=window.location.href;
   constructor( private router:Router, private loginservice:AuthenticationService,private pathS:PathService)
   {
-    this.path=this.path.substring(0,this.path.lastIndexOf(':'));
+    sessionStorage.setItem('validLogin',"false");
+    if(sessionStorage.getItem('validLogin')=="false")
+    {
+      this.validLogin=false;
+    }
+    this.path=this.path.substring(0,this.path.lastIndexOf('/'));
   //this.port=this.port.substring(this.port.lastIndexOf(':'),this.port.lastIndexOf('/'));
-  this.port=':8080'; 
+ // this.port=':8080'; 
   this.pathS.setPath(this.path);
-    this.pathS.setPort(this.port);
+ //   this.pathS.setPort(this.port);
     console.log(this.pathS.getPath()+this.pathS.getPort());
     //this.validLogin = this.loginservice.isUserLoggedIn();
     this.roles = sessionStorage.getItem('roles');
@@ -40,7 +45,8 @@ export class AppComponent {
   checkLogin() {
     (this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
-       this.validLogin= true;
+        sessionStorage.setItem("validLogin","true");
+       this.validLogin= sessionStorage.getItem("validLogin")=="true"? true:false;
        console.log(data);
        //if(role)
       this.roles = data.roles;

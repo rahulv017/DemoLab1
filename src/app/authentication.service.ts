@@ -73,6 +73,7 @@ export class AuthenticationService {
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('roles');
+    sessionStorage.setItem('validLogin',"false");
   }
 
 }
